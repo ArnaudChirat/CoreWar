@@ -1,0 +1,10 @@
+################################################################################
+Usage: ./corewar [(-dump NBR_CYCLE | -v) -p] [-n VALUE -a VALUE] <champion1.cor> [...] <...>
+-dump		: Choose the number of the cycle to print
+			  Must be > 0
+-v			: Open the visualizer
+-p 			: Show players details
+-n			: Choose the player number
+			  Must be != 0  (uint_max - number of players)
+-a			: Choose the place of the champion
+################################################################################
