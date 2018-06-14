@@ -6,7 +6,7 @@
 /*   By: ccorsin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 16:23:47 by ccorsin           #+#    #+#             */
-/*   Updated: 2018/06/14 11:52:39 by achirat          ###   ########.fr       */
+/*   Updated: 2018/06/14 17:04:03 by achirat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,11 @@ void					ft_st(t_proc *proc, t_proc **begin)
 
 	(void)begin;
 	i = 0;
+
+	v = proc->arg[1][1];
 	if (proc->arg[1][0] != T_REG)
 	{
-		v = proc->arg[1][1] % IDX_MOD;
+		v = v % IDX_MOD;
 		while (i < REG_SIZE)
 		{
 			g_arena[(MEM_SIZE + proc->pc + v + i)
