@@ -6,7 +6,7 @@
 /*   By: ccorsin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 16:22:24 by ccorsin           #+#    #+#             */
-/*   Updated: 2018/06/07 11:56:42 by ccorsin          ###   ########.fr       */
+/*   Updated: 2018/06/14 11:05:49 by achirat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void			ft_ld(t_proc *proc, t_proc **begin)
 {
 	int				i;
-	unsigned int	value;
+	int				value;
 
 	(void)begin;
 	i = 0;
