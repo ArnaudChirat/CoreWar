@@ -6,7 +6,7 @@
 /*   By: ccorsin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 16:24:00 by ccorsin           #+#    #+#             */
-/*   Updated: 2018/06/07 14:44:59 by ccorsin          ###   ########.fr       */
+/*   Updated: 2018/06/14 09:22:33 by achirat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,13 @@
 
 static int	ft_get_val1(t_proc *proc)
 {
-	int	val1;
+	short	val1;
 
 	if (proc->arg[1][0] == T_REG)
 		val1 = proc->reg[proc->arg[1][1]];
 	else if (proc->arg[1][0] == T_DIR)
 	{
-		val1 = proc->arg[1][1];
-		if (val1 > 65536 / 2)
-			val1 = val1 - (65536);
+		val1 = (short)proc->arg[1][1];
 	}
 	else
 		val1 = ft_get_content_ind(proc, proc->arg[1][1]);
@@ -31,16 +29,12 @@ static int	ft_get_val1(t_proc *proc)
 
 static int	ft_get_val2(t_proc *proc)
 {
-	int	val2;
+	short	val2;
 
 	if (proc->arg[2][0] == T_REG)
 		val2 = proc->reg[proc->arg[2][1]];
 	else
-	{
 		val2 = proc->arg[2][1];
-		if (val2 > 65536 / 2)
-			val2 = val2 - (65536);
-	}
 	return (val2);
 }
 

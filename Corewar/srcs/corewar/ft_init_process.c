@@ -6,7 +6,7 @@
 /*   By: ccorsin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/11 11:57:04 by ccorsin           #+#    #+#             */
-/*   Updated: 2018/06/07 15:18:42 by ccorsin          ###   ########.fr       */
+/*   Updated: 2018/06/13 20:42:48 by achirat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_proc		*ft_create_init_proc(int addr, int player, int index)
 	i = 1;
 	if (!(new = malloc(sizeof(t_proc))))
 		exit(0);
-	new->reg[0] = player;
+	new->reg[0] = -player;
 	while (i < REG_NUMBER)
 		new->reg[i++] = 0;
 	new->next = NULL;
