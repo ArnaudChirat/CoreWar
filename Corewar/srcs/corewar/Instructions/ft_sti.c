@@ -6,7 +6,7 @@
 /*   By: ccorsin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 16:24:00 by ccorsin           #+#    #+#             */
-/*   Updated: 2018/06/14 09:25:36 by achirat          ###   ########.fr       */
+/*   Updated: 2018/06/15 11:10:44 by achirat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,17 @@
 static int	ft_get_val1(t_proc *proc)
 {
 	short	val1;
+	int		val1bis;
 
 	if (proc->arg[1][0] == T_REG)
 		val1 = proc->reg[proc->arg[1][1]];
 	else if (proc->arg[1][0] == T_DIR)
 		val1 = (short)proc->arg[1][1];
 	else
-		val1 = ft_get_content_ind(proc, proc->arg[1][1]);
+	{
+		val1bis = ft_get_content_ind(proc, proc->arg[1][1]);
+		return (val1bis);
+	}
 	return (val1);
 }
 
@@ -50,8 +54,7 @@ void		ft_sti(t_proc *proc, t_proc **begin)
 	sum = ((val1 + val2) % IDX_MOD);
 	while (i < REG_SIZE)
 	{
-		g_arena[(MEM_SIZE + proc->pc + sum + i)
-			% MEM_SIZE].instruction =
+		g_arena[(MEM_SIZE + proc->pc + sum + i) % MEM_SIZE].instruction =
 		proc->reg[proc->arg[0][1]] >> (REG_SIZE - i - 1) * 8 & 0xff;
 		g_arena[(MEM_SIZE + proc->pc + sum + i) % MEM_SIZE].player = proc->num;
 		i++;
