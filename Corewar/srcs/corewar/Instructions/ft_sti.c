@@ -6,7 +6,7 @@
 /*   By: ccorsin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 16:24:00 by ccorsin           #+#    #+#             */
-/*   Updated: 2018/06/15 11:10:44 by achirat          ###   ########.fr       */
+/*   Updated: 2018/06/16 19:25:26 by achirat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,20 @@
 
 static int	ft_get_val1(t_proc *proc)
 {
-	short	val1;
-	int		val1bis;
+	int		val1;
 
 	if (proc->arg[1][0] == T_REG)
 		val1 = proc->reg[proc->arg[1][1]];
 	else if (proc->arg[1][0] == T_DIR)
-		val1 = (short)proc->arg[1][1];
+		val1 = proc->arg[1][1];
 	else
-	{
-		val1bis = ft_get_content_ind(proc, proc->arg[1][1]);
-		return (val1bis);
-	}
+		val1 = ft_get_content_ind(proc, proc->arg[1][1]);
 	return (val1);
 }
 
 static int	ft_get_val2(t_proc *proc)
 {
-	short	val2;
+	int		val2;
 
 	if (proc->arg[2][0] == T_REG)
 		val2 = proc->reg[proc->arg[2][1]];
@@ -44,8 +40,8 @@ void		ft_sti(t_proc *proc, t_proc **begin)
 {
 	int		val1;
 	int		val2;
-	int	i;
-	int	sum;
+	int		i;
+	int		sum;
 
 	(void)begin;
 	i = 0;

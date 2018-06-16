@@ -6,7 +6,7 @@
 /*   By: clanglai <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 16:25:17 by clanglai          #+#    #+#             */
-/*   Updated: 2018/06/15 11:09:23 by achirat          ###   ########.fr       */
+/*   Updated: 2018/06/16 19:01:50 by achirat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,12 @@ int		ft_get_content_ind(t_proc *proc, int addr)
 	res = 0;
 	while (i < DIR_SIZE)
 	{
-		res += g_arena[(MEM_SIZE + (proc->pc + i + addr % MEM_SIZE)) %
+		if ((DIR_SIZE - i - 1) != 0)
+			res += g_arena[(MEM_SIZE + (proc->pc + i + addr % MEM_SIZE)) %
 			MEM_SIZE].instruction << ((DIR_SIZE - i - 1) * 8);
+		else
+			res += g_arena[(MEM_SIZE + (proc->pc + i + addr % MEM_SIZE)) %
+				MEM_SIZE].instruction & 0xff;
 		i++;
 	}
 	return (res);

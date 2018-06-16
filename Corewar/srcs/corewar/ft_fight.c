@@ -6,7 +6,7 @@
 /*   By: ccorsin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/17 13:49:42 by ccorsin           #+#    #+#             */
-/*   Updated: 2018/06/13 11:20:32 by achirat          ###   ########.fr       */
+/*   Updated: 2018/06/16 20:23:26 by achirat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void		ft_fight(t_proc **begin)
 				;
 			else
 				tmp->pc = (tmp->pc + 1) % MEM_SIZE;
-		}
+					}
 		else
 			ft_fight_2(&tmp, begin);
 		tmp = tmp->next;
