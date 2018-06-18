@@ -3,25 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_st.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccorsin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: achirat <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/05 16:23:47 by ccorsin           #+#    #+#             */
-/*   Updated: 2018/06/14 17:04:03 by achirat          ###   ########.fr       */
+/*   Created: 2018/06/18 11:30:44 by achirat           #+#    #+#             */
+/*   Updated: 2018/06/18 11:30:48 by achirat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/vm.h"
-/*
-static unsigned int		ft_get_val1(t_proc *proc)
-{
-	short	val1;
-
-	if (proc->arg[1][0] == T_REG)
-		return (-1);
-	else
-		val1 = proc->arg[1][1];
-	return (val1);
-}*/
 
 void					ft_st(t_proc *proc, t_proc **begin)
 {
@@ -37,16 +26,10 @@ void					ft_st(t_proc *proc, t_proc **begin)
 		v = v % IDX_MOD;
 		while (i < REG_SIZE)
 		{
-			g_arena[(MEM_SIZE + proc->pc + v + i)
-			% MEM_SIZE].instruction =
-		proc->reg[proc->arg[0][1]] >> (REG_SIZE - i - 1) * 8 & 0xff;
-		g_arena[(MEM_SIZE + proc->pc + v + i) % MEM_SIZE].player = proc->num;
-		i++;
-
-			/*	g_arena[(proc->pc + v % IDX_MOD + i) % MEM_SIZE].instruction =
+			g_arena[(MEM_SIZE + proc->pc + v + i) % MEM_SIZE].instruction =
 				proc->reg[proc->arg[0][1]] >> (REG_SIZE - i - 1) * 8 & 0xff;
-				g_arena[(proc->pc + v % IDX_MOD + i++) % MEM_SIZE].player =
-				proc->num;*/
+			g_arena[(MEM_SIZE + proc->pc + v + i) % MEM_SIZE].player = proc->num;
+			i++;
 		}
 	}
 	proc->pc = (proc->step + proc->pc) % MEM_SIZE;
