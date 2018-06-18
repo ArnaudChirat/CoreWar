@@ -6,7 +6,7 @@
 /*   By: clanglai <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 10:44:18 by clanglai          #+#    #+#             */
-/*   Updated: 2018/06/07 17:39:17 by mjoubert         ###   ########.fr       */
+/*   Updated: 2018/06/18 18:12:47 by achirat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define ASM_H
 
 # include "op.h"
-# include "../libft/inc/libft.h"
+# include "../libft/includes/libft.h"
 # include "asm_struct.h"
 # include "errno.h"
 
@@ -66,7 +66,7 @@ char	*ft_get_name(char *str, int i, int len, int slash);
 int		ft_is_op(char *str);
 void	ft_free_data(t_data data);
 int		ft_is_separator(char c, int state);
-int		ft_unicode(char c);
+int		ft_char_unicode(char c);
 void	ft_write_header(int fd_w, t_data data);
 void	ft_fill_header_2(t_parse **tmp, t_data *data, t_parse *keep);
 void	ft_check_next_param(t_parse *tmp);

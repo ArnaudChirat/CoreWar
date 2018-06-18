@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   corewar.h                                          :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clanglai <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: achirat <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/09 10:45:23 by clanglai          #+#    #+#             */
-/*   Updated: 2018/06/18 18:14:08 by achirat          ###   ########.fr       */
+/*   Created: 2017/11/12 16:50:08 by achirat           #+#    #+#             */
+/*   Updated: 2017/11/16 13:36:34 by achirat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COREWAR_H
-# define COREWAR_H
+#include "libft.h"
 
-# include "op.h"
-# include "../libft/includes/libft.h"
+void	*ft_memchr(const void *s, int c, size_t n)
+{
+	size_t	a;
 
-void	ft_print_error(char *str);
-void	ft_print_usage(void);
-
-#endif
+	a = 0;
+	while (a < n)
+	{
+		if (((char*)s)[a] == (char)c)
+			return (&((void*)s)[a]);
+		a++;
+	}
+	return (0);
+}

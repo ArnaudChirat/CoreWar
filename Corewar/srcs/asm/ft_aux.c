@@ -6,7 +6,7 @@
 /*   By: achirat <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 11:34:28 by achirat           #+#    #+#             */
-/*   Updated: 2018/06/18 11:34:31 by achirat          ###   ########.fr       */
+/*   Updated: 2018/06/18 18:12:26 by achirat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		ft_is_separator(char c, int state)
 {
 	static int	i = 0;
 
-	if (ft_unicode(c) == 1)
+	if (ft_char_unicode(c) == 1)
 		return (1);
 	if ((c == ' ' || c == '\t') && i == 0)
 		return (2);

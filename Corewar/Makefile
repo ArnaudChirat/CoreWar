@@ -6,24 +6,22 @@
 #    By: clanglai <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/07 15:30:47 by clanglai          #+#    #+#              #
-#    Updated: 2018/06/07 17:36:19 by mjoubert         ###   ########.fr        #
+#    Updated: 2018/06/18 18:21:01 by achirat          ###   ########.fr        #
 #    Updated: 2018/06/07 14:11:10 by ccorsin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC=gcc
 FLAGS=-Wall -Wextra -Werror
-FLAGS=-Wall -Wextra -Werror
 ASM_NAME=asm
 COREWAR_H=corewar.h
 ASM_H=asm.h
 COREWAR_NAME=corewar
 INSTRUCTIONS_PATH=Instructions
-LIBC=libft/libftprintf.a
+LIBC=libft/libft.a
 LIBG=minilibx/mlx.a
 NCURSE=lncurses
 LIB_PATH =libft
-LIB_NAME=lftprintf
 NCURSE_PATH=ncurses
 LIBG_PATH=minilibx
 LIBG_NAME=lmlx
@@ -94,12 +92,12 @@ $(LIBC):
 	@make -C $(LIB_PATH)
 
 $(ASM_NAME): $(OBJ_ASM)
-	@gcc -o $(ASM_NAME) $(FLAGS) $(OBJ_ASM) -L$(LIB_PATH) -$(LIB_NAME)
+	@gcc -o $(ASM_NAME) $(FLAGS) $(OBJ_ASM) -L$(LIB_PATH) $(LIBC)
 	@echo "\033[1;34m$(ASM_NAME)\033[1;32m...compiled\t\t✓\033[0m"
 
 $(COREWAR_NAME) : $(OBJ_COREWAR) $(OBJ_INSTRUCTIONS)
 	@gcc $(FLAGS) -o $(COREWAR_NAME) $(FLAGS) $(OBJ_COREWAR) $(OBJ_INSTRUCTIONS) \
-	-L$(LIB_PATH) -$(LIB_NAME) -L$(NCURSE_PATH) -$(NCURSE)
+	-L$(LIB_PATH) -L$(NCURSE_PATH) -$(NCURSE) $(LIBC)
 	@echo "\033[1;34m$(COREWAR_NAME)\033[1;32m...compiled\t\t✓\033[0m"
 
 %.o : %.c $(SRC_INCLUDES_FILE)

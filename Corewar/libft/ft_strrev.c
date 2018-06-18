@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   corewar.h                                          :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clanglai <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/09 10:45:23 by clanglai          #+#    #+#             */
-/*   Updated: 2018/06/18 18:14:08 by achirat          ###   ########.fr       */
+/*   Created: 2017/11/28 17:34:38 by gvannest          #+#    #+#             */
+/*   Updated: 2017/11/28 17:40:30 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COREWAR_H
-# define COREWAR_H
+#include "libft.h"
 
-# include "op.h"
-# include "../libft/includes/libft.h"
+char	*ft_strrev(char *s)
+{
+	int		i;
+	int		j;
+	char	tmp;
 
-void	ft_print_error(char *str);
-void	ft_print_usage(void);
-
-#endif
+	i = 0;
+	if (s == 0)
+		return (0);
+	j = ft_strlen(s) - 1;
+	while (i < j)
+	{
+		tmp = s[i];
+		s[i] = s[j];
+		s[j] = tmp;
+		i++;
+		j--;
+	}
+	return (s);
+}

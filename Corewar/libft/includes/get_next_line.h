@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   corewar.h                                          :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clanglai <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: achirat <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/09 10:45:23 by clanglai          #+#    #+#             */
-/*   Updated: 2018/06/18 18:14:08 by achirat          ###   ########.fr       */
+/*   Created: 2017/11/21 11:20:04 by achirat           #+#    #+#             */
+/*   Updated: 2018/02/19 09:23:28 by achirat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COREWAR_H
-# define COREWAR_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-# include "op.h"
-# include "../libft/includes/libft.h"
+# include "libft.h"
+# define BUFF_SIZE 1
 
-void	ft_print_error(char *str);
-void	ft_print_usage(void);
+typedef struct		s_gnl
+{
+	char	*tmp;
+	int		ret;
+}					t_gnl;
+
+int					get_next_line(const int fd, char **line);
 
 #endif

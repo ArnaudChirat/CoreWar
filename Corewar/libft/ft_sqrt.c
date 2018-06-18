@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   corewar.h                                          :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clanglai <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/09 10:45:23 by clanglai          #+#    #+#             */
-/*   Updated: 2018/06/18 18:14:08 by achirat          ###   ########.fr       */
+/*   Created: 2017/11/23 13:29:35 by gvannest          #+#    #+#             */
+/*   Updated: 2017/11/23 13:33:00 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COREWAR_H
-# define COREWAR_H
+#include "libft.h"
 
-# include "op.h"
-# include "../libft/includes/libft.h"
+int		ft_sqrt(int n)
+{
+	long i;
 
-void	ft_print_error(char *str);
-void	ft_print_usage(void);
-
-#endif
+	i = 1;
+	if (n <= 0)
+		return (0);
+	while (i * i < n)
+		i++;
+	if (i * i == n)
+		return (i);
+	return (0);
+}

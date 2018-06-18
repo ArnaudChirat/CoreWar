@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   corewar.h                                          :+:      :+:    :+:   */
+/*   ft_lstlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clanglai <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: achirat <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/09 10:45:23 by clanglai          #+#    #+#             */
-/*   Updated: 2018/06/18 18:14:08 by achirat          ###   ########.fr       */
+/*   Created: 2017/11/20 09:34:34 by achirat           #+#    #+#             */
+/*   Updated: 2017/11/20 09:42:11 by achirat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COREWAR_H
-# define COREWAR_H
+#include "libft.h"
 
-# include "op.h"
-# include "../libft/includes/libft.h"
+size_t		ft_lstlen(t_list *alst)
+{
+	t_list	*tmp;
+	size_t	len;
 
-void	ft_print_error(char *str);
-void	ft_print_usage(void);
-
-#endif
+	tmp = alst;
+	len = 0;
+	if (!alst)
+		return (0);
+	while (tmp)
+	{
+		tmp = tmp->next;
+		len++;
+	}
+	return (len);
+}

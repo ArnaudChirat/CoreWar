@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   corewar.h                                          :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clanglai <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: achirat <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/09 10:45:23 by clanglai          #+#    #+#             */
-/*   Updated: 2018/06/18 18:14:08 by achirat          ###   ########.fr       */
+/*   Created: 2017/11/08 18:36:37 by achirat           #+#    #+#             */
+/*   Updated: 2017/11/12 18:05:04 by achirat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COREWAR_H
-# define COREWAR_H
+#include "libft.h"
 
-# include "op.h"
-# include "../libft/includes/libft.h"
+char	*ft_strcpy(char *dest, const char *src)
+{
+	int	a;
 
-void	ft_print_error(char *str);
-void	ft_print_usage(void);
-
-#endif
+	a = 0;
+	while (src[a] != '\0')
+	{
+		dest[a] = src[a];
+		a++;
+	}
+	dest[a] = '\0';
+	return (dest);
+}

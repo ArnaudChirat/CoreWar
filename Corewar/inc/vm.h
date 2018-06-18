@@ -6,7 +6,7 @@
 /*   By: ccorsin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/17 16:26:58 by ccorsin           #+#    #+#             */
-/*   Updated: 2018/06/07 16:15:32 by clanglai         ###   ########.fr       */
+/*   Updated: 2018/06/18 18:14:19 by achirat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "op.h"
 # include "vm_struc.h"
 # include "errno.h"
-# include "../libft/inc/libft.h"
+# include "../libft/includes/libft.h"
 # include "../inc/vm_define_list.h"
 # include <ncurses.h>
 

@@ -6,7 +6,7 @@
 /*   By: achirat <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 11:34:46 by achirat           #+#    #+#             */
-/*   Updated: 2018/06/18 11:34:49 by achirat          ###   ########.fr       */
+/*   Updated: 2018/06/18 18:12:06 by achirat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	ft_check_next_param(t_parse *parse)
 **	Gere l'enregistrement des unicodes dans les names et comment
 */
 
-int		ft_unicode(char c)
+int		ft_char_unicode(char c)
 {
 	int nb;
 
