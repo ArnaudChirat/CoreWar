@@ -6,7 +6,7 @@
 /*   By: ccorsin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/17 16:26:58 by ccorsin           #+#    #+#             */
-/*   Updated: 2018/06/18 18:14:19 by achirat          ###   ########.fr       */
+/*   Updated: 2018/06/18 18:34:44 by achirat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void			ft_process(t_data *data);
 /*
 ** Functions in INSTRUCTIONS
 */
-int				ft_check_op(t_proc *proc);
+int				ft_check_op(t_proc *proc, int state);
 void			ft_init_func_tab(void);
 void			ft_add(t_proc *proc, t_proc **begin);
 void			ft_ldi(t_proc *proc, t_proc **begin);

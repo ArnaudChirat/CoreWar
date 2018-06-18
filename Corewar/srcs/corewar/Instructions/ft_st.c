@@ -6,7 +6,7 @@
 /*   By: achirat <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 11:30:44 by achirat           #+#    #+#             */
-/*   Updated: 2018/06/18 11:30:48 by achirat          ###   ########.fr       */
+/*   Updated: 2018/06/18 18:32:30 by achirat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void					ft_st(t_proc *proc, t_proc **begin)
 
 	(void)begin;
 	i = 0;
-
 	v = proc->arg[1][1];
 	if (proc->arg[1][0] != T_REG)
 	{
@@ -28,7 +27,8 @@ void					ft_st(t_proc *proc, t_proc **begin)
 		{
 			g_arena[(MEM_SIZE + proc->pc + v + i) % MEM_SIZE].instruction =
 				proc->reg[proc->arg[0][1]] >> (REG_SIZE - i - 1) * 8 & 0xff;
-			g_arena[(MEM_SIZE + proc->pc + v + i) % MEM_SIZE].player = proc->num;
+			g_arena[(MEM_SIZE + proc->pc + v + i) % MEM_SIZE].player =
+																	proc->num;
 			i++;
 		}
 	}

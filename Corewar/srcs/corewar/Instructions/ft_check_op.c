@@ -6,7 +6,7 @@
 /*   By: achirat <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 11:28:28 by achirat           #+#    #+#             */
-/*   Updated: 2018/06/18 11:28:31 by achirat          ###   ########.fr       */
+/*   Updated: 2018/06/18 18:33:56 by achirat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ int				ft_is_valid_occ(int opcode, char instru, t_proc *proc)
 	return (1);
 }
 
-int				ft_check_op(t_proc *proc)
+int				ft_check_op(t_proc *proc, int state)
 {
 	int i;
 	int	opcode;
@@ -146,9 +146,13 @@ int				ft_check_op(t_proc *proc)
 	if (opcode >= OP_NBR || opcode < 0)
 		return (-2);
 	proc->hold = g_op_tab[opcode].nb_cycle - 1;
-	if (ft_is_valid_occ(opcode, g_arena[(i + 1)
-		% MEM_SIZE].instruction, proc) > 0)
-		return (1);
-	else
-		return (-1);
+	if (state == 1)
+	{
+		if (ft_is_valid_occ(opcode, g_arena[(i + 1)
+			% MEM_SIZE].instruction, proc) > 0)
+			return (1);
+		else
+			return (-1);
+	}
+	return (1);
 }

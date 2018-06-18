@@ -24,7 +24,7 @@ static void	ft_fight_2(t_proc **tmp, t_proc **begin)
 {
 	if ((*tmp)->hold == 1)
 	{
-		if (ft_check_op(*tmp) > 0)
+		if (ft_check_op(*tmp, 1) > 0)
 			(*g_func_tab[(*tmp)->opcode - 1])(*tmp, begin);
 		else
 		{
@@ -49,11 +49,9 @@ void		ft_fight(t_proc **begin)
 	{
 		if (tmp->hold == 0)
 		{
-			if (ft_check_op(tmp) != -2)
-				;
-			else
+			if (ft_check_op(tmp, 0) == -2)
 				tmp->pc = (tmp->pc + 1) % MEM_SIZE;
-					}
+		}
 		else
 			ft_fight_2(&tmp, begin);
 		tmp = tmp->next;
