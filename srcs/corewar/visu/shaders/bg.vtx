@@ -1,0 +1,17 @@
+#version 410 core
+
+layout(location = 0) in vec2 vertexpos;
+
+uniform mainBlock
+{
+	mat4 projView;
+	vec2 res;
+	float ratio;
+	float time;
+	float intro;
+}u;
+
+void	main()
+{
+	gl_Position = vec4(vertexpos, 0., 1.);
+}
