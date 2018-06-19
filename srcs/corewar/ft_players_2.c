@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_players_2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clanglai <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/28 14:00:40 by clanglai          #+#    #+#             */
-/*   Updated: 2018/06/13 10:52:11 by achirat          ###   ########.fr       */
+/*   Created: 2018/06/19 14:47:27 by cpaquet           #+#    #+#             */
+/*   Updated: 2018/06/19 16:51:30 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ void		ft_create_player(t_player **new, unsigned int *size_read,
 	(*new)->size_prog = ft_convert_int_base(tmp);
 	(*new)->comment = ft_cut_read(line, HEADER_MAX_SIZE + 8 -
 			(COMMENT_LENGTH + 4), COMMENT_LENGTH);
-	if(!((*new)->prog = ft_memalloc((*new)->size_prog)))
+	if (!((*new)->prog = ft_memalloc((*new)->size_prog)))
 		ft_error(0, "Malloc failed in ft_create_player", 0, 0);
 	if ((*new)->size_prog == 0)
 		ft_error(3, file_name, 0, 0);
 	if (HEADER_MAX_SIZE + 8 + (*new)->size_prog != *size_read)
 		ft_error(6, file_name, 0, 0);
-	if(!ft_memcpy((*new)->prog, line + HEADER_MAX_SIZE + 8, (*new)->size_prog))
+	if (!ft_memcpy((*new)->prog, line + HEADER_MAX_SIZE + 8, (*new)->size_prog))
 		ft_error(0, "Malloc failed in ft_create_player", 0, 0);
 	(*new)->next = NULL;
 	ft_strdel(&line);

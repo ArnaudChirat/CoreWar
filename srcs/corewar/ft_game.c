@@ -6,7 +6,7 @@
 /*   By: ccorsin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/15 15:42:45 by ccorsin           #+#    #+#             */
-/*   Updated: 2018/06/19 17:27:05 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/19 19:05:23 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int			ft_count_players_left(void)
 	return (res);
 }
 
-int			ft_reset_live(t_proc **begin, int state)
+int			ft_reset_live(t_proc **begin, int check)
 {
 	int		i;
 	int		res;
@@ -43,7 +43,7 @@ int			ft_reset_live(t_proc **begin, int state)
 		res += g_live_tab[i].live;
 		g_live_tab[i++].live = 0;
 	}
-	if (!state || res < NBR_LIVE)
+	if (check == MAX_CHECKS || res < NBR_LIVE)
 	{
 		tmp = *begin;
 		while (tmp)
@@ -130,8 +130,7 @@ void		ft_game(t_data *data, t_draw d)
 				ft_print_matrix();
 			data->cyc_tot++;
 		}
-		data->number = ft_reset_live(&data->proc_list,
-										data->check != MAX_CHECKS);
+		data->number = ft_reset_live(&data->proc_list, data->check);
 		if (data->number >= NBR_LIVE || data->check == MAX_CHECKS)
 		{
 			data->ctd = data->ctd - CYCLE_DELTA;

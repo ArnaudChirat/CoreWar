@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccorsin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/17 16:26:58 by ccorsin           #+#    #+#             */
-/*   Updated: 2018/06/19 16:00:59 by lbelda           ###   ########.fr       */
+/*   Created: 2018/06/19 18:58:18 by lbelda            #+#    #+#             */
+/*   Updated: 2018/06/19 18:58:22 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,10 @@
 # include "vm_struc.h"
 # include "errno.h"
 # include "../libft/includes/libft.h"
-# include "../inc/vm_define_list.h"
 # include <ncurses.h>
 
 extern void		(*g_func_tab[OP_NBR + 1])(t_proc*, t_proc **);
 
-void			ft_free_all(t_data *data);
 void			ft_free_data(t_data *data);
 void			ft_control_define(void);
 /*

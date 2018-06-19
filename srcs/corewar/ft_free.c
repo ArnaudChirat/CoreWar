@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccorsin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/05 16:18:42 by ccorsin           #+#    #+#             */
-/*   Updated: 2018/06/05 16:18:44 by ccorsin          ###   ########.fr       */
+/*   Created: 2018/06/19 14:49:54 by cpaquet           #+#    #+#             */
+/*   Updated: 2018/06/19 14:54:18 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/vm.h"
-#include "../../inc/vm_define_list.h"
 
 /*
 **	On free la variable 'data' qui contient toutes les informations necessaires
@@ -40,9 +39,4 @@ void		ft_free_data(t_data *data)
 		free(proc);
 		proc = NULL;
 	}
-}
-
-void		ft_free_all(t_data *data)
-{
-	ft_free_data(data);
 }

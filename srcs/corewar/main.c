@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccorsin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/05 16:20:26 by ccorsin           #+#    #+#             */
-/*   Updated: 2018/06/19 17:37:17 by lbelda           ###   ########.fr       */
+/*   Created: 2018/06/19 18:58:08 by lbelda            #+#    #+#             */
+/*   Updated: 2018/06/19 18:58:10 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,6 @@ int				main(int argc, char **argv)
 	ft_print_game(&(data.players_list));
 	new = ft_init_draw(data);
 	ft_game(&data, new);
-	ft_free_all(&data);
+	ft_free_data(&data);
 	return (0);
 }

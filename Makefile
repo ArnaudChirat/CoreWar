@@ -6,7 +6,7 @@
 #    By: clanglai <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/07 15:30:47 by clanglai          #+#    #+#              #
-#    Updated: 2018/06/19 18:34:40 by lbelda           ###   ########.fr        #
+#    Updated: 2018/06/19 19:05:47 by lbelda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -117,7 +117,7 @@ OBJ_VISU=$(SRC_VISU:.c=.o)
 
 INC_DIR=inc/
 INC_FILES=asm.h asm_struct.h \
-		  corewar.h vm.h vm_define_list.h vm_struc.h \
+		  vm.h vm_struc.h \
 		  op.h \
 		  visu.h v_controls.h v_matrices.h \
 		  v_ogl_utils.h v_common.h v_obj_parser.h
@@ -177,6 +177,7 @@ $(LIBFTMT):
 $(SDL):
 	cd $(SDL_SRCDIR) && ./configure --prefix=$$PWD/../
 	$(MAKE) -C $(SDL_SRCDIR) install
+	git update-index --skip-worktree sdl2/sources/include/SDL_config.h
 
 $(ASM_NAME): $(OBJ_ASM) $(LIBC)
 	gcc -o $(ASM_NAME) $(FLAGS) $(OBJ_ASM) -L$(LIB_PATH) -l$(LIB_NAME)
