@@ -3,11 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: clanglai <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: achirat <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/01/07 15:30:47 by clanglai          #+#    #+#              #
-#    Updated: 2018/06/18 18:34:14 by achirat          ###   ########.fr        #
-#    Updated: 2018/06/07 14:11:10 by ccorsin          ###   ########.fr        #
+#    Created: 2018/06/19 17:17:03 by achirat           #+#    #+#              #
+#    Updated: 2018/06/19 17:20:51 by achirat          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,17 +91,16 @@ $(LIBC):
 	@make -C $(LIB_PATH)
 
 $(ASM_NAME): $(OBJ_ASM)
-	@gcc -o $(ASM_NAME) $(FLAGS) $(OBJ_ASM) -L$(LIB_PATH) $(LIBC)
+	@$(CC) -o $(ASM_NAME) $(FLAGS) $(OBJ_ASM) -L$(LIB_PATH) $(LIBC)
 	@echo "\033[1;34m$(ASM_NAME)\033[1;32m...compiled\t\t✓\033[0m"
 
 $(COREWAR_NAME) : $(OBJ_COREWAR) $(OBJ_INSTRUCTIONS)
-	@gcc $(FLAGS) -o $(COREWAR_NAME) $(FLAGS) $(OBJ_COREWAR) $(OBJ_INSTRUCTIONS) \
+	@ $(CC) $(FLAGS) -o $(COREWAR_NAME) $(FLAGS) $(OBJ_COREWAR) $(OBJ_INSTRUCTIONS) \
 	-L$(LIB_PATH) -L$(NCURSE_PATH) -$(NCURSE) $(LIBC)
 	@echo "\033[1;34m$(COREWAR_NAME)\033[1;32m...compiled\t\t✓\033[0m"
 
-%.o : %.c $(SRC_INCLUDES_FILE)
+%.o : %.c
 	@$(CC) $(FLAGS) -o $@ -c $<
-
 .PHONY : all, fclean, clean, re
 
 clean:
