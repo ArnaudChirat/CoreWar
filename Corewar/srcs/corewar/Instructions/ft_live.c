@@ -6,7 +6,7 @@
 /*   By: achirat <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 11:30:09 by achirat           #+#    #+#             */
-/*   Updated: 2018/06/18 18:23:11 by achirat          ###   ########.fr       */
+/*   Updated: 2018/06/19 08:17:43 by achirat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void			ft_live(t_proc *proc, t_proc **begin)
 	number = proc->arg[0][1];
 	while (i < MAX_PLAYERS)
 	{
-		if (g_live_tab[i].player_nbr == -number && g_live_tab[i].name != NULL)
+		if (g_live_tab[i].id == -number && g_live_tab[i].name != NULL)
 		{
 			j = 0;
 			while (j < MAX_PLAYERS)
