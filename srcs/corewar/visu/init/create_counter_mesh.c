@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 10:28:10 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/12 18:09:01 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/20 14:05:01 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ static t_glfloat3	*gen_coords(void)
 	m_pro_null(coords = ft_memalloc(sizeof(t_glfloat3) * MOD_NB_VTX));
 	coords[0] = (t_glfloat3) {CT_WIDTH, 0.0, 0.0};
 	coords[1] = (t_glfloat3) {CT_WIDTH, 0.0, -1.0};
-	coords[2] = (t_glfloat3) {CT_WIDTH, 5.0, -1.0};
-	coords[3] = (t_glfloat3) {CT_WIDTH, 5.0, 0.0};
+	coords[2] = (t_glfloat3) {CT_WIDTH, 1.0, -1.0};
+	coords[3] = (t_glfloat3) {CT_WIDTH, 1.0, 0.0};
 	coords[4] = (t_glfloat3) {0.0, 0.0, 0.0};
-	coords[5] = (t_glfloat3) {0.0, 5.0, 0.};
-	coords[6] = (t_glfloat3) {0.0, 5.0, -1.0};
+	coords[5] = (t_glfloat3) {0.0, 1.0, 0.};
+	coords[6] = (t_glfloat3) {0.0, 1.0, -1.0};
 	coords[7] = (t_glfloat3) {0.0, 0.0, -1.0};
 	return (coords);
 }

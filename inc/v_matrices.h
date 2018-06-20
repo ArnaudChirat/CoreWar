@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 12:21:02 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/13 19:02:26 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/20 15:35:07 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@
 
 # define INIT_XPOS 0.
 # define INIT_YPOS 0.
-# define INIT_ZPOS -60.
-# define INC_POS 0.5
+# define INIT_ZPOS -140.
+# define INC_POS 1.0
 
-# define MIN_XPOS -30
-# define MAX_XPOS 30
+# define MIN_XPOS -50
+# define MAX_XPOS 50
 
-# define MIN_YPOS -30
-# define MAX_YPOS 30
+# define MIN_YPOS -50
+# define MAX_YPOS 50
 
-# define MIN_ZPOS -90
-# define MAX_ZPOS -50
+# define MIN_ZPOS -190
+# define MAX_ZPOS -90
 
 # define INIT_SCALE 1.0
 # define INC_SCALE 0.004
