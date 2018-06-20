@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/12 17:06:44 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/12 17:51:39 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/20 18:08:39 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,14 @@
 
 static void	update_mesh_width(t_counters *c, t_data *d)
 {
-	(void)c;
-	(void)d;
+	c->mesh.coords[0].x = CT_WIDTH * (1. - ((float)d->cy / (float)d->ctd));
+	c->mesh.coords[1].x = c->mesh.coords[0].x;
+	c->mesh.coords[2].x = c->mesh.coords[0].x;
+	c->mesh.coords[3].x = c->mesh.coords[0].x;
+	glBindBuffer(GL_ARRAY_BUFFER, c->vbos[VBO_CT_MESH]);
+	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(t_glfloat3) * 4,
+									c->mesh.coords);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
 void		update_counters(t_counters *c, t_data *d)

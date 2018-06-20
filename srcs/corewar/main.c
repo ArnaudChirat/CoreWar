@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 18:58:08 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/20 16:42:12 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/20 18:07:06 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ static void		ft_launch_corewar(t_data *d, t_visu *v)
 {
 	pthread_t	game_thread;
 
+	v->data = d;
 	d->quit = &v->quit;
 	d->cyc_sleep = &v->cyc_sleep;
 	if (pthread_create(&game_thread, NULL, &ft_game, (void*)d))
