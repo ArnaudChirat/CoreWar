@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 10:55:32 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/20 13:52:59 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/20 17:19:37 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ t_visu		init_visu(t_data *data)
 	compat();
 	v.matrices = init_matrices();
 	v.controls = init_controls();
+	v.cyc_sleep = INIT_SLEEP;
 	init_scene(&v, *data);
 	glClearColor(0., 0., 0., 1.);
 	glViewport(0, 0, v.win_size.x, v.win_size.y);

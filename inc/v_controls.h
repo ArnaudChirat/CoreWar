@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 12:18:46 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/13 15:55:15 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/20 16:52:54 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ void			kb_right(void *v, int type);
 void			kb_left(void *v, int type);
 void			kb_down(void *v, int type);
 void			kb_up(void *v, int type);
+void			kb_speed_up(void *v, int type);
+void			kb_speed_down(void *v, int type);
+void			kb_pause(void *v, int type);
 void			kb_quit(void *v, int type);
 void			kb_debug(void *v, int type);
 void			kb_none(void *v, int type);

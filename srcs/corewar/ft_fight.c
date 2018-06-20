@@ -6,11 +6,11 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 14:50:05 by cpaquet           #+#    #+#             */
-/*   Updated: 2018/06/19 14:50:06 by cpaquet          ###   ########.fr       */
+/*   Updated: 2018/06/20 15:56:44 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/vm.h"
+#include "vm.h"
 
 /*
 **	La fonction ou se deroule le plus gros de l'action. On appelle chaque
@@ -38,13 +38,14 @@ static void	ft_fight_2(t_proc **tmp, t_proc **begin)
 	(*tmp)->hold = (*tmp)->hold - 1;
 }
 
-void		ft_fight(t_proc **begin)
+void		ft_fight(t_proc **begin, unsigned int speed)
 {
 	t_proc	*tmp;
 	int		i;
 
 	tmp = *begin;
 	i = 0;
+	nanosleep(&((struct timespec){0, speed}), NULL);
 	while (tmp)
 	{
 		if (tmp->hold == 0)

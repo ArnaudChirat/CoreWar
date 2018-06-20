@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/01 18:56:47 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/20 11:49:35 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/20 17:50:59 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@
 # include "vm.h"
 
 # define CT_WIDTH 26
+
+# define INC_SLEEP 20000
+# define INIT_SLEEP 4000000
+# define MIN_SLEEP 10000
+# define MAX_SLEEP 200000000
+
 
 enum			e_progs
 {
@@ -174,6 +180,8 @@ typedef struct	s_visu
 	t_controls		controls;
 	t_matrices		matrices;
 	t_scene			scene;
+	int				cyc_sleep;
+	int				cyc_sleep_inc;
 	int				quit;
 }				t_visu;
 

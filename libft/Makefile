@@ -6,7 +6,7 @@
 #    By: achirat <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 16:17:01 by achirat           #+#    #+#              #
-#    Updated: 2018/06/19 17:43:52 by lbelda           ###   ########.fr        #
+#    Updated: 2018/06/20 17:06:14 by lbelda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SRCS = ft_squareroot.c ft_lstdup.c ft_putchar.c ft_putstr.c ft_putnbr.c ft_strdu
 	   ft_lstaddend.c ft_lstlen.c ft_swap.c ft_sqrt.c ft_foreach.c ft_nextsqrt.c ft_lstrev.c \
 	   ft_strrev.c get_next_line.c ft_unicode.c check_width.c update_flags.c ft_precision_str.c \
 	   ft_printf.c fill_conv.c ft_conv.c fill_buff.c modif_var.c check_buff.c add_flags.c \
-	   ft_str_unicode.c ft_itoabase.c ft_strnjoin.c ft_strndup.c ft_tabdel.c
+	   ft_str_unicode.c ft_itoabase.c ft_strnjoin.c ft_strndup.c ft_tabdel.c \
+	   ft_clamp.c ft_fclamp.c
 
 CC = gcc
 

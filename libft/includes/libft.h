@@ -6,7 +6,7 @@
 /*   By: achirat <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 16:01:36 by achirat           #+#    #+#             */
-/*   Updated: 2018/06/19 17:44:14 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/20 17:05:21 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,12 @@ void			ft_foreach(void *content, size_t len, void (*f)(void *));
 void			ft_lstrev(t_list **alst);
 char			*ft_strrev(char *s);
 double			ft_squareroot(double x, int prec);
+
+float			ft_fmin(float a, float b);
+float			ft_fmax(float a, float b);
+float			ft_fclamp(float min, float max, float val);
+int32_t			ft_min(int32_t a, int32_t b);
+int32_t			ft_max(int32_t a, int32_t b);
+int32_t			ft_clamp(int32_t min, int32_t max, int32_t val);
 
 #endif

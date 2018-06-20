@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 12:23:26 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/14 10:46:48 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/20 17:17:57 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,12 @@ static void	render_title(t_title t, t_events e)
 	}
 }
 
+static void	update_vm_sleep(t_visu *v)
+{
+	v->cyc_sleep += v->cyc_sleep_inc;
+	ft_clamp(MIN_SLEEP, MAX_SLEEP, v->cyc_sleep);
+}
+
 int			render(t_visu *v)
 {
 	v->scene.events = init_clock();
@@ -48,6 +54,7 @@ int			render(t_visu *v)
 	{
 		handle_events(v);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		update_vm_sleep(v);
 		update_clock(&v->scene.events);
 		update_camera(&v->matrices);
 		update_uniforms(v->scene, v->matrices);
