@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 12:00:33 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/13 18:21:29 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/20 13:46:03 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	init_instances_buffers(t_v_arena *a, int i)
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL);
 	glBindBuffer(GL_ARRAY_BUFFER, a->vbos_inst[i]);
-	glBufferData(GL_ARRAY_BUFFER, MEM_SIZE * sizeof(t_glfloat2),
+	glBufferData(GL_ARRAY_BUFFER, sizeof(t_glfloat2) * MEM_SIZE,
 									NULL, GL_DYNAMIC_DRAW);
 	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, NULL);

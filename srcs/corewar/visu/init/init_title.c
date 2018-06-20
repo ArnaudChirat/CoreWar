@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 13:52:53 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/12 12:19:51 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/20 13:52:25 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	init_title_buffers(t_title *title)
 	glUseProgram(0);
 }
 
-t_title	init_title(void)
+t_title		init_title(void)
 {
 	t_title		title;
 

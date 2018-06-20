@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 10:02:24 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/12 17:10:19 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/20 13:55:45 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	bzero_buffers(t_v_arena *a)
 		ft_bzero(a->data_inst[i], sizeof(t_glfloat2) * MEM_SIZE);
 }
 
-void	update_arena(t_v_arena *a)
+void		update_arena(t_v_arena *a)
 {
 	int	i;
 
@@ -32,9 +32,8 @@ void	update_arena(t_v_arena *a)
 	{
 		if (g_arena[i].player)
 			a->data_inst[(int)g_arena[i].player - 1]
-				[a->nb_instances[(int)g_arena[i].player - 1]++]
-			= a->arena_coords[i];
-	//printf("c%d: x%f y%f\n", i, a->arena_coords[i].x, a->arena_coords[i].y);
+				[a->nb_instances[(int)g_arena[i].player - 1]++] =
+				a->arena_coords[i];
 	}
 	i = -1;
 	while (++i < a->nb_players)
@@ -46,7 +45,7 @@ void	update_arena(t_v_arena *a)
 	}
 }
 
-void	render_arena(t_v_arena a, t_events e)
+void		render_arena(t_v_arena a, t_events e)
 {
 	int	i;
 

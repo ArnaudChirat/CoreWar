@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_ublock.c                                    :+:      :+:    :+:   */
+/*   init_uniforms.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/05 16:11:22 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/14 10:46:34 by lbelda           ###   ########.fr       */
+/*   Created: 2018/06/20 13:53:47 by lbelda            #+#    #+#             */
+/*   Updated: 2018/06/20 13:53:58 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ static void		attrib_main_block(t_visu v, t_ublock *u, GLuint *programs)
 	glBufferSubData(GL_UNIFORM_BUFFER, U_MAIN_RATIO,
 							sizeof(float), &v.ratio);
 	glBindBuffer(GL_UNIFORM_BUFFER, 0);
-
 }
 
 void			init_ublocks(t_visu v, t_ublock *u)

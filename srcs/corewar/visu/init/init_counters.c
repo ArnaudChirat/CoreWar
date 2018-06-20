@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/12 14:51:49 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/13 15:26:26 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/20 13:49:58 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ static void	gen_buffers(t_counters *c)
 static void	init_instance_buffers(t_counters *c)
 {
 	glBindBuffer(GL_ARRAY_BUFFER, c->vbos[VBO_CT_INST]);
-	glBufferData(GL_ARRAY_BUFFER, MAX_PLAYERS * sizeof(t_glfloat3),
+	glBufferData(GL_ARRAY_BUFFER, sizeof(t_glfloat3) * MAX_PLAYERS,
 									c->inst_coords, GL_STATIC_DRAW);
 	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, NULL);
 	glVertexAttribDivisor(1, 1);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindBuffer(GL_ARRAY_BUFFER, c->vbos[VBO_CT_STATE]);
-	glBufferData(GL_ARRAY_BUFFER, MAX_PLAYERS * sizeof(t_glfloat3),
+	glBufferData(GL_ARRAY_BUFFER, sizeof(t_glfloat3) * MAX_PLAYERS,
 									c->inst_coords, GL_STATIC_DRAW);
 	glEnableVertexAttribArray(2);
 	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, NULL);

@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 13:57:09 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/12 12:19:40 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/20 13:57:04 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void		parse_line(t_mesh *p, const char *line)
 	ft_tabdel(&split);
 }
 
-t_mesh	obj_parser(const char *path)
+t_mesh			obj_parser(const char *path)
 {
 	int		fd;
 	int		ret;

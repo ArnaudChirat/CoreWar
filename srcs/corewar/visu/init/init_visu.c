@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 10:55:32 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/13 17:45:47 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/20 13:52:59 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	init_sdl(t_visu *v)
 		error_exit(SDL_GetError());
 }
 
-t_visu	init_visu(t_data *data)
+t_visu		init_visu(t_data *data)
 {
 	t_visu	v;
 
@@ -64,7 +64,7 @@ t_visu	init_visu(t_data *data)
 	init_scene(&v, *data);
 	glClearColor(0., 0., 0., 1.);
 	glViewport(0, 0, v.win_size.x, v.win_size.y);
-	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);
 	return (v);

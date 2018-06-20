@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 15:54:38 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/20 12:02:12 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/20 13:52:09 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #define M_WIDTH 150
 #define M_LENGTH 100
 
-static t_vec2r	find_limits(int	size)
+static t_vec2r	find_limits(int size)
 {
 	t_vec2r	limits;
 	int		i;
@@ -23,7 +23,7 @@ static t_vec2r	find_limits(int	size)
 	i = -1;
 	while (++i < size / 2)
 		if (i * i >= size)
-			break;
+			break ;
 	limits = (t_vec2r){i, i};
 	return (limits);
 }
