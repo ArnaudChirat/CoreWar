@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 18:58:18 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/19 18:58:22 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/20 11:50:51 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void			ft_print_matrix(void);
 /*
 ** Functions in FT_GAME>C
 */
-void			ft_game(t_data *data, t_draw draw);
+void			*ft_game(void *d);
 void			ft_fight(t_proc **proc);
 /*
 ** Functions in FT_PROCESS>C

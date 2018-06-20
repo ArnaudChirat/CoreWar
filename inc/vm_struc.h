@@ -6,7 +6,7 @@
 /*   By: ccorsin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/11 11:31:37 by ccorsin           #+#    #+#             */
-/*   Updated: 2018/06/19 17:21:08 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/20 11:51:24 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ typedef struct		s_data
 	int				cy;
 	int				check;
 	int				number;
+	int				*quit;
 }					t_data;
 
 #endif

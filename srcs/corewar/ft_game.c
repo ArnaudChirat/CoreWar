@@ -6,7 +6,7 @@
 /*   By: ccorsin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/15 15:42:45 by ccorsin           #+#    #+#             */
-/*   Updated: 2018/06/19 19:05:23 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/20 11:54:21 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,16 +116,17 @@ void		ft_winner(void)
 **	cessus et regule le compteur de live.
 */
 
-void		ft_game(t_data *data, t_draw d)
+void		*ft_game(void *d)
 {
+	t_data	*data;
+
+	data = (t_data*)d;
 	while (data->ctd > 0 && data->proc_list != NULL)
 	{
 		data->cy = 0;
 		while (++data->cy < data->ctd)
 		{
 			ft_fight(&data->proc_list);
-			if (data->flag_v)
-				ft_draw_cycle(&d, data);
 			if (data->dump_val && data->dump_val == data->cyc_tot)
 				ft_print_matrix();
 			data->cyc_tot++;
@@ -140,7 +141,6 @@ void		ft_game(t_data *data, t_draw d)
 		else
 			data->check++;
 	}
-	getch();
-	endwin();
 	ft_winner();
+	return (NULL);
 }

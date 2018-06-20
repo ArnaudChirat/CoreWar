@@ -6,11 +6,12 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 18:58:08 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/19 18:58:10 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/20 11:58:08 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/vm.h"
+#include "vm.h"
+#include "visu.h"
 
 /*
 **	Initialisation de l'arene qui va comporter les instructions de chaque
@@ -86,10 +87,22 @@ static t_data	ft_init_data(int argc, char **argv, int i)
 	return (d);
 }
 
+static void		ft_launch_corewar(t_data *d, t_visu *v)
+{
+	pthread_t	game_thread;
+
+	d->quit = &v->quit;
+	if (pthread_create(&game_thread, NULL, &ft_game, (void*)d))
+		error_exit("");
+	render(v);
+	if (pthread_join(game_thread, NULL))
+		error_exit("");
+}
+
 int				main(int argc, char **argv)
 {
 	t_data	data;
-	t_draw	new;
+	t_visu	visu;
 
 	ft_control_define();
 	ft_basic_control(argc);
@@ -98,8 +111,9 @@ int				main(int argc, char **argv)
 	if (data.flag_p)
 		ft_print_player(data.players_list);
 	ft_print_game(&(data.players_list));
-	new = ft_init_draw(data);
-	ft_game(&data, new);
+	visu = init_visu(&data);
+	ft_launch_corewar(&data, &visu);
 	ft_free_data(&data);
+	ft_free_visu(&visu);
 	return (0);
 }
