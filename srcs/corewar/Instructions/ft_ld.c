@@ -14,11 +14,9 @@
 
 void			ft_ld(t_proc *proc, t_proc **begin)
 {
-	int				i;
 	int				value;
 
 	(void)begin;
-	i = 0;
 	proc->reg[proc->arg[1][1]] = 0;
 	if (proc->arg[0][0] == T_DIR)
 		value = proc->arg[0][1];

@@ -88,12 +88,10 @@ void	ft_handle_cycle_speed(t_data data, t_draw *draw,
 void	ft_handle_key_input(t_data data, t_draw *draw, t_proc **begin)
 {
 	char	ch;
-	int		tmp;
 
 	ch = '\0';
 	timeout(1000 / draw->cyc_s);
 	ch = getch();
-	tmp = 0;
 	ft_handle_cycle_speed(data, draw, begin, ch);
 	if (ch == ' ' || data.cyc_tot == 1)
 		while ((ch = getch()) != ' ')

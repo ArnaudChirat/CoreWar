@@ -43,9 +43,6 @@ static void	error(t_buff *res, t_conv *conv)
 
 void		check_buff(t_conv *conv, t_buff *res, char *tmp)
 {
-	size_t	a;
-
-	a = 0;
 	if (conv->error == -1)
 	{
 		error(res, conv);

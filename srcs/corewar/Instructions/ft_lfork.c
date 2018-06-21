@@ -14,9 +14,6 @@
 
 void			ft_lfork(t_proc *proc, t_proc **begin)
 {
-	t_proc	*tmp;
-
-	tmp = proc;
 	ft_add_proc_start(begin, ft_create_fork_proc((proc->pc + proc->arg[0][1]
 		% MEM_SIZE) % MEM_SIZE, proc));
 	proc->carry = 0;

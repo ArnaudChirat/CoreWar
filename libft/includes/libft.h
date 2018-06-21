@@ -13,6 +13,11 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# ifndef __APPLE__
+#  include <stdint.h>
+#  define OPEN_MAX FOPEN_MAX
+# endif
+
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>

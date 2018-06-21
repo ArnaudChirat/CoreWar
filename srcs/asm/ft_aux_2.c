@@ -93,9 +93,7 @@ t_label	*ft_new_ind_label(char *str, int index, int state, int len)
 void	ft_fill_adresses_2(t_label *tmp, t_label *tmp2, t_data *data)
 {
 	int res;
-	int	mem_size;
 
-	mem_size = MEM_SIZE;
 	res = ((tmp2->index - tmp->index));
 	if (tmp->len)
 	{

@@ -21,7 +21,7 @@ void	ft_foreach(void *content, size_t len, void (*f)(void *))
 		return ;
 	while (a < len)
 	{
-		(*f)(&content[a]);
+		(*f)(&((char*)content)[a]);
 		a++;
 	}
 }
