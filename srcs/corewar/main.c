@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 18:58:08 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/20 18:07:06 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/22 13:52:58 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ static void		ft_launch_corewar(t_data *d, t_visu *v)
 {
 	pthread_t	game_thread;
 
+	g_lock = (pthread_mutex_t)PTHREAD_MUTEX_INITIALIZER;
 	v->data = d;
 	d->visulink = (t_vlink){&v->cyc_sleep, &v->pause, &v->quit,
 								PTHREAD_MUTEX_INITIALIZER};

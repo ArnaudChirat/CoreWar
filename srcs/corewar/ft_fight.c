@@ -6,7 +6,7 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 14:50:05 by cpaquet           #+#    #+#             */
-/*   Updated: 2018/06/20 15:56:44 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/22 13:52:06 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void		ft_fight(t_proc **begin, unsigned int speed)
 	tmp = *begin;
 	i = 0;
 	nanosleep(&((struct timespec){0, speed}), NULL);
+	pthread_mutex_lock(&g_lock);
 	while (tmp)
 	{
 		if (tmp->hold == 0)
@@ -58,4 +59,5 @@ void		ft_fight(t_proc **begin, unsigned int speed)
 		tmp = tmp->next;
 		i++;
 	}
+	pthread_mutex_unlock(&g_lock);
 }

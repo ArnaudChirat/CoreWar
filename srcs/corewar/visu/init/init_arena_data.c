@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 15:54:38 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/20 13:52:09 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/22 15:21:26 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static t_vec2r	find_limits(int size)
 	return (limits);
 }
 
-static void		fill_arena_coords(t_glfloat2 *coords)
+static void		fill_arena_coords(t_glfloat3 *coords)
 {
 	t_vec2r	i;
 	int		ind;
@@ -43,10 +43,10 @@ static void		fill_arena_coords(t_glfloat2 *coords)
 		while (--i.x >= 0)
 		{
 			coords[++ind] =
-				(t_glfloat2){(float)i.x * (float)M_WIDTH /
+				(t_glfloat3){(float)i.x * (float)M_WIDTH /
 						(float)limits.x - (float)M_WIDTH / 2.,
 							(float)i.y * (float)M_WIDTH /
-						(float)limits.y - (float)M_WIDTH / 2.};
+						(float)limits.y - (float)M_WIDTH / 2., 0.};
 		}
 	}
 }
@@ -59,7 +59,7 @@ void			init_arena_data(t_v_arena *a, t_data data)
 	(void)data;
 	while (++i < MAX_PLAYERS)
 		m_pro_null(a->data_inst[i] =
-				ft_memalloc(sizeof(t_glfloat2) * MEM_SIZE));
-	m_pro_null(a->arena_coords = ft_memalloc(sizeof(t_glfloat2) * MEM_SIZE));
+				ft_memalloc(sizeof(t_glfloat3) * MEM_SIZE));
+	m_pro_null(a->arena_coords = ft_memalloc(sizeof(t_glfloat3) * MEM_SIZE));
 	fill_arena_coords(a->arena_coords);
 }

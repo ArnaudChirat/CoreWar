@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/01 18:56:47 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/20 17:50:59 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/22 15:19:07 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,8 @@ typedef struct	s_v_arena
 	GLuint		programs[MAX_PLAYERS];
 	GLuint		vaos[MAX_PLAYERS];
 	GLuint		vbos_inst[MAX_PLAYERS];
-	t_glfloat2	*data_inst[MAX_PLAYERS];
-	t_glfloat2	*arena_coords;
+	t_glfloat3	*data_inst[MAX_PLAYERS];
+	t_glfloat3	*arena_coords;
 	int			nb_instances[MAX_PLAYERS];
 	GLuint		vbo_mesh;
 	GLuint		ibo_mesh;
@@ -205,7 +205,7 @@ void			update_camera(t_matrices *mat);
 void			update_uniforms(t_scene s, t_matrices m);
 void			render_counters(t_counters c, t_events e);
 void			update_counters(t_counters *c, t_data *d);
-void			update_arena(t_v_arena *a);
+void			update_arena(t_v_arena *a, t_data *d);
 void			render_arena(t_v_arena a, t_events e);
 
 void			ft_free_visu(t_visu *v);

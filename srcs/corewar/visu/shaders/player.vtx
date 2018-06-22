@@ -1,7 +1,7 @@
 #version 410 core
 
 layout(location = 0) in vec3 vertexpos;
-layout(location = 1) in vec2 inst;
+layout(location = 1) in vec3 inst;
 
 uniform mainBlock
 {
@@ -15,5 +15,6 @@ uniform mainBlock
 void	main()
 {
 	float scale = 0.9;
-	gl_Position = u.projView * vec4(vertexpos.xy * scale + inst, vertexpos.z, 1.);
+	gl_Position = u.projView * vec4(vertexpos.xy * scale + inst.xy,
+										vertexpos.z + inst.z, 1.);
 }
