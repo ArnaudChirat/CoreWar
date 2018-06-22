@@ -121,12 +121,12 @@ void		*ft_game(void *d)
 	t_data	*data;
 
 	data = (t_data*)d;
-	while (data->ctd > 0 && data->proc_list != NULL && !*data->quit)
+	while (data->ctd > 0 && data->proc_list != NULL && !*data->visulink.quit)
 	{
 		data->cy = 0;
 		while (++data->cy < data->ctd)
 		{
-			ft_fight(&data->proc_list, *data->cyc_sleep);
+			ft_fight(&data->proc_list, *data->visulink.cyc_sleep);
 			if (data->dump_val && data->dump_val == data->cyc_tot)
 				ft_print_matrix();
 			data->cyc_tot++;

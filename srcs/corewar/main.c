@@ -92,8 +92,8 @@ static void		ft_launch_corewar(t_data *d, t_visu *v)
 	pthread_t	game_thread;
 
 	v->data = d;
-	d->quit = &v->quit;
-	d->cyc_sleep = &v->cyc_sleep;
+	d->visulink = (t_vlink){&v->cyc_sleep, &v->pause, &v->quit,
+								PTHREAD_MUTEX_INITIALIZER};
 	if (pthread_create(&game_thread, NULL, &ft_game, (void*)d))
 		error_exit("");
 	render(v);

@@ -14,6 +14,7 @@
 # define VM_STRUC_H
 
 # include "vm.h"
+# include <pthread.h>
 # define FAILED_INSTRUC		-1
 # define INSTRUCT_IN_CYCLE	0
 # define INSTRUCT_END 		1
@@ -99,6 +100,14 @@ typedef struct		s_player
 ** Structure containing all the information of the game
 */
 
+typedef struct		s_vlink
+{
+	int				*cyc_sleep;
+	int				*pause;
+	int				*quit;
+	pthread_mutex_t	pause_mutex;
+}					t_vlink;
+
 typedef struct		s_data
 {
 	int				increm;
@@ -115,9 +124,7 @@ typedef struct		s_data
 	int				cy;
 	int				check;
 	int				number;
-	int				*cyc_sleep;
-	int				*pause;
-	int				*quit;
+	t_vlink			visulink;
 }					t_data;
 
 #endif

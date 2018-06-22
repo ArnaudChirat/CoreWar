@@ -182,6 +182,7 @@ typedef struct	s_visu
 	t_scene			scene;
 	int				cyc_sleep;
 	int				cyc_sleep_inc;
+	int				pause;
 	int				quit;
 }				t_visu;
 
