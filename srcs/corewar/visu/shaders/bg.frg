@@ -17,8 +17,8 @@ uniform	raymarchBlock
 	vec3	eye;
 }r;
 
-const int	max_it = 100;
-const float	max_fit = 100.;
+const int	max_it = 50;
+const float	max_fit = 50.;
 const float max_dst = 1000.;
 
 vec2	frag_to_ndc()
@@ -171,7 +171,7 @@ void	main()
 	vec3 x_vec = normalize(cross(z_vec, up));
 	vec3 y_vec = normalize(cross(x_vec, z_vec));
 
-	vec3 rd = normalize(x_vec * uv.x + y_vec * uv.y + z_vec * 1);
+	vec3 rd = normalize(x_vec * uv.x + y_vec * uv.y + z_vec * 2.);
 	
 	vec2 ret = map(eye, rd);
 	fragColor = vec4(
