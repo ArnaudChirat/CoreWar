@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 12:23:26 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/22 14:33:32 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/22 16:46:48 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,12 @@ static void	render_background(t_background bg)
 
 static void	render_title(t_title t, t_events e)
 {
-	int	prog;
-
 	if (e.phase == PH_INTRO)
 	{
-		prog = (int)((float)t.mesh.nb_indices * (e.intro * 1.5));
-		prog = prog > t.mesh.nb_indices ? t.mesh.nb_indices : prog;
 		glUseProgram(t.program);
 		glBindVertexArray(t.vao);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, t.ibo);
-		glDrawElements(GL_TRIANGLES, prog, GL_UNSIGNED_INT, NULL);
+		glDrawElements(GL_TRIANGLES, t.mesh.nb_indices, GL_UNSIGNED_INT, NULL);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 		glBindVertexArray(0);
 		glUseProgram(0);
@@ -62,7 +58,7 @@ int			render(t_visu *v)
 		glClear(GL_DEPTH_BUFFER_BIT);
 		render_title(v->scene.title, v->scene.events);
 		update_arena(&v->scene.arena, v->data);
-		render_arena(v->scene.arena, v->scene.events);
+		render_arena(v->scene.arena);
 		update_counters(&v->scene.counters, v->data);
 		render_counters(v->scene.counters, v->scene.events);
 		check_glerror();

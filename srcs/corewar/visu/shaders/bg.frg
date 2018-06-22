@@ -131,8 +131,8 @@ vec2	map(vec3 eye, vec3 rd)
 	{
 		follow = vec3(ray.x - eye.x - 11., ray.yz - eye.yz);
 		dst = 
-			max(max(-cube(roty(rotx(rotz(vec3(ray.xy, repeat1(ray.z, 50))))), 40. + cos(m.time) * 20.),
-			-cube(rotz(rotx(rotx(vec3(bfk(ray.xyx, 0.1).xy, repeat1(ray.z, 75))))), 40. + sin(m.time) * 20.)),
+			max(max(-cube(roty(rotx(rotz(vec3(ray.xy, repeat1(ray.z, 50))))), 40.),
+			-cube(rotz(rotx(rotx(vec3(bfk(ray.xyx, 0.1).xy, repeat1(ray.z, 75))))), 40.)),
 			-cube(roty(rotx(roty(vec3(bfk(ray.xyx, 0.1).xy, repeat1(ray.z, 65))))), 40.));
 		if (dst < 0.01 || length(ray - eye) > max_dst)
 			break;

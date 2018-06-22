@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 10:02:24 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/22 15:29:54 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/22 16:06:43 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,23 +74,22 @@ void		update_arena(t_v_arena *a, t_data *d)
 	update_arena_buffers(a);
 }
 
-void		render_arena(t_v_arena a, t_events e)
+void		render_arena(t_v_arena a)
 {
 	int	i;
 
 	i = -1;
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	if (e.phase == PH_GAME || e.phase == PH_FINAL)
-		while (++i < a.nb_players)
-		{
-			glUseProgram(a.programs[i]);
-			glBindVertexArray(a.vaos[i]);
-			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, a.ibo_mesh);
-			glDrawElementsInstanced(GL_TRIANGLE_FAN, a.mesh.nb_indices,
-					GL_UNSIGNED_INT, NULL, a.nb_instances[i]);
-			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-			glBindVertexArray(0);
-			glUseProgram(0);
-		}
+	while (++i < a.nb_players)
+	{
+		glUseProgram(a.programs[i]);
+		glBindVertexArray(a.vaos[i]);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, a.ibo_mesh);
+		glDrawElementsInstanced(GL_TRIANGLE_FAN, a.mesh.nb_indices,
+				GL_UNSIGNED_INT, NULL, a.nb_instances[i]);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+		glBindVertexArray(0);
+		glUseProgram(0);
+	}
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 }

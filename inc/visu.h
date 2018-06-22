@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/01 18:56:47 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/22 15:19:07 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/22 16:06:51 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,7 +206,7 @@ void			update_uniforms(t_scene s, t_matrices m);
 void			render_counters(t_counters c, t_events e);
 void			update_counters(t_counters *c, t_data *d);
 void			update_arena(t_v_arena *a, t_data *d);
-void			render_arena(t_v_arena a, t_events e);
+void			render_arena(t_v_arena a);
 
 void			ft_free_visu(t_visu *v);
 void			error_exit(const char *str);

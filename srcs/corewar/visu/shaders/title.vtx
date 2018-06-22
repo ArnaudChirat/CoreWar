@@ -20,7 +20,7 @@ void	main()
 					sin(u.time), cos(u.time), 0.,
 					0., 0., 1.);
 
-	vec3 pos = vec3(vertexpos.xy, vertexpos.z + 10. - 14. * u.intro) * 20.;
+	vec3 pos = vec3(vertexpos.xy, vertexpos.z + 2. - 16. * u.intro) * 20.;
 	gl_Position = u.projView * vec4(pos, 1.);
 	vtxColor = vec4(-vertexpos.z, -vertexpos.z, -vertexpos.z, 1.0);
 }
