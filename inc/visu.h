@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/01 18:56:47 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/22 16:06:51 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/23 10:00:25 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 
 # include "v_matrices.h"
 # include "v_controls.h"
+# include "v_sound.h"
 # include "v_ogl_utils.h"
 
 # include "vm.h"
@@ -180,6 +181,7 @@ typedef struct	s_visu
 	t_controls		controls;
 	t_matrices		matrices;
 	t_scene			scene;
+	t_sound			sound;
 	int				cyc_sleep;
 	int				cyc_sleep_inc;
 	int				pause;

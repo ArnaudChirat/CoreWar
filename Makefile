@@ -6,7 +6,7 @@
 #    By: clanglai <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/07 15:30:47 by clanglai          #+#    #+#              #
-#    Updated: 2018/06/20 16:53:21 by lbelda           ###   ########.fr        #
+#    Updated: 2018/06/23 10:04:33 by lbelda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,8 +82,8 @@ SRC_INSTRUCTIONS= $(addprefix $(PATH_SRC)$(COREWAR_DIR)$(INSTRUCTIONS_PATH), $(S
 
 SRC_DIR_VISU_INIT=init/
 SRC_FILE_VISU_INIT=init_visu.c \
-				   init_matrices.c init_controls.c init_scene.c \
-				   init_title.c \
+				   init_matrices.c init_sound.c init_controls.c \
+				   init_scene.c init_title.c \
 				   init_arena.c init_arena_data.c create_arena_mesh.c \
 				   init_counters.c create_counter_mesh.c \
 				   init_uniforms.c
@@ -153,11 +153,19 @@ SDL_LIBDIR=$(addprefix $(SDL_ROOT), $(SDL_LIBROOT))
 SDL_RPATH=$(addprefix $(ORIGIN), $(SDL_LIBDIR))
 SDL=$(addprefix $(SDL_LIBDIR), $(SDL_LIB))
 
+FMOD_DIR=fmod/
+FMOD_LK=fmodL
+
+INT=install_name_tool -change
+MAKE=make
+
 LIB_FLAGS_COREWAR=-L$(LIB_PATH) -l$(LIB_NAME) -L$(LIBFTMT_DIR) -l$(LIBFTMT_LK) \
-				  -L$(SDL_LIBDIR) -l$(SDL_LK) -lm -L$(NCURSE_PATH) -l$(NCURSE)
+				  -L$(SDL_LIBDIR) -l$(SDL_LK) -lm -L$(NCURSE_PATH) -l$(NCURSE) \
+				  -L$(FMOD_DIR) -l$(FMOD_LK)
 
 ALL_INC=$(INC) $(LIBFT_INC)
--I_ALL_INC=-I$(INC_DIR) -I$(LIBFT_INCDIR) -I$(LIBFTMT_INCDIR) -I$(SDL_INCDIR)
+-I_ALL_INC=-I$(INC_DIR) -I$(LIBFT_INCDIR) -I$(LIBFTMT_INCDIR) \
+			-I$(SDL_INCDIR) -I$(FMOD_DIR)
 
 UNAME:=$(shell uname -s)
 ifeq ($(UNAME),Darwin)
@@ -188,6 +196,7 @@ $(COREWAR_NAME) : $(LIBC) $(LIBFTMT) $(SDL) $(OBJ_COREWAR) \
 	gcc $(FLAGS) -o $(COREWAR_NAME) $(OBJ_COREWAR) \
 		$(OBJ_VISU) $(OBJ_INSTRUCTIONS) \
 		$(-I_ALL_INC) $(LIB_FLAGS_COREWAR)
+	$(INT) @rpath/libfmodL.dylib $(FMOD_DIR)libfmodL.dylib $(COREWAR_NAME)
 	@echo "\033[1;34m$(COREWAR_NAME)\033[1;32m...compiled\t\t✓\033[0m"
 
 %.o : %.c $(ALL_INC)

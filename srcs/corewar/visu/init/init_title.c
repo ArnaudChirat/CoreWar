@@ -6,14 +6,14 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 13:52:53 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/20 13:52:25 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/23 09:45:04 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu.h"
 #include "v_obj_parser.h"
 
-#define TITLE_OBJ "srcs/corewar/visu/res/title.obj"
+#define TITLE_OBJ "res/models/title.obj"
 #define VTX_TITLE "srcs/corewar/visu/shaders/title.vtx"
 #define FRG_TITLE "srcs/corewar/visu/shaders/title.frg"
 
