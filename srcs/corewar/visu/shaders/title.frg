@@ -80,8 +80,8 @@ void	main()
 	vec3 rd = normalize(x_vec * uv.x + y_vec * uv.y + z_vec * 1.0);
 	
 	vec2 ret = map(eye, rd);
-	fragColor = vec4(ret.x,
+	fragColor = vec4(mix(max(1. - abs(uv.x), 1. - abs(uv.y)), ret.x, 0.1),
+					ret.x,
 					1.0 * (ret.x - ret.y) * cos(u.time),
-					mix(max(1. - abs(uv.x), 1. - abs(uv.y)), ret.x, 0.1),
-					1.0);
+					cos(u.intro * 6.));
 }

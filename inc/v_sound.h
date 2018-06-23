@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/23 09:30:36 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/23 12:21:55 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/23 20:06:44 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ enum			e_soundmode
 typedef struct	s_sound_data
 {
 	int						numchannels;
+	float					raw_bass;
 	float					bass;
 	FMOD_DSP_PARAMETER_FFT	*spec;
 }				t_sound_data;

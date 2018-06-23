@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/02 12:25:19 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/22 11:00:38 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/23 20:32:51 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		update_camera(t_matrices *mat)
 	mat->eye.y = clamp(mat->eye.y + mat->inc_ypos, MIN_YPOS, MAX_YPOS);
 	mat->eye.z = clamp(mat->eye.z + mat->inc_zpos, MIN_ZPOS, MAX_ZPOS);
 	mat->eye.w = 1.;
-	mat->shader_eye = (t_vec3){mat->eye.x / 4., mat->eye.y / 4., mat->eye.z / 4.};
+	mat->shader_eye = (t_vec3){mat->eye.x / 20., mat->eye.y / 20., mat->eye.z / 20.};
 	mat->view_mat = look_at(mat->eye, mat->tar, mat->up);
 	mat->final_mat = mat4xmat4(mat4inv(mat->proj_mat), mat->view_mat);
 }

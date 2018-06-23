@@ -6,7 +6,7 @@
 #    By: clanglai <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/07 15:30:47 by clanglai          #+#    #+#              #
-#    Updated: 2018/06/23 12:16:21 by lbelda           ###   ########.fr        #
+#    Updated: 2018/06/23 20:17:58 by lbelda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -124,7 +124,7 @@ INC_DIR=inc/
 INC_FILES=asm.h asm_struct.h \
 		  vm.h vm_struc.h \
 		  op.h \
-		  visu.h v_controls.h v_matrices.h \
+		  visu.h v_controls.h v_matrices.h v_sound.h \
 		  v_ogl_utils.h v_common.h v_obj_parser.h
 INC=$(addprefix $(INC_DIR), $(INC_FILES))
 

@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 10:02:24 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/23 12:31:58 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/23 20:31:47 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void		render_arena(t_v_arena a)
 	int	i;
 
 	i = -1;
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	while (++i < a.nb_players)
 	{
 		glUseProgram(a.programs[i]);
@@ -91,5 +91,5 @@ void		render_arena(t_v_arena a)
 		glBindVertexArray(0);
 		glUseProgram(0);
 	}
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 }
