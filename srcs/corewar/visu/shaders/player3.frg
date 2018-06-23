@@ -9,6 +9,7 @@ uniform mainBlock
 	float ratio;
 	float time;
 	float intro;
+	float bass;
 }u;
 
 const int	max_it = 80;

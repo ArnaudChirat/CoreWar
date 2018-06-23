@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 12:23:26 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/23 10:36:58 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/23 11:33:09 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int			render(t_visu *v)
 		update_vm_sleep(v);
 		update_clock(&v->scene.events);
 		update_camera(&v->matrices);
-		update_uniforms(v->scene, v->matrices);
+		update_uniforms(*v);
 		render_background(v->scene.background);
 		glClear(GL_DEPTH_BUFFER_BIT);
 		//render_title(v->scene.title, v->scene.events);

@@ -6,14 +6,14 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 10:28:02 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/20 13:54:56 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/23 11:33:44 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v_matrices.h"
 #include "visu.h"
 
-static void	update_main_block(t_scene s, t_matrices m)
+static void	update_main_block(t_scene s, t_matrices m, t_sound so)
 {
 	glBindBuffer(GL_UNIFORM_BUFFER, s.ublocks[UBO_MAIN].ubo);
 	glBufferSubData(GL_UNIFORM_BUFFER,
@@ -22,6 +22,8 @@ static void	update_main_block(t_scene s, t_matrices m)
 			U_MAIN_TIME, sizeof(float), &s.events.time);
 	glBufferSubData(GL_UNIFORM_BUFFER,
 			U_MAIN_INTRO, sizeof(float), &s.events.intro);
+	glBufferSubData(GL_UNIFORM_BUFFER,
+			U_MAIN_BASS, sizeof(float), &so.data.bass);
 	glBindBuffer(GL_UNIFORM_BUFFER, 0);
 }
 
@@ -33,8 +35,8 @@ static void	update_raymarch_block(t_scene s, t_matrices m)
 	glBindBuffer(GL_UNIFORM_BUFFER, 0);
 }
 
-void		update_uniforms(t_scene s, t_matrices m)
+void		update_uniforms(t_visu v)
 {
-	update_main_block(s, m);
-	update_raymarch_block(s, m);
+	update_main_block(v.scene, v.matrices, v.sound);
+	update_raymarch_block(v.scene, v.matrices);
 }

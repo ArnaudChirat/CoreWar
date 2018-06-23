@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/01 18:56:47 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/23 10:39:25 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/23 11:32:24 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,8 @@ enum			e_ubo_main_sizes
 	U_MAIN_RATIO = U_MAIN_RES + sizeof(t_vec2),
 	U_MAIN_TIME = U_MAIN_RATIO + sizeof(float),
 	U_MAIN_INTRO = U_MAIN_TIME + sizeof(float),
-	U_MAIN_TOT = U_MAIN_INTRO + sizeof(float)
+	U_MAIN_BASS = U_MAIN_INTRO + sizeof(float),
+	U_MAIN_TOT = U_MAIN_BASS + sizeof(float)
 };
 
 enum			e_ubo_raymarch_sizes
@@ -204,7 +205,7 @@ t_events		init_clock(void);
 void			handle_events(t_visu *v);
 void			update_clock(t_events *e);
 void			update_camera(t_matrices *mat);
-void			update_uniforms(t_scene s, t_matrices m);
+void			update_uniforms(t_visu v);
 void			render_counters(t_counters c, t_events e);
 void			update_counters(t_counters *c, t_data *d);
 void			update_arena(t_v_arena *a, t_data *d);

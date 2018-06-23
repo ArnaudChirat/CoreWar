@@ -9,6 +9,7 @@ uniform mainBlock
 	vec2 res;
 	float ratio;
 	float time;
+	float bass;
 }u;
 
 void	main()
