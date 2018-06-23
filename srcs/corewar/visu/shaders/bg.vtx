@@ -2,6 +2,9 @@
 
 layout(location = 0) in vec2 vertexpos;
 
+out vec3	ct;
+out vec3	st;
+
 uniform mainBlock
 {
 	mat4 projView;
@@ -13,5 +16,12 @@ uniform mainBlock
 
 void	main()
 {
+	ct = vec3(cos(u.time * 0.3 + vertexpos.x * 0.2),
+			cos(u.time * 0.3 + 0.78 + vertexpos.y * 0.2),
+			cos(u.time * 0.3 + 3.76 + vertexpos.x * 0.2));
+	st = vec3(sin(u.time * 0.3 + vertexpos.y * 0.2),
+			sin(u.time * 0.3 + 0.78 + vertexpos.x * 0.2),
+			sin(u.time * 0.3 + 3.76 + vertexpos.y * 0.2));
+
 	gl_Position = vec4(vertexpos, 0., 1.);
 }

@@ -3,6 +3,9 @@
 out vec4	fragColor;
 //layout(origin_upper_left) in vec4 gl_FragCoord;
 
+in vec3		ct;
+in vec3		st;
+
 uniform mainBlock
 {
 	mat4 projView;
@@ -17,9 +20,9 @@ uniform	raymarchBlock
 	vec3	eye;
 }r;
 
-const int	max_it = 30;
-const float	max_fit = 30.;
-const float max_dst = 500.;
+const int	max_it = 40;
+const float	max_fit = 40.;
+const float max_dst = 2000.;
 
 vec2	frag_to_ndc()
 {
@@ -105,19 +108,19 @@ vec3		msfk(vec3 ray, float f)
 		return(vec3(-ray.x + cos(ray.z * 0.1 * sin(m.time * 0.0001)) * f, -ray.y + cos(ray.z * 0.1 * cos(m.time * 0.0001)) * f, ray.z));
 }
 
-vec3		roty(vec3 ray, float ct, float st)
+vec3		roty(vec3 ray)
 {
-		return vec3(ray.x * ct + ray.z * st, ray.y, ray.z * ct + ray.x * -st);
+		return vec3(ray.x * ct.x + ray.z * st.x, ray.y, ray.z * ct.x + ray.x * -st.x);
 }
 
-vec3		rotx(vec3 ray, float ct, float st)
+vec3		rotx(vec3 ray)
 {
-		return vec3(ray.x, ray.y * ct + ray.z * st, ray.z * ct + ray.y * -st);
+		return vec3(ray.x, ray.y * ct.y + ray.z * st.y, ray.z * ct.y + ray.y * -st.y);
 }
 
-vec3		rotz(vec3 ray, float ct, float st)
+vec3		rotz(vec3 ray)
 {
-		return vec3(ray.x * ct + ray.y * st, ray.y * ct + ray.x * -st, ray.z);
+		return vec3(ray.x * ct.z + ray.y * st.z, ray.y * ct.z + ray.x * -st.z, ray.z);
 }
 
 vec2	map(vec3 eye, vec3 rd)
@@ -126,19 +129,13 @@ vec2	map(vec3 eye, vec3 rd)
 	vec3 ray = eye;
 	float dst;
 	vec3 follow;
-	vec3 ct = vec3(cos(m.time * 0.3), cos(m.time * 0.3 + 0.78),
-							cos(m.time * 0.3 + 3.76));
-	vec3 st = vec3(sin(m.time * 0.3), sin(m.time * 0.3 + 0.78),
-							sin(m.time * 0.3 + 3.76));
 
 	while (i < max_it)
 	{
 		follow = vec3(ray.x - eye.x - 11., ray.yz - eye.yz);
 		dst = 
-			max(-cube(roty(rotx(rotz(vec3(ray.xy, repeat1(ray.z, 50))
-						, ct.x, st.x), ct.y, st.y), ct.z, st.z), 40.),
-			-cube(rotz(rotx(rotx(vec3(ray.xy, repeat1(ray.z, 75))
-						, ct.x, st.x), ct.y, st.y), ct.z, st.z), 40.));
+			max(-cube(roty(rotx(rotz(vec3(ray.xy, repeat1(ray.z, 200))))), 140.),
+			-cube(rotz(rotx(rotx(vec3(ray.xy, repeat1(ray.z, 280))))), 140.));
 		if (dst < 0.01 || length(ray - eye) > max_dst)
 			break;
 		ray = ray + dst * rd;
@@ -184,6 +181,6 @@ void	main()
 					1. - ret.x * 1.6 / (ret.y + 0.8) + 0.01 * cos(m.time + 2.),
 					1. - ret.x * 1.6 / (ret.y + 0.8) + 0.01 * cos(m.time + 4.),
 					1.0);
-	fragColor.xyz = pow(fragColor.xyz, vec3(10.5 + cos(m.time * 2.) * 0.2
+	fragColor.xyz = pow(fragColor.xyz, vec3(10.5 + ct.x * 0.2
 													- m.intro * 1.));
 }
