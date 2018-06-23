@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 10:02:24 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/22 16:06:43 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/23 12:31:58 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	update_arena_z(t_glfloat3 *a, t_proc *list)
 	i = -1;
 	while (list)
 	{
-		a[list->pc].z = -10.;
+		a[list->pc].z = -20.;
 		list = list->next;
 	}
 	while (++i < MEM_SIZE)

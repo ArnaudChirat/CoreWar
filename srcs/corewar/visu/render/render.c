@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 12:23:26 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/23 12:04:22 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/23 12:11:34 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int			render(t_visu *v)
 	while (!v->quit)
 	{
 		handle_events(v);
+		update_fft(&v->sound);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		update_vm_sleep(v);
 		update_clock(&v->scene.events);

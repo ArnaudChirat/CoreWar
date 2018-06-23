@@ -6,7 +6,7 @@
 #    By: clanglai <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/07 15:30:47 by clanglai          #+#    #+#              #
-#    Updated: 2018/06/23 10:04:33 by lbelda           ###   ########.fr        #
+#    Updated: 2018/06/23 12:16:21 by lbelda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -99,6 +99,10 @@ SRC_FILE_VISU_CONTROLS=handle_events.c \
 					   kb_rot.c kb_speed.c kb_misc.c
 SRC_VISU_CONTROLS=$(addprefix $(SRC_DIR_VISU_CONTROLS), $(SRC_FILE_VISU_CONTROLS))
 
+SRC_DIR_VISU_SOUND=sound/
+SRC_FILE_VISU_SOUND=update_fft.c
+SRC_VISU_SOUND=$(addprefix $(SRC_DIR_VISU_SOUND), $(SRC_FILE_VISU_SOUND))
+
 SRC_DIR_VISU_UTILS=utils/
 SRC_FILE_VISU_UTILS=ogl_utils.c build_ogl_program.c obj_parser.c \
 					protec.c clean.c error.c
@@ -108,6 +112,7 @@ SRC_DIR_VISU=$(addprefix $(PATH_SRC), $(addprefix $(COREWAR_DIR), $(VISU_DIR)))
 SRC_VISU=$(addprefix $(SRC_DIR_VISU), $(SRC_VISU_INIT)) \
 		 $(addprefix $(SRC_DIR_VISU), $(SRC_VISU_RENDER)) \
 		 $(addprefix $(SRC_DIR_VISU), $(SRC_VISU_CONTROLS)) \
+		 $(addprefix $(SRC_DIR_VISU), $(SRC_VISU_SOUND)) \
 		 $(addprefix $(SRC_DIR_VISU), $(SRC_VISU_UTILS))
 
 OBJ_ASM=$(SRC_ASM:.c=.o)
