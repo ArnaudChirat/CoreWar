@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/01 18:56:47 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/23 10:00:25 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/23 10:39:25 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@
 
 # define INC_SLEEP 20000
 # define INIT_SLEEP 4000000
-# define MIN_SLEEP 10000
-# define MAX_SLEEP 200000000
+# define MIN_SLEEP 100000
+# define MAX_SLEEP 300000000
 
 
 enum			e_progs

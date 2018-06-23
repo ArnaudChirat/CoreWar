@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 12:23:26 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/22 16:46:48 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/23 10:36:58 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,9 @@ int			render(t_visu *v)
 		update_uniforms(v->scene, v->matrices);
 		render_background(v->scene.background);
 		glClear(GL_DEPTH_BUFFER_BIT);
-		render_title(v->scene.title, v->scene.events);
+		//render_title(v->scene.title, v->scene.events);
 		update_arena(&v->scene.arena, v->data);
 		render_arena(v->scene.arena);
-		update_counters(&v->scene.counters, v->data);
-		render_counters(v->scene.counters, v->scene.events);
 		check_glerror();
 		SDL_GL_SwapWindow(v->win);
 	}

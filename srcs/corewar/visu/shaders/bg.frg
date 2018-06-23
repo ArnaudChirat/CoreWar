@@ -17,9 +17,9 @@ uniform	raymarchBlock
 	vec3	eye;
 }r;
 
-const int	max_it = 50;
-const float	max_fit = 50.;
-const float max_dst = 1000.;
+const int	max_it = 30;
+const float	max_fit = 30.;
+const float max_dst = 500.;
 
 vec2	frag_to_ndc()
 {
@@ -105,19 +105,19 @@ vec3		msfk(vec3 ray, float f)
 		return(vec3(-ray.x + cos(ray.z * 0.1 * sin(m.time * 0.0001)) * f, -ray.y + cos(ray.z * 0.1 * cos(m.time * 0.0001)) * f, ray.z));
 }
 
-vec3		roty(vec3 ray)
+vec3		roty(vec3 ray, float ct, float st)
 {
-		return vec3(ray.x * cos(m.time * 0.3) + ray.z * sin(m.time * 0.3), ray.y, ray.z * cos(m.time * 0.3) + ray.x * -sin(m.time * 0.3));
+		return vec3(ray.x * ct + ray.z * st, ray.y, ray.z * ct + ray.x * -st);
 }
 
-vec3		rotx(vec3 ray)
+vec3		rotx(vec3 ray, float ct, float st)
 {
-		return vec3(ray.x, ray.y * cos(m.time * 0.3 + 3.76) + ray.z * sin(m.time * 0.3 + 3.76), ray.z * cos(m.time * 0.3 + 3.76) + ray.y * -sin(m.time * 0.3 + 3.76));
+		return vec3(ray.x, ray.y * ct + ray.z * st, ray.z * ct + ray.y * -st);
 }
 
-vec3		rotz(vec3 ray)
+vec3		rotz(vec3 ray, float ct, float st)
 {
-		return vec3(ray.x * cos(m.time * 0.3 + 0.78) + ray.y * sin(m.time * 0.3 + 0.78), ray.y * cos(m.time * 0.3 + 0.78) + ray.x * -sin(m.time * 0.3 + 0.78), ray.z);
+		return vec3(ray.x * ct + ray.y * st, ray.y * ct + ray.x * -st, ray.z);
 }
 
 vec2	map(vec3 eye, vec3 rd)
@@ -126,14 +126,19 @@ vec2	map(vec3 eye, vec3 rd)
 	vec3 ray = eye;
 	float dst;
 	vec3 follow;
+	vec3 ct = vec3(cos(m.time * 0.3), cos(m.time * 0.3 + 0.78),
+							cos(m.time * 0.3 + 3.76));
+	vec3 st = vec3(sin(m.time * 0.3), sin(m.time * 0.3 + 0.78),
+							sin(m.time * 0.3 + 3.76));
 
 	while (i < max_it)
 	{
 		follow = vec3(ray.x - eye.x - 11., ray.yz - eye.yz);
 		dst = 
-			max(max(-cube(roty(rotx(rotz(vec3(ray.xy, repeat1(ray.z, 50))))), 40.),
-			-cube(rotz(rotx(rotx(vec3(bfk(ray.xyx, 0.1).xy, repeat1(ray.z, 75))))), 40.)),
-			-cube(roty(rotx(roty(vec3(bfk(ray.xyx, 0.1).xy, repeat1(ray.z, 65))))), 40.));
+			max(-cube(roty(rotx(rotz(vec3(ray.xy, repeat1(ray.z, 50))
+						, ct.x, st.x), ct.y, st.y), ct.z, st.z), 40.),
+			-cube(rotz(rotx(rotx(vec3(ray.xy, repeat1(ray.z, 75))
+						, ct.x, st.x), ct.y, st.y), ct.z, st.z), 40.));
 		if (dst < 0.01 || length(ray - eye) > max_dst)
 			break;
 		ray = ray + dst * rd;
