@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/23 09:30:05 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/23 10:03:35 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/23 11:01:33 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,9 @@ t_sound		init_sound(void)
 {
 	t_sound	s;
 
+	if (FMOD_Debug_Initialize(FMOD_DEBUG_LEVEL_ERROR,
+							FMOD_DEBUG_MODE_TTY, 0, NULL) != FMOD_OK)
+			error_exit("FMOD Failed to setup debug mode");
 	system_init(&s);
 	if (channel_init(&s, SONG_PATH))
 	{
