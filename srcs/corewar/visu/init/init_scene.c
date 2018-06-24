@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 13:03:18 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/24 17:43:58 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/24 20:03:37 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void				init_scene(t_visu *v, t_data data)
 {
 	int	i;
 
-	i = -1;
 	init_3d_alphabet(v->scene.alphabet_3d);
 	v->scene.background = init_background();
 	v->scene.all_programs[PROG_BG] = v->scene.background.program;
@@ -67,9 +66,13 @@ void				init_scene(t_visu *v, t_data data)
 	v->scene.counters = init_counters(data);
 	v->scene.all_programs[PROG_CT] = v->scene.counters.program;
 	v->scene.arena = init_arena(data);
-	init_text(v->scene.texts, v->scene.alphabet_3d, data);
-	v->scene.all_programs[PROG_TXT] = v->scene.texts[TXT_CYC].program;
+	i = -1;
 	while (++i < MAX_PLAYERS + 1)
 		v->scene.all_programs[i + PROG_PLN] = v->scene.arena.programs[i];
+	init_text(v->scene.texts, v->scene.alphabet_3d,
+						data, v->scene.arena.shader_paths);
+	i = -1;
+	while (++i < TXT_MAX)
+		v->scene.all_programs[i + PROG_TXT] = v->scene.texts[i].program;
 	init_ublocks(*v, v->scene.ublocks);
 }

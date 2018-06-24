@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/01 18:56:47 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/24 17:41:33 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/24 20:46:37 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,10 @@ enum			e_progs
 	PROG_BG,
 	PROG_TITLE,
 	PROG_TXT,
+	PROG_TXT_PL1,
+	PROG_TXT_PL2,
+	PROG_TXT_PL3,
+	PROG_TXT_PL4,
 	PROG_CT,
 	PROG_PLN,
 	PROG_PL1,
@@ -101,6 +105,10 @@ typedef struct	s_title
 enum			e_text_fields
 {
 	TXT_CYC,
+	TXT_PL1,
+	TXT_PL2,
+	TXT_PL3,
+	TXT_PL4,
 	TXT_MAX
 };
 
@@ -110,6 +118,7 @@ typedef struct	s_text_field
 	GLuint		vao;
 	GLuint		vbo;
 	GLuint		ibo;
+	GLint		u_world_pos;
 	t_mesh		mesh;
 }				t_text_field;
 
@@ -217,7 +226,9 @@ t_visu			init_visu(t_data *data);
 void			init_scene(t_visu *v, t_data data);
 void			init_3d_alphabet(t_mesh *alphabet);
 t_title			init_title(void);
-void			init_text(t_text_field *texts, t_mesh *alphabet, t_data d);
+void			init_text(t_text_field *texts, t_mesh *alphabet,
+								t_data d, char **shader_paths);
+t_mesh			str_to_mesh(const char *str, t_mesh *alphabet);
 t_v_arena		init_arena(t_data data);
 void			init_arena_data(t_v_arena *a, t_data data);
 t_mesh			create_arena_mesh(void);

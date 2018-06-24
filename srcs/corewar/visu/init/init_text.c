@@ -6,74 +6,17 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/24 12:29:56 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/24 16:52:20 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/24 21:19:45 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu.h"
 
-#define X_OFFSET -0.5
-
 #define TXT_CYC_POS (t_glfloat3){1.3, -14.8, 0.0}
 #define TXT_CYC_VTX "srcs/corewar/visu/shaders/txt.vtx"
 #define TXT_CYC_FRG "srcs/corewar/visu/shaders/txt.frg"
 
-static int		get_alphabet_index(char c)
-{
-	if (c >= 'a' && c <= 'z')
-		return (c - 'a');
-	else if (c >= 'A' && c <= 'Z')
-		return (c - 'A');
-	else if (c >= '0' && c <= '9')
-		return (c - '0' + A_NUM);
-	else if (c == '_')
-		return (A_UNDERSCORE);
-	return ('a');
-}
-
-static void		add_letter_to_str(t_mesh *str, t_mesh letter, t_glfloat3 world,
-																	int pos)
-{
-	int	i;
-
-	m_pro_null(str->indices = realloc(str->indices, sizeof(GLuint) * 
-				(str->nb_indices + letter.nb_indices)));
-	m_pro_null(str->coords = realloc(str->coords, sizeof(t_glfloat3) * 
-				(str->nb_vtx + letter.nb_vtx)));
-	i = str->nb_indices - 1;
-	while (++i < str->nb_indices + letter.nb_indices)
-		((GLuint*)str->indices)[i] =
-			((GLuint*)letter.indices)[i - str->nb_indices] + str->nb_vtx;
-	i = str->nb_vtx - 1;
-	while (++i < str->nb_vtx + letter.nb_vtx)
-	{
-		str->coords[i] = (t_glfloat3)
-				{letter.coords[i - str->nb_vtx].x + world.x + pos * X_OFFSET,
-				letter.coords[i - str->nb_vtx].y + world.y,
-				letter.coords[i - str->nb_vtx].z + world.z};
-	}
-	str->nb_indices += letter.nb_indices;
-	str->nb_vtx += letter.nb_vtx;
-}
-
-static t_mesh	str_to_mesh(const char *str, t_mesh *alphabet, t_glfloat3 pos)
-{
-	int		i;
-	t_mesh	mesh;
-
-	i = -1;
-	ft_bzero(&mesh, sizeof(t_mesh));
-	while (str[++i])
-	{
-		if (ft_isalnum(str[i]) || str[i] == '_')
-			add_letter_to_str(&mesh,
-					alphabet[get_alphabet_index(str[i])], pos, i);
-	}
-	printf("%d\n", mesh.nb_vtx);
-	return (mesh);
-}
-
-static void		init_buffers(t_text_field *text)
+static void		init_buffers(t_text_field *text, t_glfloat3 pos)
 {
 	glUseProgram(text->program);
 	glGenVertexArrays(1, &text->vao);
@@ -90,18 +33,55 @@ static void		init_buffers(t_text_field *text)
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER,
 					text->mesh.nb_indices * sizeof(GLuint),
 					text->mesh.indices, GL_STATIC_DRAW);
+	text->u_world_pos =
+		glGetUniformLocation(text->program, "world_pos");
+	glUniform3f(text->u_world_pos, pos.x, pos.y, pos.z);
 	glBindVertexArray(0);
 	glUseProgram(0);
-
 }
 
-void			init_text(t_text_field *texts, t_mesh *alphabet, t_data d)
+static void		fill_name_pos(t_glfloat3 *pos)
 {
-	int	i;
+	pos[0] = (t_glfloat3){19., 6.0, -5.5};
+	pos[1] = (t_glfloat3){19., 2.0, -5.5};
+	pos[2] = (t_glfloat3){19., -2.0, -5.5};
+	pos[3] = (t_glfloat3){19., -6.0, -5.5};
+}
 
-	i = 0;
-	(void)d;
+static void		text_rotation(t_mesh text)
+{
+	int		i;
+	t_vec3	tmp;
+
+	i = -1;
+	while (++i < text.nb_vtx)
+	{
+		tmp = mat4xvec4_tovec3(rotymat4new(55.),
+						(t_vec4){text.coords[i].x,
+						text.coords[i].y, text.coords[i].z, 1.0});
+		text.coords[i] = (t_glfloat3){tmp.x, tmp.y, tmp.z};
+	}
+}
+
+void			init_text(t_text_field *texts, t_mesh *alphabet,
+								t_data d, char **shader_paths)
+{
+	int			i;
+	t_glfloat3	name_pos[MAX_PLAYERS];
+
+	i = -1;
+	fill_name_pos(name_pos);
 	texts[TXT_CYC].program = build_ogl_program(TXT_CYC_VTX, TXT_CYC_FRG);
-	texts[TXT_CYC].mesh = str_to_mesh("cycle", alphabet, TXT_CYC_POS);
-	init_buffers(&texts[TXT_CYC]);
+	texts[TXT_CYC].mesh = str_to_mesh("cycle", alphabet);
+	init_buffers(&texts[TXT_CYC], TXT_CYC_POS);
+	while (++i < MAX_PLAYERS)
+	{
+		texts[TXT_PL1 + i].program = build_ogl_program(TXT_CYC_VTX,
+										shader_paths[(i + 1) * 2 + 1]);
+		texts[TXT_PL1 + i].mesh = str_to_mesh(d.players_list->name,
+											alphabet);
+		text_rotation(texts[TXT_PL1 + i].mesh);
+		init_buffers(&texts[TXT_PL1 + i], name_pos[i]);
+		d.players_list = d.players_list->next;
+	}
 }
