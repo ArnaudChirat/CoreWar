@@ -6,7 +6,7 @@
 #    By: clanglai <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/07 15:30:47 by clanglai          #+#    #+#              #
-#    Updated: 2018/06/24 11:45:48 by lbelda           ###   ########.fr        #
+#    Updated: 2018/06/24 14:32:40 by lbelda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,14 +83,14 @@ SRC_INSTRUCTIONS= $(addprefix $(PATH_SRC)$(COREWAR_DIR)$(INSTRUCTIONS_PATH), $(S
 SRC_DIR_VISU_INIT=init/
 SRC_FILE_VISU_INIT=init_visu.c \
 				   init_matrices.c init_sound.c init_controls.c \
-				   init_scene.c init_title.c init_3d_alphabet.c \
+				   init_scene.c init_title.c init_3d_alphabet.c init_text.c \
 				   init_arena.c init_arena_data.c create_arena_mesh.c \
 				   init_counters.c create_counter_mesh.c \
 				   init_uniforms.c
 SRC_VISU_INIT=$(addprefix $(SRC_DIR_VISU_INIT), $(SRC_FILE_VISU_INIT))
 
 SRC_DIR_VISU_RENDER=render/
-SRC_FILE_VISU_RENDER=render.c render_arena.c render_counters.c \
+SRC_FILE_VISU_RENDER=render.c render_arena.c render_counters.c render_text.c \
 					 update_clock.c update_camera.c update_uniforms.c
 SRC_VISU_RENDER=$(addprefix $(SRC_DIR_VISU_RENDER), $(SRC_FILE_VISU_RENDER))
 

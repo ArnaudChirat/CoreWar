@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/01 18:56:47 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/24 11:47:36 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/24 14:32:26 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ enum			e_progs
 {
 	PROG_BG,
 	PROG_TITLE,
+	PROG_TXT,
 	PROG_CT,
 	PROG_PL1,
 	PROG_PL2,
@@ -94,6 +95,21 @@ typedef struct	s_title
 	GLuint		ibo;
 	t_mesh		mesh;
 }				t_title;
+
+enum			e_text_fields
+{
+	TXT_CYC,
+	TXT_MAX
+};
+
+typedef struct	s_text_field
+{
+	GLuint		program;
+	GLuint		vao;
+	GLuint		vbo;
+	GLuint		ibo;
+	t_mesh		mesh;
+}				t_text_field;
 
 typedef struct	s_v_arena
 {
@@ -177,6 +193,7 @@ typedef struct	s_scene
 	t_v_arena		arena;
 	t_counters		counters;
 	t_mesh			alphabet_3d[A_MAX];
+	t_text_field	texts[TXT_MAX];
 	t_ublock		ublocks[UBO_MAX];
 	GLuint			all_programs[PROG_MAX];
 }				t_scene;
@@ -200,8 +217,9 @@ typedef struct	s_visu
 
 t_visu			init_visu(t_data *data);
 void			init_scene(t_visu *v, t_data data);
-t_title			init_title(void);
 void			init_3d_alphabet(t_mesh *alphabet);
+t_title			init_title(void);
+void			init_text(t_text_field *texts, t_mesh *alphabet, t_data d);
 t_v_arena		init_arena(t_data data);
 void			init_arena_data(t_v_arena *a, t_data data);
 t_mesh			create_arena_mesh(void);
@@ -220,6 +238,7 @@ void			render_counters(t_counters c, t_events e);
 void			update_counters(t_counters *c, t_data *d);
 void			update_arena(t_v_arena *a, t_data *d);
 void			render_arena(t_v_arena a);
+void			render_text(t_text_field *texts);
 
 void			ft_free_visu(t_visu *v);
 void			error_exit(const char *str);
