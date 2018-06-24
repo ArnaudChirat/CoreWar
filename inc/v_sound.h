@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/23 09:30:36 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/23 20:06:44 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/24 15:40:11 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "libft.h"
 # include "v_common.h"
 
-# define SONG_PATH "res/music/perfect_way.mp3"
+# define SONG_PATH "res/music/norse.mp3"
 # define FFT_SIZE 1024
 
 enum			e_soundmode

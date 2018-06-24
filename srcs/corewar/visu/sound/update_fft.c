@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/23 12:12:07 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/23 20:25:17 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/24 15:53:58 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,24 @@ static void		refresh_audio(t_sound *sound)
 
 static float	get_smoothed_bass(float raw, float prec)
 {
-	float	new;
+	float		new;
+	static int	flag = 0;
 
-	if (raw > prec + 0.15)
-		new = prec + .27;
+	if (!flag)
+	{
+		if (prec == 0. && raw > prec + 0.10)
+		{
+			new = prec + .30;
+			flag = 1;
+		}
+		else
+			new = prec - .03;
+	}
 	else
-		new = prec - .03;
+	{
+		new = prec + .18;
+		flag = 0;
+	}
 	new = ft_fmax(new, 0.);
 	return (new);
 }
@@ -56,7 +68,7 @@ void			update_fft(t_sound *s)
 	if (s->mode == S_ON)
 	{
 		refresh_audio(s);
-		s->data.raw_bass = get_bins(s->data.spec->spectrum[0], 2, 4);
+		s->data.raw_bass = get_bins(s->data.spec->spectrum[0], 0, 2);
 		s->data.bass = get_smoothed_bass(s->data.raw_bass, s->data.bass);
 	}
 }
