@@ -12,6 +12,11 @@ uniform mainBlock
 	float bass;
 }u;
 
+uniform	raymarchBlock
+{
+	vec3	eye;
+}r;
+
 const int	max_it = 80;
 const float	max_fit = 80.;
 const float max_dst = 150.;
@@ -98,9 +103,9 @@ void	main()
 	vec3 up = vec3(1.0 * sin(u.time * 0.4), 1.0 * cos(u.time * 0.4), 0.0);
 	*/
 
-	vec3 eye = vec3(u.time * 15., 0.0, 0.0);
+	vec3 eye = vec3(r.eye.z + u.time * 15., r.eye.y, -r.eye.x);
 	vec3 tar = vec3(u.time * 15. + 1.0, 0.0, 0.0);
-	vec3 up = vec3(0.0, cos(u.time * 0.2), sin(u.time * 0.2));
+	vec3 up = vec3(0.0, 1.0, 0.0);
 
 	vec3 z_vec = normalize(tar - eye);
 	vec3 x_vec = normalize(cross(z_vec, up));
@@ -110,4 +115,5 @@ void	main()
 	
 	vec2 ret = map(eye, rd);
 	fragColor = vec4(ret.x / ret.y, (ret.x / ret.y) * 0.34, ret.y * 2., 1.);
+	fragColor.xyz = pow(fragColor.xyz, vec3(1. - u.bass * 0.6));
 }

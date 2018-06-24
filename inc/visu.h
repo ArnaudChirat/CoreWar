@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/01 18:56:47 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/23 11:32:24 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/24 11:47:36 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,14 @@ enum			e_phases
 	PH_GAME,
 	PH_FINAL,
 	PH_MAX
+};
+
+enum			e_3d_alphabet
+{
+	A_ALPHA = 0,
+	A_NUM = 26,
+	A_UNDERSCORE = 27,
+	A_MAX
 };
 
 typedef struct	s_background
@@ -168,6 +176,7 @@ typedef struct	s_scene
 	t_title			title;
 	t_v_arena		arena;
 	t_counters		counters;
+	t_mesh			alphabet_3d[A_MAX];
 	t_ublock		ublocks[UBO_MAX];
 	GLuint			all_programs[PROG_MAX];
 }				t_scene;
@@ -192,6 +201,7 @@ typedef struct	s_visu
 t_visu			init_visu(t_data *data);
 void			init_scene(t_visu *v, t_data data);
 t_title			init_title(void);
+void			init_3d_alphabet(t_mesh *alphabet);
 t_v_arena		init_arena(t_data data);
 void			init_arena_data(t_v_arena *a, t_data data);
 t_mesh			create_arena_mesh(void);

@@ -1,5 +1,6 @@
 *.sw*
 *.o
+*.dSYM
 sdl2/sources
 sdl2/bin/
 sdl2/include/

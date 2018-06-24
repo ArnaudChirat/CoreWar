@@ -6,12 +6,13 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 12:23:26 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/23 12:11:34 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/24 11:58:15 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu.h"
 
+/*
 static void	render_background(t_background bg)
 {
 	glUseProgram(bg.program);
@@ -36,6 +37,7 @@ static void	render_title(t_title t, t_events e)
 		glUseProgram(0);
 	}
 }
+*/
 
 static void	update_vm_sleep(t_visu *v)
 {
@@ -55,9 +57,9 @@ int			render(t_visu *v)
 		update_clock(&v->scene.events);
 		update_camera(&v->matrices);
 		update_uniforms(*v);
-		render_background(v->scene.background);
+		//render_background(v->scene.background);
 		glClear(GL_DEPTH_BUFFER_BIT);
-		render_title(v->scene.title, v->scene.events);
+		//render_title(v->scene.title, v->scene.events);
 		update_arena(&v->scene.arena, v->data);
 		render_arena(v->scene.arena);
 		check_glerror();

@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 13:53:47 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/20 13:53:58 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/24 10:43:30 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,14 @@ static GLuint	prog_block_link(GLuint program, char *name, GLuint binding)
 static void		attrib_raymarch_block(t_ublock *u, GLuint *programs)
 {
 	u->progs_id[PROG_BG] = prog_block_link(programs[PROG_BG],
+											"raymarchBlock", UBO_RM);
+	u->progs_id[PROG_PL1] = prog_block_link(programs[PROG_PL1],
+											"raymarchBlock", UBO_RM);
+	u->progs_id[PROG_PL2] = prog_block_link(programs[PROG_PL2],
+											"raymarchBlock", UBO_RM);
+	u->progs_id[PROG_PL3] = prog_block_link(programs[PROG_PL3],
+											"raymarchBlock", UBO_RM);
+	u->progs_id[PROG_PL4] = prog_block_link(programs[PROG_PL4],
 											"raymarchBlock", UBO_RM);
 	glGenBuffers(1, &u->ubo);
 	glBindBuffer(GL_UNIFORM_BUFFER, u->ubo);

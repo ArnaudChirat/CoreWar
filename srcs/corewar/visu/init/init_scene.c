@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 13:03:18 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/13 20:22:33 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/24 11:57:34 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void				init_scene(t_visu *v, t_data data)
 	int	i;
 
 	i = -1;
+	init_3d_alphabet(v->scene.alphabet_3d);
 	v->scene.background = init_background();
 	v->scene.all_programs[PROG_BG] = v->scene.background.program;
 	v->scene.title = init_title();
