@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 15:54:38 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/24 15:41:49 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/24 17:39:23 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void			init_arena_data(t_v_arena *a, t_data data)
 
 	i = -1;
 	(void)data;
-	while (++i < MAX_PLAYERS)
+	while (++i < MAX_PLAYERS + 1)
 		m_pro_null(a->data_inst[i] =
 				ft_memalloc(sizeof(t_glfloat3) * MEM_SIZE));
 	m_pro_null(a->arena_coords = ft_memalloc(sizeof(t_glfloat3) * MEM_SIZE));

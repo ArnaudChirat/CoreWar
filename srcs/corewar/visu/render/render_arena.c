@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 10:02:24 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/23 20:31:47 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/24 17:55:39 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static void	bzero_buffers(t_v_arena *a)
 	int	i;
 
 	i = -1;
-	ft_bzero(&a->nb_instances, sizeof(int) * MAX_PLAYERS);
-	while (++i < a->nb_players)
+	ft_bzero(&a->nb_instances, sizeof(int) * (MAX_PLAYERS + 1));
+	while (++i < a->nb_players + 1)
 		ft_bzero(a->data_inst[i], sizeof(t_glfloat2) * MEM_SIZE);
 }
 
@@ -27,7 +27,7 @@ static void	update_arena_buffers(t_v_arena *a)
 	int	i;
 
 	i = -1;
-	while (++i < a->nb_players)
+	while (++i < a->nb_players + 1)
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, a->vbos_inst[i]);
 		glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(t_glfloat3) * MEM_SIZE,
@@ -64,11 +64,11 @@ void		update_arena(t_v_arena *a, t_data *d)
 	while (++i < MEM_SIZE)
 	{
 		if (g_arena[i].player)
-		{
-			a->data_inst[(int)g_arena[i].player - 1]
-				[a->nb_instances[(int)g_arena[i].player - 1]++] =
+			a->data_inst[(int)g_arena[i].player]
+				[a->nb_instances[(int)g_arena[i].player]++] =
 				a->arena_coords[i];
-		}
+		else
+			a->data_inst[P_N][a->nb_instances[P_N]++] = a->arena_coords[i];
 	}
 	pthread_mutex_unlock(&g_lock);
 	update_arena_buffers(a);
@@ -79,8 +79,7 @@ void		render_arena(t_v_arena a)
 	int	i;
 
 	i = -1;
-	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	while (++i < a.nb_players)
+	while (++i < a.nb_players + 1)
 	{
 		glUseProgram(a.programs[i]);
 		glBindVertexArray(a.vaos[i]);
@@ -91,5 +90,4 @@ void		render_arena(t_v_arena a)
 		glBindVertexArray(0);
 		glUseProgram(0);
 	}
-	//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 }

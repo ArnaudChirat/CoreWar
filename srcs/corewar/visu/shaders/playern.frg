@@ -114,6 +114,7 @@ void	main()
 	vec3 rd = normalize(x_vec * uv.x + y_vec * uv.y + z_vec * 1.0);
 	
 	vec2 ret = map(eye, rd);
-	fragColor = vec4(ret.x / ret.y, ret.y, ret.y, 1.);
-	fragColor.x = pow(fragColor.x, 3.);
+	float col = (ret.x / ret.y) * 0.5 + ret.y * 0.2;
+	fragColor = vec4(vec3(col), 1.);
+	fragColor.xyz = pow(fragColor.xyz * 0.3, vec3(1.2));
 }

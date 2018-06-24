@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/01 18:56:47 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/24 17:14:06 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/24 17:41:33 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ enum			e_progs
 	PROG_TITLE,
 	PROG_TXT,
 	PROG_CT,
+	PROG_PLN,
 	PROG_PL1,
 	PROG_PL2,
 	PROG_PL3,
@@ -56,6 +57,7 @@ enum			e_progs
 
 enum			e_players
 {
+	P_N,
 	P_1,
 	P_2,
 	P_3,
@@ -113,13 +115,13 @@ typedef struct	s_text_field
 
 typedef struct	s_v_arena
 {
-	char		*shader_paths[MAX_PLAYERS * 2];
-	GLuint		programs[MAX_PLAYERS];
-	GLuint		vaos[MAX_PLAYERS];
-	GLuint		vbos_inst[MAX_PLAYERS];
-	t_glfloat3	*data_inst[MAX_PLAYERS];
+	char		*shader_paths[(MAX_PLAYERS + 1) * 2];
+	GLuint		programs[MAX_PLAYERS + 1];
+	GLuint		vaos[MAX_PLAYERS + 1];
+	GLuint		vbos_inst[MAX_PLAYERS + 1];
+	t_glfloat3	*data_inst[MAX_PLAYERS + 1];
 	t_glfloat3	*arena_coords;
-	int			nb_instances[MAX_PLAYERS];
+	int			nb_instances[MAX_PLAYERS + 1];
 	GLuint		vbo_mesh;
 	GLuint		ibo_mesh;
 	t_mesh		mesh;
@@ -129,8 +131,6 @@ typedef struct	s_v_arena
 enum			e_vbos_ct
 {
 	VBO_CT_MESH,
-	VBO_CT_INST,
-	VBO_CT_STATE,
 	VBO_CT_MAX
 };
 
@@ -138,10 +138,8 @@ typedef struct	s_counters
 {
 	GLuint		program;
 	GLuint		vao;
-	GLuint		vbos_inst;
 	GLuint		vbos[VBO_CT_MAX];
 	GLuint		ibo;
-	t_glfloat3	inst_coords[MAX_PLAYERS];
 	t_mesh		mesh;
 	int			nb_players;
 }				t_counters;
