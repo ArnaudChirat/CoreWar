@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/01 18:56:47 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/24 14:32:26 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/24 16:10:24 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 
 # include "vm.h"
 
-# define CT_WIDTH 26
+# define CT_WIDTH -96
 
 # define INC_SLEEP 20000
 # define INIT_SLEEP 4000000

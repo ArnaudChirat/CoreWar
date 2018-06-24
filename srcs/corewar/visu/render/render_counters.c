@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/12 17:06:44 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/20 18:08:39 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/24 16:02:34 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void		render_counters(t_counters c, t_events e)
 		glUseProgram(c.program);
 		glBindVertexArray(c.vao);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, c.ibo);
-		glDrawElementsInstanced(GL_TRIANGLES, c.mesh.nb_indices,
-				GL_UNSIGNED_INT, NULL, c.nb_players);
+		glDrawElements(GL_TRIANGLES, c.mesh.nb_indices,
+				GL_UNSIGNED_INT, NULL);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 		glBindVertexArray(0);
 		glUseProgram(0);

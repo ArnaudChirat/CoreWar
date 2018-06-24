@@ -1,7 +1,6 @@
 #version 410 core
 
 layout(location = 0) in vec3 vertexpos;
-layout(location = 1) in vec3 inst;
 out vec4 vtxColor;
 
 uniform mainBlock
@@ -16,9 +15,10 @@ uniform mainBlock
 
 void	main()
 {
-	float mytime = u.time;
+	float scale = 3.;
+	vec3 toWorld = vec3(48., -100., 0.);
 
-	vec3 pos = vertexpos + inst;
+	vec3 pos = vec3(vertexpos.x + toWorld.x, vertexpos.yz * scale + toWorld.yz);
 	gl_Position = u.projView * vec4(pos, 1.);
-	vtxColor = vec4(0.0, 1.0, 0.0, 1.0);
+	vtxColor = vec4(0.0, 0.8, 0.0, 1.0);
 }
