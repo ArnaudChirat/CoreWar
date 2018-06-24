@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 12:23:26 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/24 15:57:40 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/24 17:13:46 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,16 @@ static void	update_vm_sleep(t_visu *v)
 	ft_clamp(MIN_SLEEP, MAX_SLEEP, v->cyc_sleep);
 }
 
+static void	launch_music(t_sound *sound)
+{
+	if (FMOD_Channel_SetPaused(sound->channel, 0) != FMOD_OK)
+		error_exit("FMOD Failed to play audio");
+}
+
 int			render(t_visu *v)
 {
 	v->scene.events = init_clock();
+	launch_music(&v->sound);
 	while (!v->quit)
 	{
 		handle_events(v);
@@ -60,7 +67,7 @@ int			render(t_visu *v)
 		//render_background(v->scene.background);
 		glClear(GL_DEPTH_BUFFER_BIT);
 		//render_title(v->scene.title, v->scene.events);
-		render_text(v->scene.texts);
+		render_text(v->scene.texts, v->scene.events);
 		update_arena(&v->scene.arena, v->data);
 		render_arena(v->scene.arena);
 		update_counters(&v->scene.counters, v->data);

@@ -15,8 +15,10 @@ uniform mainBlock
 
 void	main()
 {
-	float scale = 0.9 - 1.0 * u.bass;
-	vec3 inst_fft = vec3(inst.xy * (1 + u.bass * 0.35), inst.z * (1. - u.bass * 2.));
+	float scale = 0.9 - 0.5 * u.bass;
+	vec3 inst_fft = vec3(inst.xy * (1 + u.bass * 0.15 +
+						((1. - pow(u.intro, 0.2)) * 50.)) ,
+						inst.z * (1. - u.bass * 2.));
 
 	gl_Position = u.projView *
 	vec4(vertexpos.xy * scale * max(0., u.intro) + inst_fft.xy,

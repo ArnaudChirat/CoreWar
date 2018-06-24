@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/23 09:30:05 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/24 15:30:38 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/24 17:05:10 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	channel_init(t_sound *sound, char *file)
 			FMOD_DEFAULT | FMOD_LOOP_NORMAL, 0, &(sound->song))) != FMOD_OK)
 		return (0);
 	if ((err = FMOD_System_PlaySound(sound->system, sound->song,
-					0, 0, &sound->channel)) != FMOD_OK)
+					0, 1, &sound->channel)) != FMOD_OK)
 		error_exit("FMOD Failed to play audio");
 	if ((err = FMOD_Sound_GetFormat(sound->song, 0, 0,
 					&sound->data.numchannels, 0)) != FMOD_OK)

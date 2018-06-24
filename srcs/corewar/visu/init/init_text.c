@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/24 12:29:56 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/24 15:17:16 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/24 16:52:20 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,9 @@ static void		init_buffers(t_text_field *text)
 
 void			init_text(t_text_field *texts, t_mesh *alphabet, t_data d)
 {
+	int	i;
+
+	i = 0;
 	(void)d;
 	texts[TXT_CYC].program = build_ogl_program(TXT_CYC_VTX, TXT_CYC_FRG);
 	texts[TXT_CYC].mesh = str_to_mesh("cycle", alphabet, TXT_CYC_POS);

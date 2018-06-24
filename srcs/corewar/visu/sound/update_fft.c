@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/23 12:12:07 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/24 15:53:58 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/24 17:11:48 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,10 @@ void			update_fft(t_sound *s)
 	if (s->mode == S_ON)
 	{
 		refresh_audio(s);
-		s->data.raw_bass = get_bins(s->data.spec->spectrum[0], 0, 2);
-		s->data.bass = get_smoothed_bass(s->data.raw_bass, s->data.bass);
+		if (s->data.spec->spectrum[0])
+		{
+			s->data.raw_bass = get_bins(s->data.spec->spectrum[0], 0, 2);
+			s->data.bass = get_smoothed_bass(s->data.raw_bass, s->data.bass);
+		}
 	}
 }
