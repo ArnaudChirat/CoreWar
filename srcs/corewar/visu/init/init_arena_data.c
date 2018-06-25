@@ -6,13 +6,13 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 15:54:38 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/24 17:39:23 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/25 18:05:54 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu.h"
 
-#define M_WIDTH 140
+#define M_WIDTH 190
 #define M_LENGTH 90
 
 static t_vec2r	find_limits(int size)

@@ -116,4 +116,5 @@ void	main()
 	
 	vec2 ret = map(eye, rd);
 	fragColor = vec4(ret.x, ret.x * ret.y * 3., ret.y, 1.);
+	fragColor.b = pow(fragColor.b, 0.6);
 }

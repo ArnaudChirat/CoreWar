@@ -6,13 +6,13 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/24 12:29:56 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/24 21:19:45 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/25 19:00:45 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu.h"
 
-#define TXT_CYC_POS (t_glfloat3){1.3, -14.8, 0.0}
+#define TXT_CYC_POS (t_glfloat3){6, -115, 0.0}
 #define TXT_CYC_VTX "srcs/corewar/visu/shaders/txt.vtx"
 #define TXT_CYC_FRG "srcs/corewar/visu/shaders/txt.frg"
 
@@ -42,10 +42,10 @@ static void		init_buffers(t_text_field *text, t_glfloat3 pos)
 
 static void		fill_name_pos(t_glfloat3 *pos)
 {
-	pos[0] = (t_glfloat3){19., 6.0, -5.5};
-	pos[1] = (t_glfloat3){19., 2.0, -5.5};
-	pos[2] = (t_glfloat3){19., -2.0, -5.5};
-	pos[3] = (t_glfloat3){19., -6.0, -5.5};
+	pos[0] = (t_glfloat3){154., 45, -25.5};
+	pos[1] = (t_glfloat3){154., 15, -25.5};
+	pos[2] = (t_glfloat3){154., -15, -25.5};
+	pos[3] = (t_glfloat3){154., -45, -25.5};
 }
 
 static void		text_rotation(t_mesh text)

@@ -20,6 +20,6 @@ void	main()
 {
 	float scale = 6.;
 
-	gl_Position = u.projView * vec4((vertexpos + world_pos) * scale, 1.);
+	gl_Position = u.projView * vec4((vertexpos * scale + world_pos), 1.);
 	vtxColor = vec4(-vertexpos.z * 8., -vertexpos.z * 8., -vertexpos.z * 8., 1.0);
 }

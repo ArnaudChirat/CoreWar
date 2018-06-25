@@ -22,9 +22,9 @@ uniform	raymarchBlock
 	vec3	eye;
 }r;
 
-const int	max_it = 40;
-const float	max_fit = 40.;
-const float max_dst = 2000.;
+const int	max_it = 90;
+const float	max_fit = 90.;
+const float max_dst = 200.;
 
 vec2	frag_to_ndc()
 {
@@ -82,7 +82,7 @@ vec2	map(vec3 eye, vec3 rd)
 
 	while (i < max_it)
 	{
-		dst = max(-cylinderfk(ray.yzx, 6.), sphere(repeat3(ray, 5.9), 3.75));
+		dst = max(-cylinderfk(ray.yzx, 6.), cylinderfk(ray.yzx, 3.6));
 		if (dst < 0.01 || length(ray - eye) > max_dst)
 			break;
 		ray = ray + dst * rd;
@@ -121,7 +121,8 @@ void	main()
 	
 	vec2 ret = map(eye, rd);
 	fragColor = vec4(ret.x / ret.y, ret.x / ret.y, max(ret.x / ret.y, ret.y * 0.2), 1.);
-	fragColor.xyz = pow(fragColor.xyz, vec3(0.5));
+	fragColor = vec4(ret.x, ret.x, ret.x, 1.0);
+	//fragColor.xyz = pow(fragColor.xyz, vec3(0.5));
 }
 /*
 	vec3 tar = vec3(0., 0.0, m.time * 60.);
