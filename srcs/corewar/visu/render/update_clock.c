@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:02:28 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/24 17:13:02 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/25 14:11:37 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_events	init_clock(void)
 	return (e);
 }
 
-void		update_clock(t_events *e)
+void		update_clock(t_visu *v, t_events *e)
 {
 	if (clock_gettime(CLOCK_MONOTONIC, &e->current) == -1)
 		error_exit("");
@@ -37,5 +37,6 @@ void		update_clock(t_events *e)
 		{
 			e->phase = PH_GAME;
 			e->intro = 1.;
+			v->pause = 0;
 		}
 }

@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/01 18:56:47 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/25 12:53:11 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/25 14:27:50 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,7 +240,7 @@ void			render(t_visu *v, t_data *d);
 
 t_events		init_clock(void);
 void			handle_events(t_visu *v);
-void			update_clock(t_events *e);
+void			update_clock(t_visu *v, t_events *e);
 void			update_camera(t_matrices *mat);
 void			update_uniforms(t_visu v);
 void			render_counters(t_counters c, t_events e);

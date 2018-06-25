@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 10:55:32 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/25 11:06:28 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/25 14:10:27 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ t_visu		init_visu(t_data *data)
 	v.controls = init_controls();
 	v.sound = init_sound();
 	v.cyc_per_frame = INIT_CPF;
+	v.pause = 1;
 	init_scene(&v, *data);
 	glClearColor(0., 0., 0., 1.);
 	glViewport(0, 0, v.win_size.x, v.win_size.y);
