@@ -6,7 +6,7 @@
 #    By: clanglai <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/07 15:30:47 by clanglai          #+#    #+#              #
-#    Updated: 2018/06/25 11:33:51 by lbelda           ###   ########.fr        #
+#    Updated: 2018/06/25 17:12:10 by lbelda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,7 +97,8 @@ SRC_VISU_RENDER=$(addprefix $(SRC_DIR_VISU_RENDER), $(SRC_FILE_VISU_RENDER))
 
 SRC_DIR_VISU_CONTROLS=controls/
 SRC_FILE_VISU_CONTROLS=handle_events.c \
-					   kb_rot.c kb_speed.c kb_misc.c
+					   kb_rot.c kb_speed.c kb_misc.c \
+					   ps3_trs.c ps3_speed.c
 SRC_VISU_CONTROLS=$(addprefix $(SRC_DIR_VISU_CONTROLS), $(SRC_FILE_VISU_CONTROLS))
 
 SRC_DIR_VISU_SOUND=sound/

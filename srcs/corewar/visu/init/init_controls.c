@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/02 12:16:07 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/20 16:45:36 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/25 17:17:08 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,14 @@ t_controls	init_controls(void)
 	c.kb_lookup[KB_P] = (t_kb_lookup){SDLK_p, &kb_none};
 	c.kb_lookup[KB_SPACE] = (t_kb_lookup){SDLK_SPACE, &kb_pause};
 	c.kb_lookup[KB_ESCAPE] = (t_kb_lookup){SDLK_ESCAPE, &kb_quit};
+	c.ps3_lookup[PS3_AXIS_LEFTX] =
+			(t_ps3_lookup){SDL_CONTROLLER_AXIS_LEFTX, &ps3_xtrs};
+	c.ps3_lookup[PS3_AXIS_LEFTY] =
+			(t_ps3_lookup){SDL_CONTROLLER_AXIS_LEFTY, &ps3_ytrs};
+	c.ps3_lookup[PS3_AXIS_TRIGGERLEFT] =
+			(t_ps3_lookup){SDL_CONTROLLER_AXIS_TRIGGERLEFT, &ps3_speed_down};
+	c.ps3_lookup[PS3_AXIS_TRIGGERRIGHT] =
+			(t_ps3_lookup){SDL_CONTROLLER_AXIS_TRIGGERRIGHT, &ps3_speed_up};
+	c.ps3_id = SDL_GameControllerOpen(0);
 	return (c);
 }
