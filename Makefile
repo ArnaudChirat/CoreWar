@@ -6,7 +6,7 @@
 #    By: clanglai <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/07 15:30:47 by clanglai          #+#    #+#              #
-#    Updated: 2018/06/24 19:58:05 by lbelda           ###   ########.fr        #
+#    Updated: 2018/06/25 11:33:51 by lbelda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,7 +101,7 @@ SRC_FILE_VISU_CONTROLS=handle_events.c \
 SRC_VISU_CONTROLS=$(addprefix $(SRC_DIR_VISU_CONTROLS), $(SRC_FILE_VISU_CONTROLS))
 
 SRC_DIR_VISU_SOUND=sound/
-SRC_FILE_VISU_SOUND=update_fft.c
+SRC_FILE_VISU_SOUND=update_fft.c sound_utils.c
 SRC_VISU_SOUND=$(addprefix $(SRC_DIR_VISU_SOUND), $(SRC_FILE_VISU_SOUND))
 
 SRC_DIR_VISU_UTILS=utils/

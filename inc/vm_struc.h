@@ -6,7 +6,7 @@
 /*   By: ccorsin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/11 11:31:37 by ccorsin           #+#    #+#             */
-/*   Updated: 2018/06/22 13:53:40 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/25 11:23:56 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,17 +98,11 @@ typedef struct			s_player
 	struct s_player	*next;
 }						t_player;
 
+
+
 /*
 ** Structure containing all the information of the game
 */
-
-typedef struct			s_vlink
-{
-	int				*cyc_sleep;
-	int				*pause;
-	int				*quit;
-	pthread_mutex_t	pause_mutex;
-}						t_vlink;
 
 typedef struct			s_data
 {
@@ -121,12 +115,12 @@ typedef struct			s_data
 	int				flag_p;
 	t_proc			*proc_list;
 	t_player		*players_list;
+	int				cyc_since_refresh;
 	int				ctd;
 	int				cyc_tot;
 	int				cy;
 	int				check;
 	int				number;
-	t_vlink			visulink;
 }						t_data;
 
 #endif

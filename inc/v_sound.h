@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/23 09:30:36 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/24 15:40:11 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/25 10:40:55 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct	s_sound
 
 t_sound			init_sound(void);
 
+void			launch_music(t_sound *sound);
 void			update_fft(t_sound *s);
 
 #endif

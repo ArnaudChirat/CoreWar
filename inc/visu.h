@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/01 18:56:47 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/24 20:46:37 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/25 12:53:11 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@
 
 # define CT_WIDTH -96
 
-# define INC_SLEEP 20000
-# define INIT_SLEEP 4000000
-# define MIN_SLEEP 100000
-# define MAX_SLEEP 300000000
+# define INC_CPF 0.01
+# define INIT_CPF 1.0
+# define MIN_CPF 0.1
+# define MAX_CPF 20.
 
 
 enum			e_progs
@@ -211,13 +211,13 @@ typedef struct	s_visu
 	SDL_Window		*win;
 	t_vec2r			win_size;
 	float			ratio;
-	t_data			*data;
 	t_controls		controls;
 	t_matrices		matrices;
 	t_scene			scene;
 	t_sound			sound;
-	int				cyc_sleep;
-	int				cyc_sleep_inc;
+	float			cyc_per_frame;
+	float			cyc_per_frame_inc;
+	int				frame_since_refresh;
 	int				pause;
 	int				quit;
 }				t_visu;
@@ -236,7 +236,7 @@ t_counters		init_counters(t_data d);
 t_mesh			create_counter_mesh(void);
 void			init_ublocks(t_visu v, t_ublock *u);
 
-int				render(t_visu *v);
+void			render(t_visu *v, t_data *d);
 
 t_events		init_clock(void);
 void			handle_events(t_visu *v);

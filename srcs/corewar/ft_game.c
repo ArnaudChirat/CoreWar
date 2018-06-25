@@ -6,11 +6,12 @@
 /*   By: ccorsin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/15 15:42:45 by ccorsin           #+#    #+#             */
-/*   Updated: 2018/06/20 16:41:46 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/25 12:28:15 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/vm.h"
+#include "vm.h"
+#include "visu.h"
 
 /*
 **	Les fonctions permettant au principal de l'action de se derouler.
@@ -116,31 +117,39 @@ void		ft_winner(void)
 **	cessus et regule le compteur de live.
 */
 
-void		*ft_game(void *d)
+static void	ft_refresh_lives(t_data *data)
 {
-	t_data	*data;
+	data->number = ft_reset_live(&data->proc_list, data->check);
+	if (data->number >= NBR_LIVE || data->check == MAX_CHECKS)
+	{
+		data->ctd = data->ctd - CYCLE_DELTA;
+		ft_kill_process(&data->proc_list, 0, data->proc_list, NULL);
+		data->check = 0;
+	}
+	else
+		data->check++;
+}
 
-	data = (t_data*)d;
-	while (data->ctd > 0 && data->proc_list != NULL && !*data->visulink.quit)
+void		ft_game(t_data *data, t_visu *visu)
+{
+	while (data->ctd > 0 && data->proc_list != NULL && !visu->quit)
 	{
 		data->cy = 0;
 		while (++data->cy < data->ctd)
 		{
-			ft_fight(&data->proc_list, *data->visulink.cyc_sleep);
+			if (data->flag_v && (int)visu->cyc_per_frame <
+									data->cyc_since_refresh)
+			{
+				render(visu, data);
+				data->cyc_since_refresh = 0;
+			}
+			ft_fight(&data->proc_list);
 			if (data->dump_val && data->dump_val == data->cyc_tot)
 				ft_print_matrix();
 			data->cyc_tot++;
+			data->cyc_since_refresh++;
 		}
-		data->number = ft_reset_live(&data->proc_list, data->check);
-		if (data->number >= NBR_LIVE || data->check == MAX_CHECKS)
-		{
-			data->ctd = data->ctd - CYCLE_DELTA;
-			ft_kill_process(&data->proc_list, 0, data->proc_list, NULL);
-			data->check = 0;
-		}
-		else
-			data->check++;
+		ft_refresh_lives(data);
 	}
 	ft_winner();
-	return (NULL);
 }

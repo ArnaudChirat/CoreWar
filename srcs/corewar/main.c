@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 18:58:08 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/24 12:19:40 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/25 12:24:56 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,22 +87,6 @@ static t_data	ft_init_data(int argc, char **argv, int i)
 	return (d);
 }
 
-static void		ft_launch_corewar(t_data *d, t_visu *v)
-{
-	pthread_t	game_thread;
-
-	g_lock = (pthread_mutex_t)PTHREAD_MUTEX_INITIALIZER;
-	v->data = d;
-	d->visulink = (t_vlink){&v->cyc_sleep, &v->pause, &v->quit,
-								PTHREAD_MUTEX_INITIALIZER};
-	if (pthread_create(&game_thread, NULL, &ft_game, (void*)d))
-		error_exit("");
-	if (d->flag_v)
-		render(v);
-	if (pthread_join(game_thread, NULL))
-		error_exit("");
-}
-
 int				main(int argc, char **argv)
 {
 	t_data	data;
@@ -117,7 +101,9 @@ int				main(int argc, char **argv)
 	ft_print_game(&(data.players_list));
 	if (data.flag_v)
 		visu = init_visu(&data);
-	ft_launch_corewar(&data, &visu);
+	else
+		visu.quit = 0;
+	ft_game(&data, &visu);
 	ft_free_data(&data);
 	ft_free_visu(&visu);
 	return (0);

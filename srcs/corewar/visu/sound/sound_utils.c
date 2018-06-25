@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   kb_rot.c                                           :+:      :+:    :+:   */
+/*   sound_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/02 12:13:09 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/25 12:09:14 by lbelda           ###   ########.fr       */
+/*   Created: 2018/06/25 10:40:20 by lbelda            #+#    #+#             */
+/*   Updated: 2018/06/25 11:34:21 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "visu.h"
+#include "v_sound.h"
 
-void	kb_speed_up(void *v, int type)
+void	launch_music(t_sound *sound)
 {
-	((t_visu *)v)->cyc_per_frame_inc =
-				(type == SDL_KEYDOWN ? INC_CPF : 0.);
-}
-
-void	kb_speed_down(void *v, int type)
-{
-	((t_visu *)v)->cyc_per_frame_inc =
-				(type == SDL_KEYDOWN ? -INC_CPF : 0.);
-}
-
-void	kb_pause(void *v, int type)
-{
-	(void)v;
-	(void)type;
+	if (FMOD_Channel_SetPaused(sound->channel, 0) != FMOD_OK)
+		error_exit("FMOD Failed to play audio");
 }

@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 18:58:18 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/20 15:59:58 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/25 11:31:06 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include "libft.h"
 # include <time.h>
 # include <ncurses.h>
+
+typedef struct s_visu t_visu;
 
 extern void		(*g_func_tab[OP_NBR + 1])(t_proc*, t_proc **);
 
@@ -66,8 +68,8 @@ void			ft_print_matrix(void);
 /*
 ** Functions in FT_GAME>C
 */
-void			*ft_game(void *d);
-void			ft_fight(t_proc **begin, unsigned int speed);
+void			ft_game(t_data *data, t_visu *visu);
+void			ft_fight(t_proc **begin);
 /*
 ** Functions in FT_PROCESS>C
 */
