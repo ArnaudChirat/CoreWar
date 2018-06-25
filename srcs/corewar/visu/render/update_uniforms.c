@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 10:28:02 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/23 11:33:44 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/25 15:57:58 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static void	update_main_block(t_scene s, t_matrices m, t_sound so)
 			U_MAIN_INTRO, sizeof(float), &s.events.intro);
 	glBufferSubData(GL_UNIFORM_BUFFER,
 			U_MAIN_BASS, sizeof(float), &so.data.bass);
+	glBufferSubData(GL_UNIFORM_BUFFER,
+			U_MAIN_SPEED, sizeof(float), &m.speed);
 	glBindBuffer(GL_UNIFORM_BUFFER, 0);
 }
 

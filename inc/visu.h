@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/01 18:56:47 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/25 14:27:50 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/25 15:36:03 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,7 +161,8 @@ enum			e_ubo_main_sizes
 	U_MAIN_TIME = U_MAIN_RATIO + sizeof(float),
 	U_MAIN_INTRO = U_MAIN_TIME + sizeof(float),
 	U_MAIN_BASS = U_MAIN_INTRO + sizeof(float),
-	U_MAIN_TOT = U_MAIN_BASS + sizeof(float)
+	U_MAIN_SPEED = U_MAIN_BASS + sizeof(float),
+	U_MAIN_TOT = U_MAIN_SPEED + sizeof(float)
 };
 
 enum			e_ubo_raymarch_sizes
@@ -215,6 +216,7 @@ typedef struct	s_visu
 	t_matrices		matrices;
 	t_scene			scene;
 	t_sound			sound;
+	float			speed;
 	float			cyc_per_frame;
 	float			cyc_per_frame_inc;
 	int				frame_since_refresh;

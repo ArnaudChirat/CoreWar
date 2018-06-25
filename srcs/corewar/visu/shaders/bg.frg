@@ -14,6 +14,7 @@ uniform mainBlock
 	float time;
 	float intro;
 	float bass;
+	float speed;
 }m;
 
 uniform	raymarchBlock

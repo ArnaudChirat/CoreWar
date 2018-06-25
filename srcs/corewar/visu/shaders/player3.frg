@@ -10,6 +10,7 @@ uniform mainBlock
 	float time;
 	float intro;
 	float bass;
+	float speed;
 }u;
 
 uniform	raymarchBlock
@@ -103,8 +104,8 @@ void	main()
 	vec3 up = vec3(1.0 * sin(u.time * 0.4), 1.0 * cos(u.time * 0.4), 0.0);
 	*/
 
-	vec3 eye = vec3(r.eye.z + u.time * 15., r.eye.y, -r.eye.x);
-	vec3 tar = vec3(u.time * 15. + 1.0, 0.0, 0.0);
+	vec3 eye = vec3(r.eye.z, r.eye.y, -r.eye.x);
+	vec3 tar = vec3(eye.x + 4.0, 0.0, 0.0);
 	vec3 up = vec3(0.0, 1.0, 0.0);
 
 	vec3 z_vec = normalize(tar - eye);

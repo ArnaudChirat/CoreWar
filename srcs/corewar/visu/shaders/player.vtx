@@ -11,6 +11,7 @@ uniform mainBlock
 	float time;
 	float intro;
 	float bass;
+	float speed;
 }u;
 
 void	main()

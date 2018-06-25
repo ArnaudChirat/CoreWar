@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 12:21:02 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/24 18:13:44 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/25 15:57:44 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct	s_matrices
 	float	inc_ypos;
 	float	inc_zpos;
 	float	inc_scale;
+	float	speed;
 	t_vec4	eye;
 	t_vec4	tar;
 	t_vec4	up;

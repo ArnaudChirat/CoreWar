@@ -6,13 +6,14 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:02:28 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/25 14:11:37 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/25 16:30:17 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu.h"
 
 #define SEC_INTRO 8.3
+//#define SEC_INTRO 0.3
 
 t_events	init_clock(void)
 {

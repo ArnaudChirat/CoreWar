@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 12:23:26 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/25 14:11:20 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/25 16:48:37 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static void	update_cyc_per_frame(t_visu *v)
 {
 	v->cyc_per_frame += v->cyc_per_frame_inc;
 	v->cyc_per_frame = ft_fclamp(MIN_CPF, MAX_CPF, v->cyc_per_frame);
+	v->matrices.speed = (v->pause ? 0. : log10f(v->cyc_per_frame * 0.85 + 1.));
 }
 
 void			render(t_visu *v, t_data *d)
