@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 12:23:26 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/25 18:30:16 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/26 15:04:32 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,7 @@
    glBindVertexArray(0);
    glUseProgram(0);
    }
-
-   static void	render_title(t_title t, t_events e)
-   {
-   if (e.phase == PH_INTRO)
-   {
-   glUseProgram(t.program);
-   glBindVertexArray(t.vao);
-   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, t.ibo);
-   glDrawElements(GL_TRIANGLES, t.mesh.nb_indices, GL_UNSIGNED_INT, NULL);
-   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-   glBindVertexArray(0);
-   glUseProgram(0);
-   }
-   }
-   */
+*/
 
 static void	update_cyc_per_frame(t_visu *v)
 {
@@ -60,7 +46,6 @@ void			render(t_visu *v, t_data *d)
 		update_uniforms(*v);
 		//render_background(v->scene.background);
 		glClear(GL_DEPTH_BUFFER_BIT);
-		//render_title(v->scene.title, v->scene.events);
 		render_text(v->scene.texts, v->scene.events);
 		update_arena(&v->scene.arena, d);
 		render_arena(v->scene.arena);

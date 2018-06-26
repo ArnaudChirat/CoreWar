@@ -6,7 +6,7 @@
 #    By: clanglai <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/07 15:30:47 by clanglai          #+#    #+#              #
-#    Updated: 2018/06/25 17:12:10 by lbelda           ###   ########.fr        #
+#    Updated: 2018/06/26 15:24:11 by lbelda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,10 @@ FLAGS=-Wall -Wextra
 
 ifneq ($(NOERR),yes)
 	FLAGS += -Werror
+endif
+
+ifeq ($(FSAN),yes)
+	FLAGS += -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls
 endif
 
 ASM_DIR=asm/
@@ -83,7 +87,7 @@ SRC_INSTRUCTIONS= $(addprefix $(PATH_SRC)$(COREWAR_DIR)$(INSTRUCTIONS_PATH), $(S
 SRC_DIR_VISU_INIT=init/
 SRC_FILE_VISU_INIT=init_visu.c \
 				   init_matrices.c init_sound.c init_controls.c \
-				   init_scene.c init_title.c \
+				   init_scene.c\
 				   init_3d_alphabet.c init_text.c str_to_mesh.c \
 				   init_arena.c init_arena_data.c create_arena_mesh.c \
 				   init_counters.c create_counter_mesh.c \
@@ -107,7 +111,7 @@ SRC_VISU_SOUND=$(addprefix $(SRC_DIR_VISU_SOUND), $(SRC_FILE_VISU_SOUND))
 
 SRC_DIR_VISU_UTILS=utils/
 SRC_FILE_VISU_UTILS=ogl_utils.c build_ogl_program.c obj_parser.c \
-					protec.c clean.c error.c
+					protec.c clean.c clean_scene.c clean_utils.c error.c
 SRC_VISU_UTILS=$(addprefix $(SRC_DIR_VISU_UTILS), $(SRC_FILE_VISU_UTILS))
 
 SRC_DIR_VISU=$(addprefix $(PATH_SRC), $(addprefix $(COREWAR_DIR), $(VISU_DIR)))

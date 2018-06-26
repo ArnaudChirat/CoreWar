@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 10:55:32 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/25 14:10:27 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/26 15:47:44 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,26 +52,37 @@ static void	init_sdl(t_visu *v)
 		error_exit(SDL_GetError());
 }
 
-t_visu		init_visu(t_data *data)
+static void	init_shared_vars(t_visu *v)
 {
-	t_visu	v;
+	v->quit = 0;
+	v->pause = 0;
+}
 
-	ft_bzero(&v, sizeof(t_visu));
-	init_sdl(&v);
+t_visu		*init_visu(t_data *data)
+{
+	t_visu	*v;
+
+	m_pro_null(v = ft_memalloc(sizeof(t_visu)));
+	if (!data->flag_v)
+	{
+		init_shared_vars(v);
+		return (v);
+	}
+	init_sdl(v);
 	compat();
-	v.matrices = init_matrices();
-	v.controls = init_controls();
-	v.sound = init_sound();
-	v.cyc_per_frame = INIT_CPF;
-	v.pause = 1;
-	init_scene(&v, *data);
+	v->matrices = init_matrices();
+	v->controls = init_controls();
+	v->sound = init_sound();
+	v->cyc_per_frame = INIT_CPF;
+	v->pause = 1;
+	init_scene(v, *data);
 	glClearColor(0., 0., 0., 1.);
-	glViewport(0, 0, v.win_size.x, v.win_size.y);
+	glViewport(0, 0, v->win_size.x, v->win_size.y);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glDepthFunc(GL_LESS);
-	v.scene.events = init_clock();
-	launch_music(&v.sound);
+	v->scene.events = init_clock();
+	launch_music(&v->sound);
 	return (v);
 }

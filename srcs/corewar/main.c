@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 18:58:08 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/25 12:24:56 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/26 15:56:41 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ static t_data	ft_init_data(int argc, char **argv, int i)
 int				main(int argc, char **argv)
 {
 	t_data	data;
-	t_visu	visu;
+	t_visu	*visu;
 
 	ft_control_define();
 	ft_basic_control(argc);
@@ -99,12 +99,10 @@ int				main(int argc, char **argv)
 	if (data.flag_p)
 		ft_print_player(data.players_list);
 	ft_print_game(&(data.players_list));
-	if (data.flag_v)
-		visu = init_visu(&data);
-	else
-		visu.quit = 0;
-	ft_game(&data, &visu);
+	visu = init_visu(&data);
+	ft_game(&data, visu);
 	ft_free_data(&data);
-	ft_free_visu(&visu);
+	ft_free_visu(visu);
+	getchar();
 	return (0);
 }

@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   protec.c                                           :+:      :+:    :+:   */
+/*   clean_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/24 13:07:22 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/26 14:54:08 by lbelda           ###   ########.fr       */
+/*   Created: 2018/06/26 13:24:34 by lbelda            #+#    #+#             */
+/*   Updated: 2018/06/26 14:58:12 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "v_common.h"
+#include "visu.h"
 
-void	m_pro(int ret)
+void	free_mesh(t_mesh *mesh)
 {
-	if (ret == -1)
-		error_exit("malloc error");
+	free_pro((void**)&mesh->coords);
+	free_pro((void**)&mesh->indices);
+	free_pro((void**)&mesh->indices_uni);
 }
 
-void	m_pro_null(void *ret)
+void	free_text_field(t_text_field *txt)
 {
-	if (!ret)
-		error_exit("malloc error");
-}
-
-void	free_pro(void **ptr)
-{
-	if (*ptr)
-	{
-		free(*ptr);
-		*ptr = NULL;
-	}
+	free_mesh(&txt->mesh);
+	glDeleteBuffers(1, &txt->vbo);
+	glDeleteBuffers(1, &txt->ibo);
+	glDeleteProgram(txt->program);
 }

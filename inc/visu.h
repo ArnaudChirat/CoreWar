@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/01 18:56:47 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/25 17:50:34 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/26 15:46:30 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@
 enum			e_progs
 {
 	PROG_BG,
-	PROG_TITLE,
 	PROG_TXT,
 	PROG_TXT_PL1,
 	PROG_TXT_PL2,
@@ -92,15 +91,6 @@ typedef struct	s_background
 	GLuint	vbo;
 	GLuint	ibo;
 }				t_background;
-
-typedef struct	s_title
-{
-	GLuint		program;
-	GLuint		vao;
-	GLuint		vbo;
-	GLuint		ibo;
-	t_mesh		mesh;
-}				t_title;
 
 enum			e_text_fields
 {
@@ -197,7 +187,6 @@ typedef struct	s_scene
 {
 	t_events		events;
 	t_background	background;
-	t_title			title;
 	t_v_arena		arena;
 	t_counters		counters;
 	t_mesh			alphabet_3d[A_MAX];
@@ -224,10 +213,9 @@ typedef struct	s_visu
 	int				quit;
 }				t_visu;
 
-t_visu			init_visu(t_data *data);
+t_visu			*init_visu(t_data *data);
 void			init_scene(t_visu *v, t_data data);
 void			init_3d_alphabet(t_mesh *alphabet);
-t_title			init_title(void);
 void			init_text(t_text_field *texts, t_mesh *alphabet,
 								t_data d, char **shader_paths);
 t_mesh			str_to_mesh(const char *str, t_mesh *alphabet);
@@ -252,6 +240,9 @@ void			render_arena(t_v_arena a);
 void			render_text(t_text_field *texts, t_events e);
 
 void			ft_free_visu(t_visu *v);
+void			free_scene(t_scene *scene);
+void			free_mesh(t_mesh *mesh);
+void			free_text_field(t_text_field *txt);
 void			error_exit(const char *str);
 
 #endif
