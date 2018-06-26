@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/24 12:29:56 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/26 10:02:07 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/26 17:08:01 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ static void		init_buffers(t_text_field *text, t_glfloat3 pos)
 static void		fill_name_pos(t_glfloat3 *pos)
 {
 	pos[0] = (t_glfloat3){154., 45, -25.5};
-	pos[1] = (t_glfloat3){154., 15, -25.5};
-	pos[2] = (t_glfloat3){154., -15, -25.5};
-	pos[3] = (t_glfloat3){154., -45, -25.5};
+	pos[1] = (t_glfloat3){-124., 45, -15.5};
+	pos[2] = (t_glfloat3){154., -45, -25.5};
+	pos[3] = (t_glfloat3){-124., -45, -15.5};
 }
 
-static void		text_rotation(t_mesh text)
+static void		text_rotation(t_mesh text, float angle)
 {
 	int		i;
 	t_vec3	tmp;
@@ -56,7 +56,7 @@ static void		text_rotation(t_mesh text)
 	i = -1;
 	while (++i < text.nb_vtx)
 	{
-		tmp = mat4xvec4_tovec3(rotymat4new(55.),
+		tmp = mat4xvec4_tovec3(rotymat4new(angle),
 						(t_vec4){text.coords[i].x,
 						text.coords[i].y, text.coords[i].z, 1.0});
 		text.coords[i] = (t_glfloat3){tmp.x, tmp.y, tmp.z};
@@ -82,7 +82,7 @@ void			init_text(t_text_field *texts, t_mesh *alphabet,
 										shader_paths[(i + 1) * 2 + 1]);
 		texts[TXT_PL1 + i].mesh = str_to_mesh(flag ? "" : d.players_list->name,
 											alphabet);
-		text_rotation(texts[TXT_PL1 + i].mesh);
+		text_rotation(texts[TXT_PL1 + i].mesh, i % 2 ? -55 : 55);
 		init_buffers(&texts[TXT_PL1 + i], name_pos[i]);
 		if (!flag)
 			d.players_list = d.players_list->next;
