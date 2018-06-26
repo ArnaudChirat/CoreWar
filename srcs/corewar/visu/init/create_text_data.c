@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 22:50:36 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/26 23:23:23 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/26 23:33:01 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@
 #define LIVE_OF 16.
 
 #define ROT -0.4
+
+#define SCALE_BIG 8.
+#define SCALE_MEDIUM 6.
+#define SCALE_SMALL 4.
 
 static void	create_pos_data(t_glfloat3 *pos)
 {
@@ -59,8 +63,12 @@ static void	create_scale_data(float *scale)
 	int	i;
 
 	i = -1;
-	while (++i < TXT_MAX)
-		scale[i] = 6.;
+	i = TXT_PL1;
+	scale[TXT_CYC] = SCALE_BIG;
+	while (i <= TXT_PL4)
+		scale[i++] = SCALE_MEDIUM;
+	while (i < TXT_MAX)
+		scale[i++] = SCALE_SMALL;
 }
 
 void		create_text_data(t_text_data *data)

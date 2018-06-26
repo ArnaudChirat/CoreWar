@@ -5,6 +5,7 @@ out vec4 vtxColor;
 
 uniform vec3 world_pos;
 uniform float model_rot;
+uniform float scale;
 
 uniform mainBlock
 {
@@ -19,7 +20,6 @@ uniform mainBlock
 
 void	main()
 {
-	float scale = 6.;
 	mat3 rot = mat3(cos(model_rot), 0., -sin(model_rot),
 					0., 1.0, 0.,
 					sin(model_rot), 0., cos(model_rot));

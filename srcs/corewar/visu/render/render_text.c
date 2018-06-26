@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/24 14:30:09 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/26 23:16:03 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/26 23:29:45 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	render_text(t_text_field *texts, t_text_data txt_data,
 				glUniform3f(texts[i].u_world_pos,
 					txt_data.pos[i].x, txt_data.pos[i].y, txt_data.pos[i].z);
 				glUniform1f(texts[i].u_model_rot, txt_data.rot[i]);
+				glUniform1f(texts[i].u_scale, txt_data.scale[i]);
 				glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, texts[i].ibo);
 				glDrawElements(GL_TRIANGLES, texts[i].mesh.nb_indices,
 						GL_UNSIGNED_INT, NULL);
