@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 13:03:18 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/26 15:05:30 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/26 19:30:26 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,16 @@
 
 #define VTX_BG "srcs/corewar/visu/shaders/bg.vtx"
 #define FRG_BG "srcs/corewar/visu/shaders/bg.frg"
+
+#define L_ALIGN 154.
+#define R_ALIGN -124.
+#define B_ALIGN -45.
+#define U_ALIGN 45.
+#define Z_LEFT -25.5
+#define Z_RIGHT -15.5
+
+#define PROC_OF 8.
+#define LIVE_OF 16.
 
 static void			quad_buffers(t_vec2 *vertices, GLuint *indices)
 {
@@ -25,6 +35,23 @@ static void			quad_buffers(t_vec2 *vertices, GLuint *indices)
 	indices[1] = 1;
 	indices[2] = 2;
 	indices[3] = 3;
+}
+
+static void			init_texts_pos(t_glfloat3 *pos)
+{
+	pos[TXT_CYC] = (t_glfloat3){6, -115, 0.0};
+	pos[TXT_PL1] = (t_glfloat3){L_ALIGN, U_ALIGN, Z_LEFT};
+	pos[TXT_PL2] = (t_glfloat3){R_ALIGN, U_ALIGN, Z_RIGHT};
+	pos[TXT_PL3] = (t_glfloat3){L_ALIGN, B_ALIGN, Z_LEFT};
+	pos[TXT_PL4] = (t_glfloat3){R_ALIGN, B_ALIGN, Z_RIGHT};
+	pos[TXT_PL1_PROC] = (t_glfloat3){L_ALIGN, U_ALIGN - PROC_OF, Z_LEFT};
+	pos[TXT_PL2_PROC] = (t_glfloat3){R_ALIGN, U_ALIGN - PROC_OF, Z_RIGHT};
+	pos[TXT_PL3_PROC] = (t_glfloat3){L_ALIGN, B_ALIGN - PROC_OF, Z_LEFT};
+	pos[TXT_PL4_PROC] = (t_glfloat3){R_ALIGN, B_ALIGN - PROC_OF, Z_RIGHT};
+	pos[TXT_PL1_LIVE] = (t_glfloat3){L_ALIGN, U_ALIGN - LIVE_OF, Z_LEFT};
+	pos[TXT_PL2_LIVE] = (t_glfloat3){R_ALIGN, U_ALIGN - LIVE_OF, Z_RIGHT};
+	pos[TXT_PL3_LIVE] = (t_glfloat3){L_ALIGN, B_ALIGN - LIVE_OF, Z_LEFT};
+	pos[TXT_PL4_LIVE] = (t_glfloat3){R_ALIGN, B_ALIGN - LIVE_OF, Z_RIGHT};
 }
 
 static t_background	init_background(void)
@@ -54,6 +81,24 @@ static t_background	init_background(void)
 	return (bg);
 }
 
+static void			fill_players_on(t_data d, int *pl_on)
+{
+	int	i;
+
+	i = 0;
+	while (d.players_list)
+	{
+		pl_on[i] = 1;
+		i++;
+		d.players_list = d.players_list->next;
+	}
+	while (i < MAX_PLAYERS)
+	{
+		pl_on[i] = 0;
+		i++;
+	}
+}
+
 void				init_scene(t_visu *v, t_data data)
 {
 	int	i;
@@ -67,10 +112,14 @@ void				init_scene(t_visu *v, t_data data)
 	i = -1;
 	while (++i < MAX_PLAYERS + 1)
 		v->scene.all_programs[i + PROG_PLN] = v->scene.arena.programs[i];
+	init_texts_pos(v->scene.texts_pos);
 	init_text(v->scene.texts, v->scene.alphabet_3d,
 						data, v->scene.arena.shader_paths);
 	i = -1;
-	while (++i < TXT_MAX)
+	while (++i < TXT_PL1_PROC)
 		v->scene.all_programs[i + PROG_TXT] = v->scene.texts[i].program;
+	init_text_info(v->scene.texts, v->scene.alphabet_3d,
+						data, v->scene.all_programs[PROG_TXT]);
 	init_ublocks(*v, v->scene.ublocks);
+	fill_players_on(data, v->scene.pl_on);
 }

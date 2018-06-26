@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/01 18:56:47 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/26 16:12:31 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/26 19:00:16 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,14 @@ enum			e_text_fields
 	TXT_PL2,
 	TXT_PL3,
 	TXT_PL4,
+	TXT_PL1_PROC,
+	TXT_PL2_PROC,
+	TXT_PL3_PROC,
+	TXT_PL4_PROC,
+	TXT_PL1_LIVE,
+	TXT_PL2_LIVE,
+	TXT_PL3_LIVE,
+	TXT_PL4_LIVE,
 	TXT_MAX
 };
 
@@ -190,8 +198,10 @@ typedef struct	s_scene
 	t_counters		counters;
 	t_mesh			alphabet_3d[A_MAX];
 	t_text_field	texts[TXT_MAX];
+	t_glfloat3		texts_pos[TXT_MAX];
 	t_ublock		ublocks[UBO_MAX];
 	GLuint			all_programs[PROG_MAX];
+	int				pl_on[MAX_PLAYERS];
 }				t_scene;
 
 typedef struct	s_visu
@@ -217,7 +227,11 @@ void			init_scene(t_visu *v, t_data data);
 void			init_3d_alphabet(t_mesh *alphabet);
 void			init_text(t_text_field *texts, t_mesh *alphabet,
 								t_data d, char **shader_paths);
+void			init_text_info(t_text_field *texts, t_mesh *alphabet,
+								t_data d, GLuint program);
 t_mesh			str_to_mesh(const char *str, t_mesh *alphabet);
+void			text_rotation(t_mesh text, float angle);
+void			init_text_buffers(t_text_field *text);
 t_v_arena		init_arena(t_data data);
 void			init_arena_data(t_v_arena *a, t_data data);
 t_mesh			create_arena_mesh(void);
@@ -236,7 +250,8 @@ void			render_counters(t_counters c, t_events e);
 void			update_counters(t_counters *c, t_data *d);
 void			update_arena(t_v_arena *a, t_data *d);
 void			render_arena(t_v_arena a);
-void			render_text(t_text_field *texts, t_events e);
+void			render_text(t_text_field *texts, t_glfloat3 *u_pos,
+									t_events e, int *pl_on);
 
 void			ft_free_visu(t_visu *v);
 void			free_scene(t_scene *scene);

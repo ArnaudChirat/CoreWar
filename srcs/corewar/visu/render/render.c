@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 12:23:26 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/26 16:01:47 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/26 19:12:56 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void			render(t_visu *v, t_data *d)
 		update_clock(v, &v->scene.events);
 		update_camera(&v->matrices);
 		update_uniforms(*v);
-		glClear(GL_DEPTH_BUFFER_BIT);
-		render_text(v->scene.texts, v->scene.events);
+		render_text(v->scene.texts, v->scene.texts_pos,
+						v->scene.events, v->scene.pl_on);
 		update_arena(&v->scene.arena, d);
 		render_arena(v->scene.arena);
 		update_counters(&v->scene.counters, d);
