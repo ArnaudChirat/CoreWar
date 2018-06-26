@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/24 11:28:29 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/24 11:48:12 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/26 13:16:09 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	init_3d_alphabet(t_mesh *alphabet)
 	i_letter = ft_strlen(PATH_PREFIX);
 	ft_strcpy(path, PATH_PREFIX);
 	ft_strcpy(&path[i_letter + 1], PATH_SUFFIX);
-	while (i <= A_MAX)
+	while (i < A_MAX)
 	{
 		path[i_letter] = letter;
 		alphabet[i] = obj_parser(path);
