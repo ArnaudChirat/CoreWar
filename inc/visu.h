@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/01 18:56:47 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/26 19:00:16 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/26 23:18:10 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,9 +115,21 @@ typedef struct	s_text_field
 	GLuint		vao;
 	GLuint		vbo;
 	GLuint		ibo;
+	t_glfloat3	world_pos;
 	GLint		u_world_pos;
+	float		model_rot;
+	GLint		u_model_rot;
+	float		scale;
+	GLint		u_scale;
 	t_mesh		mesh;
 }				t_text_field;
+
+typedef struct	s_text_data
+{
+	t_glfloat3	pos[TXT_MAX];
+	float		rot[TXT_MAX];
+	float		scale[TXT_MAX];
+}				t_text_data;
 
 typedef struct	s_v_arena
 {
@@ -198,7 +210,7 @@ typedef struct	s_scene
 	t_counters		counters;
 	t_mesh			alphabet_3d[A_MAX];
 	t_text_field	texts[TXT_MAX];
-	t_glfloat3		texts_pos[TXT_MAX];
+	t_text_data		texts_data;
 	t_ublock		ublocks[UBO_MAX];
 	GLuint			all_programs[PROG_MAX];
 	int				pl_on[MAX_PLAYERS];
@@ -225,6 +237,7 @@ typedef struct	s_visu
 t_visu			*init_visu(t_data *data);
 void			init_scene(t_visu *v, t_data data);
 void			init_3d_alphabet(t_mesh *alphabet);
+void			create_text_data(t_text_data *data);
 void			init_text(t_text_field *texts, t_mesh *alphabet,
 								t_data d, char **shader_paths);
 void			init_text_info(t_text_field *texts, t_mesh *alphabet,
@@ -250,7 +263,7 @@ void			render_counters(t_counters c, t_events e);
 void			update_counters(t_counters *c, t_data *d);
 void			update_arena(t_v_arena *a, t_data *d);
 void			render_arena(t_v_arena a);
-void			render_text(t_text_field *texts, t_glfloat3 *u_pos,
+void			render_text(t_text_field *texts, t_text_data txt_data,
 									t_events e, int *pl_on);
 
 void			ft_free_visu(t_visu *v);

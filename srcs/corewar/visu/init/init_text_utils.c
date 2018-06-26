@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 18:23:59 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/26 18:58:40 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/26 22:31:42 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void		init_text_buffers(t_text_field *text)
 					text->mesh.indices, GL_STATIC_DRAW);
 	text->u_world_pos =
 		glGetUniformLocation(text->program, "world_pos");
+	text->u_model_rot =
+		glGetUniformLocation(text->program, "model_rot");
 	glBindVertexArray(0);
 	glUseProgram(0);
 }

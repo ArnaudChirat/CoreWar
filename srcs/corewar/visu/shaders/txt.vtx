@@ -4,6 +4,7 @@ layout(location = 0) in vec3 vertexpos;
 out vec4 vtxColor;
 
 uniform vec3 world_pos;
+uniform float model_rot;
 
 uniform mainBlock
 {
@@ -19,7 +20,10 @@ uniform mainBlock
 void	main()
 {
 	float scale = 6.;
+	mat3 rot = mat3(cos(model_rot), 0., -sin(model_rot),
+					0., 1.0, 0.,
+					sin(model_rot), 0., cos(model_rot));
 
-	gl_Position = u.projView * vec4((vertexpos * scale + world_pos), 1.);
+	gl_Position = u.projView * vec4((rot * (vertexpos * scale) + world_pos), 1.);
 	vtxColor = vec4(-vertexpos.z * 8., -vertexpos.z * 8., -vertexpos.z * 8., 1.0);
 }

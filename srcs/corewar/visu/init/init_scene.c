@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 13:03:18 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/26 19:30:26 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/26 23:17:56 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,6 @@
 
 #define VTX_BG "srcs/corewar/visu/shaders/bg.vtx"
 #define FRG_BG "srcs/corewar/visu/shaders/bg.frg"
-
-#define L_ALIGN 154.
-#define R_ALIGN -124.
-#define B_ALIGN -45.
-#define U_ALIGN 45.
-#define Z_LEFT -25.5
-#define Z_RIGHT -15.5
-
-#define PROC_OF 8.
-#define LIVE_OF 16.
 
 static void			quad_buffers(t_vec2 *vertices, GLuint *indices)
 {
@@ -35,23 +25,6 @@ static void			quad_buffers(t_vec2 *vertices, GLuint *indices)
 	indices[1] = 1;
 	indices[2] = 2;
 	indices[3] = 3;
-}
-
-static void			init_texts_pos(t_glfloat3 *pos)
-{
-	pos[TXT_CYC] = (t_glfloat3){6, -115, 0.0};
-	pos[TXT_PL1] = (t_glfloat3){L_ALIGN, U_ALIGN, Z_LEFT};
-	pos[TXT_PL2] = (t_glfloat3){R_ALIGN, U_ALIGN, Z_RIGHT};
-	pos[TXT_PL3] = (t_glfloat3){L_ALIGN, B_ALIGN, Z_LEFT};
-	pos[TXT_PL4] = (t_glfloat3){R_ALIGN, B_ALIGN, Z_RIGHT};
-	pos[TXT_PL1_PROC] = (t_glfloat3){L_ALIGN, U_ALIGN - PROC_OF, Z_LEFT};
-	pos[TXT_PL2_PROC] = (t_glfloat3){R_ALIGN, U_ALIGN - PROC_OF, Z_RIGHT};
-	pos[TXT_PL3_PROC] = (t_glfloat3){L_ALIGN, B_ALIGN - PROC_OF, Z_LEFT};
-	pos[TXT_PL4_PROC] = (t_glfloat3){R_ALIGN, B_ALIGN - PROC_OF, Z_RIGHT};
-	pos[TXT_PL1_LIVE] = (t_glfloat3){L_ALIGN, U_ALIGN - LIVE_OF, Z_LEFT};
-	pos[TXT_PL2_LIVE] = (t_glfloat3){R_ALIGN, U_ALIGN - LIVE_OF, Z_RIGHT};
-	pos[TXT_PL3_LIVE] = (t_glfloat3){L_ALIGN, B_ALIGN - LIVE_OF, Z_LEFT};
-	pos[TXT_PL4_LIVE] = (t_glfloat3){R_ALIGN, B_ALIGN - LIVE_OF, Z_RIGHT};
 }
 
 static t_background	init_background(void)
@@ -112,7 +85,7 @@ void				init_scene(t_visu *v, t_data data)
 	i = -1;
 	while (++i < MAX_PLAYERS + 1)
 		v->scene.all_programs[i + PROG_PLN] = v->scene.arena.programs[i];
-	init_texts_pos(v->scene.texts_pos);
+	create_text_data(&v->scene.texts_data);
 	init_text(v->scene.texts, v->scene.alphabet_3d,
 						data, v->scene.arena.shader_paths);
 	i = -1;

@@ -6,13 +6,13 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/24 14:30:09 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/26 19:26:10 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/26 23:16:03 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu.h"
 
-void	render_text(t_text_field *texts, t_glfloat3 *u_pos,
+void	render_text(t_text_field *texts, t_text_data txt_data,
 									t_events e, int *pl_on)
 {
 	int	i;
@@ -29,7 +29,8 @@ void	render_text(t_text_field *texts, t_glfloat3 *u_pos,
 				glUseProgram(texts[i].program);
 				glBindVertexArray(texts[i].vao);
 				glUniform3f(texts[i].u_world_pos,
-						u_pos[i].x, u_pos[i].y, u_pos[i].z);
+					txt_data.pos[i].x, txt_data.pos[i].y, txt_data.pos[i].z);
+				glUniform1f(texts[i].u_model_rot, txt_data.rot[i]);
 				glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, texts[i].ibo);
 				glDrawElements(GL_TRIANGLES, texts[i].mesh.nb_indices,
 						GL_UNSIGNED_INT, NULL);

@@ -6,7 +6,7 @@
 #    By: achirat <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/26 11:41:55 by achirat           #+#    #+#              #
-#    Updated: 2018/06/26 18:28:11 by lbelda           ###   ########.fr        #
+#    Updated: 2018/06/26 22:52:40 by lbelda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,7 +88,7 @@ SRC_DIR_VISU_INIT=init/
 SRC_FILE_VISU_INIT=init_visu.c \
 				   init_matrices.c init_sound.c init_controls.c \
 				   init_scene.c\
-				   init_text.c init_text_info.c \
+				   init_text.c init_text_info.c create_text_data.c \
 				   init_3d_alphabet.c init_text_utils.c str_to_mesh.c \
 				   init_arena.c init_arena_data.c create_arena_mesh.c \
 				   init_counters.c create_counter_mesh.c \

@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 18:17:11 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/26 19:16:00 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/26 23:02:26 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ void			init_text_info(t_text_field *texts, t_mesh *alphabet,
 		texts[TXT_PL1_PROC + i].mesh = str_to_mesh("proc", alphabet);
 		texts[TXT_PL1_LIVE + i].program = program;
 		texts[TXT_PL1_LIVE + i].mesh = str_to_mesh("live", alphabet);
-		text_rotation(texts[TXT_PL1_PROC + i].mesh, i % 2 ? -55 : 55);
-		text_rotation(texts[TXT_PL1_LIVE + i].mesh, i % 2 ? -55 : 55);
 		init_text_buffers(&texts[TXT_PL1_PROC + i]);
 		init_text_buffers(&texts[TXT_PL1_LIVE + i]);
 		if (!flag)
