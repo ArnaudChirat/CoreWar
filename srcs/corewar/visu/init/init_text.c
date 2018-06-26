@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/24 12:29:56 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/25 19:00:45 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/26 10:02:07 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,11 @@ void			init_text(t_text_field *texts, t_mesh *alphabet,
 								t_data d, char **shader_paths)
 {
 	int			i;
+	int			flag;
 	t_glfloat3	name_pos[MAX_PLAYERS];
 
 	i = -1;
+	flag = 0;
 	fill_name_pos(name_pos);
 	texts[TXT_CYC].program = build_ogl_program(TXT_CYC_VTX, TXT_CYC_FRG);
 	texts[TXT_CYC].mesh = str_to_mesh("cycle", alphabet);
@@ -78,10 +80,13 @@ void			init_text(t_text_field *texts, t_mesh *alphabet,
 	{
 		texts[TXT_PL1 + i].program = build_ogl_program(TXT_CYC_VTX,
 										shader_paths[(i + 1) * 2 + 1]);
-		texts[TXT_PL1 + i].mesh = str_to_mesh(d.players_list->name,
+		texts[TXT_PL1 + i].mesh = str_to_mesh(flag ? "" : d.players_list->name,
 											alphabet);
 		text_rotation(texts[TXT_PL1 + i].mesh);
 		init_buffers(&texts[TXT_PL1 + i], name_pos[i]);
-		d.players_list = d.players_list->next;
+		if (!flag)
+			d.players_list = d.players_list->next;
+		if (d.players_list == NULL)
+			flag = 1;
 	}
 }
