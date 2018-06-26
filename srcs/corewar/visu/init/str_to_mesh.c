@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/24 19:52:44 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/24 20:47:42 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/26 16:01:15 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ static void		add_letter_to_str(t_mesh *str, t_mesh letter, int pos)
 {
 	int	i;
 
-	m_pro_null(str->indices = realloc(str->indices, sizeof(GLuint) * 
+	m_pro_null(str->indices = realloc(str->indices, sizeof(GLuint) *
 				(str->nb_indices + letter.nb_indices)));
-	m_pro_null(str->coords = realloc(str->coords, sizeof(t_glfloat3) * 
+	m_pro_null(str->coords = realloc(str->coords, sizeof(t_glfloat3) *
 				(str->nb_vtx + letter.nb_vtx)));
 	i = str->nb_indices - 1;
 	while (++i < str->nb_indices + letter.nb_indices)

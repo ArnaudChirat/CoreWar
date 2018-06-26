@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 18:58:18 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/25 11:31:06 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/26 16:12:49 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <time.h>
 # include <ncurses.h>
 
-typedef struct s_visu t_visu;
+typedef struct s_visu	t_visu;
 
 extern void		(*g_func_tab[OP_NBR + 1])(t_proc*, t_proc **);
 

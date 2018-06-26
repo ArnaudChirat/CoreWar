@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 18:58:08 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/26 15:56:41 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/26 16:13:43 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,5 @@ int				main(int argc, char **argv)
 	ft_game(&data, visu);
 	ft_free_data(&data);
 	ft_free_visu(visu);
-	getchar();
 	return (0);
 }

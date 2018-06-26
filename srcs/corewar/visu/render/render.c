@@ -6,26 +6,13 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 12:23:26 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/26 15:04:32 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/26 16:01:47 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu.h"
 
-/*
-   static void	render_background(t_background bg)
-   {
-   glUseProgram(bg.program);
-   glBindVertexArray(bg.vao);
-   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, bg.ibo);
-   glDrawElements(GL_TRIANGLE_FAN, 4, GL_UNSIGNED_INT, NULL);
-   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-   glBindVertexArray(0);
-   glUseProgram(0);
-   }
-*/
-
-static void	update_cyc_per_frame(t_visu *v)
+static void		update_cyc_per_frame(t_visu *v)
 {
 	v->cyc_per_frame += v->cyc_per_frame_inc;
 	v->cyc_per_frame = ft_fclamp(MIN_CPF, MAX_CPF, v->cyc_per_frame);
@@ -44,7 +31,6 @@ void			render(t_visu *v, t_data *d)
 		update_clock(v, &v->scene.events);
 		update_camera(&v->matrices);
 		update_uniforms(*v);
-		//render_background(v->scene.background);
 		glClear(GL_DEPTH_BUFFER_BIT);
 		render_text(v->scene.texts, v->scene.events);
 		update_arena(&v->scene.arena, d);

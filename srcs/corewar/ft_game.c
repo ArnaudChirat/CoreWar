@@ -6,7 +6,7 @@
 /*   By: ccorsin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/15 15:42:45 by ccorsin           #+#    #+#             */
-/*   Updated: 2018/06/25 12:28:15 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/26 16:00:03 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,6 @@
 **	Les fonctions permettant au principal de l'action de se derouler.
 **	C'est la qu'on gere les cycles de vie des processus
 */
-
-int			ft_count_players_left(void)
-{
-	int	i;
-	int	res;
-
-	res = 0;
-	i = 0;
-	while (i < MAX_PLAYERS)
-		if (g_live_tab[i++].live)
-			res++;
-	return (res);
-}
 
 int			ft_reset_live(t_proc **begin, int check)
 {

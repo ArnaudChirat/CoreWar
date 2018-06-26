@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 15:10:18 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/26 15:27:19 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/26 16:02:51 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	free_arena(t_v_arena *arena)
 	free_pro((void**)&arena->arena_coords);
 }
 
-void	free_counters(t_counters *c)
+static void	free_counters(t_counters *c)
 {
 	glDeleteBuffers(VBO_CT_MAX, c->vbos);
 	glDeleteBuffers(1, &c->ibo);
@@ -37,7 +37,7 @@ void	free_counters(t_counters *c)
 	free_mesh(&c->mesh);
 }
 
-void	free_scene(t_scene *scene)
+void		free_scene(t_scene *scene)
 {
 	int	i;
 

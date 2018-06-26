@@ -6,7 +6,7 @@
 /*   By: ccorsin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/11 11:31:37 by ccorsin           #+#    #+#             */
-/*   Updated: 2018/06/25 11:23:56 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/26 16:12:06 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ typedef struct			s_live
 	char			*name;
 	int				live;
 	int				last;
-}					t_live;
+}						t_live;
 
 extern t_live			g_live_tab[MAX_PLAYERS];
 
@@ -97,8 +97,6 @@ typedef struct			s_player
 	char			*prog;
 	struct s_player	*next;
 }						t_player;
-
-
 
 /*
 ** Structure containing all the information of the game

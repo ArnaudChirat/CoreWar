@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/02 12:25:19 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/25 16:23:51 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/26 16:02:08 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void		update_camera(t_matrices *mat)
 {
-	//mat->scal = clamp(mat->scal + mat->inc_scal, MIN_SCALE, MAX_SCALE);
 	mat->eye.x = clamp(mat->eye.x + mat->inc_xpos, MIN_XPOS, MAX_XPOS);
 	mat->eye.y = clamp(mat->eye.y + mat->inc_ypos, MIN_YPOS, MAX_YPOS);
 	mat->eye.w = 1.;
