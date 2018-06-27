@@ -6,20 +6,21 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/24 14:30:09 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/27 00:03:42 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/27 04:29:08 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu.h"
 
-static int	renderable_text(int i, int *pl_on)
+static int	renderable_text(int phase, int i, int *pl_on)
 {
-	if (i < TXT_PL1 ||
-			(i >= TXT_PL1 && i <= TXT_PL4 && pl_on[i - TXT_PL1]) ||
+	if (((i < TXT_PL1 ||
 		(i >= TXT_PL1_PROC && i <= TXT_PL4_PROC && pl_on[i - TXT_PL1_PROC]) ||
 		(i >= TXT_PL1_LIVE && i <= TXT_PL4_LIVE && pl_on[i - TXT_PL1_LIVE]) ||
 		(i >= TXT_PL1_PN && i <= TXT_PL4_PN && pl_on[i - TXT_PL1_PN]) ||
 		(i >= TXT_PL1_LN && i <= TXT_PL4_LN && pl_on[i - TXT_PL1_LN]))
+			&& phase == PH_GAME) ||
+			(i >= TXT_PL1 && i <= TXT_PL4 && pl_on[i - TXT_PL1]))
 		return (1);
 	else
 		return (0);
@@ -34,7 +35,7 @@ void		render_text(t_text_field *texts, t_text_data txt_data,
 	if (e.phase == PH_GAME || e.phase == PH_FINAL)
 	{
 		while (++i < TXT_MAX)
-			if (renderable_text(i, pl_on))
+			if (renderable_text(e.phase, i, pl_on))
 			{
 				glUseProgram(texts[i].program);
 				glBindVertexArray(texts[i].vao);

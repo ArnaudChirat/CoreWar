@@ -6,7 +6,7 @@
 /*   By: achirat <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 11:44:12 by achirat           #+#    #+#             */
-/*   Updated: 2018/06/26 16:20:35 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/27 04:24:42 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,73 +14,45 @@
 #include "visu.h"
 
 /*
-**	Les fonctions permettant au principal de l'action de se derouler.
-**	C'est la qu'on gere les cycles de vie des processus
-*/
-
-int			ft_reset_live(t_proc **begin, int check)
-{
-	int		i;
-	int		res;
-	t_proc	*tmp;
-
-	i = 0;
-	res = 0;
-	while (i < MAX_PLAYERS)
-	{
-		res += g_live_tab[i].live;
-		g_live_tab[i++].live = 0;
-	}
-	if (check == MAX_CHECKS || res < NBR_LIVE)
-	{
-		tmp = *begin;
-		while (tmp)
-		{
-			tmp->live = 0;
-			tmp->did_live = 0;
-			tmp = tmp->next;
-		}
-	}
-	return (res);
-}
-
-/*
-**	On 'tue' les process n'ayant pas fait de live pendant CYCLE_TO_DIE cycles
-*/
-
-static int	ft_kill_process(t_proc **list, int res, t_proc *tmp, t_proc *next)
-{
-	t_proc	*prev;
-
-	while (tmp)
-	{
-		next = tmp->next;
-		res += tmp->live;
-		if (tmp->did_live == 0)
-			if (tmp == *list)
-			{
-				free(tmp);
-				*list = next;
-			}
-			else
-			{
-				free(tmp);
-				prev->next = next;
-			}
-		else
-			prev = ft_reset_live_proc(&tmp);
-		tmp = next;
-	}
-	return (res);
-}
-
-/*
 **	On determine le gagnant en fonction de la variable 'last' dans le tableau
 **	global rassemblant les joueurs. Elle sert a distinguer le dernier champion
 **	a avoir emis un live a son nom.
 */
 
-void		ft_winner(void)
+static void	*thrd_taunt(void *d)
+{
+	system(d);
+	free_pro((void**)&d);
+	return (NULL);
+}
+
+static void	ft_taunt(t_player *lst, int winner)
+{
+	char		*cmd;
+	pthread_t	taunt_thread;
+
+	while (lst)
+	{
+		if (lst->player_nbr == winner)
+			break ;
+		lst = lst->next;
+	}
+	cmd = ft_strjoin("say ", lst->comment);
+	if (pthread_create(&taunt_thread, NULL, &thrd_taunt, (void*)cmd))
+			error_exit("");
+}
+
+static void	ft_setup_final(t_visu *v, int winner)
+{
+	if (winner < MAX_PLAYERS)
+	{
+		ft_bzero(v->scene.pl_on, sizeof(int) * MAX_PLAYERS);
+		v->scene.pl_on[winner] = 1;
+	}
+	v->scene.events.phase = PH_FINAL;
+}
+
+static void	ft_winner(t_player *lst, int flag_v, t_visu *v)
 {
 	int	i;
 
@@ -91,31 +63,22 @@ void		ft_winner(void)
 		{
 			ft_printf("Contestant %d, \"%s\", has won !\n", g_live_tab[i].id,
 					g_live_tab[i].name);
+			if (flag_v)
+				ft_taunt(lst, g_live_tab[i].player_nbr);
 			break ;
 		}
 		i++;
 	}
+	if (flag_v)
+		ft_setup_final(v, i);
 	if (i == MAX_PLAYERS)
 		ft_printf("No live, no game.\n");
 }
 
 /*
-**	"L'horloge" de la machine virtuelle, elle rythme les cycles, clean les pro-
+**	"L'horloge' de la machine virtuelle, elle rythme les cycles, clean les pro-
 **	cessus et regule le compteur de live.
 */
-
-static void	ft_refresh_lives(t_data *data)
-{
-	data->number = ft_reset_live(&data->proc_list, data->check);
-	if (data->number >= NBR_LIVE || data->check == MAX_CHECKS)
-	{
-		data->ctd = data->ctd - CYCLE_DELTA;
-		ft_kill_process(&data->proc_list, 0, data->proc_list, NULL);
-		data->check = 0;
-	}
-	else
-		data->check++;
-}
 
 void		ft_game(t_data *data, t_visu *visu)
 {
@@ -138,5 +101,7 @@ void		ft_game(t_data *data, t_visu *visu)
 		}
 		ft_refresh_lives(data);
 	}
-	ft_winner();
+	ft_winner(data->players_list, data->flag_v, visu);
+	while (!visu->quit)
+		render(visu, data);
 }

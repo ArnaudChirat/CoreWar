@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/12 17:06:44 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/24 16:02:34 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/27 04:10:04 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void		update_counters(t_counters *c, t_data *d)
 
 void		render_counters(t_counters c, t_events e)
 {
-	if (e.phase == PH_GAME || e.phase == PH_FINAL)
+	if (e.phase == PH_GAME)
 	{
 		glUseProgram(c.program);
 		glBindVertexArray(c.vao);

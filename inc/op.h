@@ -6,7 +6,7 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 16:40:04 by cpaquet           #+#    #+#             */
-/*   Updated: 2018/06/19 16:40:06 by cpaquet          ###   ########.fr       */
+/*   Updated: 2018/06/27 04:24:59 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@
 # define REG_NUMBER			16
 
 # define CYCLE_TO_DIE		1536
-# define CYCLE_DELTA		50
+# define CYCLE_DELTA		1000
 # define NBR_LIVE			21
 # define MAX_CHECKS			10
 # define OP_NBR				16
