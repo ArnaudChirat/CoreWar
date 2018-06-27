@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/12 17:06:44 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/27 04:10:04 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/27 06:11:23 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,7 @@ static void	update_mesh_width(t_counters *c, t_data *d)
 
 void		update_counters(t_counters *c, t_data *d)
 {
-	int	i;
-
 	update_mesh_width(c, d);
-	i = -1;
-	while (++i < c->nb_players)
-	{
-	}
 }
 
 void		render_counters(t_counters c, t_events e)

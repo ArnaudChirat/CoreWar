@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/02 12:13:09 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/25 14:53:34 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/27 06:12:27 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	kb_speed_up(void *v, int type)
 	visu = (t_visu*)v;
 	if (!visu->pause)
 		visu->cyc_per_frame_inc =
-				(type == SDL_KEYDOWN ? INC_CPF : 0.);
+				(type == SDL_KEYDOWN ? MULT_CPF : 1.);
 }
 
 void	kb_speed_down(void *v, int type)
@@ -29,7 +29,7 @@ void	kb_speed_down(void *v, int type)
 	visu = (t_visu*)v;
 	if (!visu->pause)
 		visu->cyc_per_frame_inc =
-				(type == SDL_KEYDOWN ? -INC_CPF : 0.);
+				(type == SDL_KEYDOWN ? DEMULT_CPF : 1.);
 }
 
 void	kb_pause(void *v, int type)

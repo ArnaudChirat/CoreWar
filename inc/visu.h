@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/01 18:56:47 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/27 05:40:22 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/27 06:16:49 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@
 # define CT_WIDTH -96
 
 # define INC_CPF 0.03
+# define MULT_CPF 1.02
+# define DEMULT_CPF 0.98
 # define INIT_CPF 1.0
 # define MIN_CPF 0.1
 # define MAX_CPF 20.
