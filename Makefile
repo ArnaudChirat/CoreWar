@@ -6,7 +6,7 @@
 #    By: achirat <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/26 11:41:55 by achirat           #+#    #+#              #
-#    Updated: 2018/06/27 12:00:23 by lbelda           ###   ########.fr        #
+#    Updated: 2018/06/27 14:06:03 by lbelda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,6 @@ SRC_FILE_ASM=asm.c \
 			 ft_get_instructions_2.c \
 			 ft_aux_3.c
 SRC_FILE_COREWAR=ft_init_process.c \
-				 ft_init_data.c \
 				 ft_control_define.c \
 				 ft_players.c \
 				 ft_print.c \

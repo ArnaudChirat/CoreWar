@@ -6,7 +6,7 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 14:47:20 by cpaquet           #+#    #+#             */
-/*   Updated: 2018/06/19 14:47:22 by cpaquet          ###   ########.fr       */
+/*   Updated: 2018/06/27 14:27:00 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,8 @@ static void		ft_number_players(t_data *data, t_player *players_list)
 		ft_error(0, "Too many players", 0, 0);
 	if (nbr == 2)
 		ft_error(7, data->players_list->name, 0, 0);
+	if (nbr < 2)
+		ft_error_usage("Too few parameters\n");
 }
 
 /*
