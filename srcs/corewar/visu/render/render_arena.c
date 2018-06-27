@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 10:02:24 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/27 05:45:02 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/27 10:02:16 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void		update_arena(t_v_arena *a, t_data *d, int *pl_on)
 
 	i = -1;
 	bzero_buffers(a);
-	pthread_mutex_lock(&g_lock);
 	update_arena_z(a->arena_coords, d->proc_list);
 	while (++i < MEM_SIZE)
 	{
@@ -74,7 +73,6 @@ void		update_arena(t_v_arena *a, t_data *d, int *pl_on)
 		else
 			a->data_inst[P_N][a->nb_instances[P_N]++] = a->arena_coords[i];
 	}
-	pthread_mutex_unlock(&g_lock);
 	update_arena_buffers(a);
 }
 

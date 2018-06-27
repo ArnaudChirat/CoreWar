@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/27 00:12:50 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/27 02:36:07 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/27 09:29:15 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,15 @@ static void	update_buffers(t_text_field *text)
 {
 	glBindBuffer(GL_ARRAY_BUFFER, text->vbo);
 	glBufferSubData(GL_ARRAY_BUFFER, 0,
-			EST_SIZE_VTX * sizeof(t_glfloat3), text->mesh.coords);
+			sizeof(t_glfloat3) * EST_SIZE_VTX, text->mesh.coords);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, text->ibo);
 	glBufferSubData(GL_ELEMENT_ARRAY_BUFFER, 0,
-			EST_SIZE_IND * sizeof(GLuint), text->mesh.indices);
+			sizeof(GLuint) * EST_SIZE_IND, text->mesh.indices);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
-void	update_text_info(t_scene *scene, t_data *d)
+void		update_text_info(t_scene *scene, t_data *d)
 {
 	int	i;
 

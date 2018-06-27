@@ -6,7 +6,7 @@
 #    By: achirat <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/26 11:41:55 by achirat           #+#    #+#              #
-#    Updated: 2018/06/27 06:49:37 by lbelda           ###   ########.fr        #
+#    Updated: 2018/06/27 10:02:46 by lbelda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,9 +59,7 @@ SRC_FILE_COREWAR=ft_init_process.c \
 				 ft_free.c \
 				 ft_fight.c \
 				 ft_players_3.c \
-				 ft_players_2.c \
-				 ft_draw.c \
-				 ft_draw_2.c
+				 ft_players_2.c
 SRC_FILE_INSTRUCTIONS= ft_check_op.c \
 					   	ft_check_op2.c \
 						ft_aff.c \
@@ -151,9 +149,6 @@ LIBFTMT_INCFILES=libftmath.h
 LIBFTMT_INC=$(addprefix $(LIBFTMT_INCDIR), $(LIBFTMT_INCFILES))
 LIBFTMT=$(addprefix $(LIBFTMT_DIR), $(LIBFTMT_LIB))
 
-NCURSE=ncurses
-NCURSE_PATH=ncurses
-
 SDL_ROOT=sdl2/
 SDL_LIBROOT=lib/
 SDL_LIB=libSDL2.a
@@ -174,7 +169,7 @@ INT=install_name_tool -change
 MAKE=make
 
 LIB_FLAGS_COREWAR=-L$(LIB_PATH) -l$(LIB_NAME) -L$(LIBFTMT_DIR) -l$(LIBFTMT_LK) \
-				  -L$(SDL_LIBDIR) -l$(SDL_LK) -lm -L$(NCURSE_PATH) -l$(NCURSE) \
+				  -L$(SDL_LIBDIR) -l$(SDL_LK) -lm \
 				  -L$(FMOD_DIR) -l$(FMOD_LK)
 
 ALL_INC=$(INC) $(LIBFT_INC)

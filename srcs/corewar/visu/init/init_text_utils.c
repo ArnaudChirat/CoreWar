@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 18:23:59 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/27 02:09:44 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/27 09:29:06 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void		init_text_buffers_empty(t_text_field *text)
 	glBindVertexArray(text->vao);
 	glGenBuffers(1, &text->vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, text->vbo);
-	glBufferData(GL_ARRAY_BUFFER, EST_SIZE_VTX * sizeof(t_glfloat3),
+	glBufferData(GL_ARRAY_BUFFER, sizeof(t_glfloat3) * EST_SIZE_VTX,
 									NULL, GL_STREAM_DRAW);
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL);
@@ -30,7 +30,7 @@ void		init_text_buffers_empty(t_text_field *text)
 	glGenBuffers(1, &text->ibo);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, text->ibo);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER,
-					EST_SIZE_IND * sizeof(GLuint),
+					sizeof(GLuint) * EST_SIZE_IND,
 					NULL, GL_STREAM_DRAW);
 	text->u_world_pos =
 		glGetUniformLocation(text->program, "world_pos");
@@ -41,6 +41,7 @@ void		init_text_buffers_empty(t_text_field *text)
 	glBindVertexArray(0);
 	glUseProgram(0);
 }
+
 void		init_text_buffers(t_text_field *text)
 {
 	glUseProgram(text->program);

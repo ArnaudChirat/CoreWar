@@ -6,7 +6,7 @@
 /*   By: achirat <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 11:44:12 by achirat           #+#    #+#             */
-/*   Updated: 2018/06/27 08:56:45 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/27 09:30:22 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	ft_taunt(t_player *lst, int winner)
 	}
 	cmd = ft_strjoin("say ", lst->comment);
 	if (pthread_create(&taunt_thread, NULL, &thrd_taunt, (void*)cmd))
-			error_exit("");
+		error_exit("");
 }
 
 static void	ft_setup_final(t_visu *v, int winner)

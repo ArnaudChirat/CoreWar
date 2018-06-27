@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 18:58:18 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/27 03:43:23 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/27 10:01:07 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include "errno.h"
 # include "libft.h"
 # include <time.h>
-# include <ncurses.h>
 
 typedef struct s_visu	t_visu;
 
@@ -99,14 +98,5 @@ void			ft_sub(t_proc *proc, t_proc **begin);
 int				ft_get_number_arg(char instru, t_proc *proc);
 void			ft_get_ind_value(t_proc *proc, int *j, int arg);
 int				ft_get_reg_value(t_proc *proc, int *j, int arg);
-/*
-**	Ncurses draw functions
-*/
-t_draw			ft_init_draw(t_data data);
-void			ft_draw_cycle(t_draw *draw, t_data *data);
-int				ft_get_num_player(int id);
-int				ft_got_a_process(t_proc **begin, int index);
-int				ft_is_champ(int i);
-void			ft_draw_general_info(t_data data, t_draw draw, t_proc **begin);
 
 #endif

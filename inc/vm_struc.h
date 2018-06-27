@@ -6,7 +6,7 @@
 /*   By: achirat <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 11:40:58 by achirat           #+#    #+#             */
-/*   Updated: 2018/06/27 00:11:56 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/27 09:38:25 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,7 @@
 # define INSTRUCT_IN_CYCLE	0
 # define INSTRUCT_END 		1
 
-pthread_mutex_t	g_lock;
-
 extern t_op				g_op_tab[OP_NBR + 1];
-
-/*
-**	Structure to draw with ncurses
-*/
-
-typedef struct			s_draw
-{
-	int		row;
-	int		col;
-	int		cyc_s;
-}						t_draw;
 
 /*
 ** Structure containing the information of each point of the arena
