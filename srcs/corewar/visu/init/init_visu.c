@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 10:55:32 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/26 15:47:44 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/27 06:31:58 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,12 @@ t_visu		*init_visu(t_data *data)
 	v->controls = init_controls();
 	v->sound = init_sound();
 	v->cyc_per_frame = INIT_CPF;
+	v->cyc_per_frame_inc = 1.;
 	v->pause = 1;
 	init_scene(v, *data);
 	glClearColor(0., 0., 0., 1.);
 	glViewport(0, 0, v->win_size.x, v->win_size.y);
 	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glDepthFunc(GL_LESS);
 	v->scene.events = init_clock();
 	launch_music(&v->sound);

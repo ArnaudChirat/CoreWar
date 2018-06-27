@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 12:18:46 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/25 17:14:54 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/27 06:49:50 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,20 @@ enum			e_kb_funcs
 	KB_MAX
 };
 
-enum			e_ps3_funcs
+enum			e_ps3_a_funcs
 {
 	PS3_AXIS_LEFTY,
 	PS3_AXIS_LEFTX,
 	PS3_AXIS_TRIGGERLEFT,
 	PS3_AXIS_TRIGGERRIGHT,
-	PS3_MAX
+	PS3_AXIS_MAX
+};
+
+enum			e_ps3_b_funcs
+{
+	PS3_BUT_X,
+	PS3_BUT_START,
+	PS3_BUT_MAX
 };
 
 typedef struct	s_kb_lookup
@@ -47,16 +54,23 @@ typedef struct	s_kb_lookup
 	void		(*func)(void *v, int type);
 }				t_kb_lookup;
 
-typedef struct	s_ps3_lookup
+typedef struct	s_ps3_a_lookup
 {
 	uint8_t		axis;
 	void		(*func)(void *v, int16_t value);
-}				t_ps3_lookup;
+}				t_ps3_a_lookup;
+
+typedef struct	s_ps3_b_lookup
+{
+	uint8_t		button;
+	void		(*func)(void *v, uint32_t type);
+}				t_ps3_b_lookup;
 
 typedef struct	s_controls
 {
 	t_kb_lookup			kb_lookup[KB_MAX];
-	t_ps3_lookup		ps3_lookup[PS3_MAX];
+	t_ps3_a_lookup		ps3_a_lookup[PS3_AXIS_MAX];
+	t_ps3_b_lookup		ps3_b_lookup[PS3_BUT_MAX];
 	SDL_GameController	*ps3_id;
 }				t_controls;
 
@@ -77,5 +91,7 @@ void			ps3_xtrs(void *v, int16_t value);
 void			ps3_ytrs(void *v, int16_t value);
 void			ps3_speed_up(void *v, int16_t value);
 void			ps3_speed_down(void *v, int16_t value);
+void			ps3_pause(void *v, uint32_t type);
+void			ps3_exit(void *v, uint32_t type);
 
 #endif

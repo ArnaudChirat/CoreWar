@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/02 12:13:09 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/27 06:12:27 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/27 06:33:51 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ void	kb_pause(void *v, int type)
 	{
 		visu->pause =
 			(visu->pause == 0 ? 1 : 0);
-		visu->cyc_per_frame_inc = 0;
+		visu->cyc_per_frame_inc = 1.;
 	}
 }
