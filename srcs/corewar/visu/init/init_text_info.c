@@ -6,11 +6,29 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 18:17:11 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/26 23:02:26 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/27 02:25:04 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu.h"
+
+void			init_text_info_nb(t_text_field *texts, GLuint program)
+{
+	int			i;
+	int			flag;
+
+	i = -1;
+	flag = 0;
+	while (++i < MAX_PLAYERS)
+	{
+		texts[TXT_PL1_PN + i].program = program;
+		texts[TXT_PL1_LN + i].program = program;
+		ft_bzero(&texts[TXT_PL1_PN + i].mesh, sizeof(t_mesh));
+		ft_bzero(&texts[TXT_PL1_LN + i].mesh, sizeof(t_mesh));
+		init_text_buffers_empty(&texts[TXT_PL1_PN + i]);
+		init_text_buffers_empty(&texts[TXT_PL1_LN + i]);
+	}
+}
 
 void			init_text_info(t_text_field *texts, t_mesh *alphabet,
 								t_data d, GLuint program)

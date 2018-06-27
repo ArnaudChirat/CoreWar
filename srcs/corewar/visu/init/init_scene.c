@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 13:03:18 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/26 23:17:56 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/27 00:49:50 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ void				init_scene(t_visu *v, t_data data)
 		v->scene.all_programs[i + PROG_TXT] = v->scene.texts[i].program;
 	init_text_info(v->scene.texts, v->scene.alphabet_3d,
 						data, v->scene.all_programs[PROG_TXT]);
+	init_text_info_nb(v->scene.texts, v->scene.all_programs[PROG_TXT]);
 	init_ublocks(*v, v->scene.ublocks);
 	fill_players_on(data, v->scene.pl_on);
 }

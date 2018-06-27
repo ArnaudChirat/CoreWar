@@ -6,7 +6,7 @@
 #    By: achirat <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/26 11:41:55 by achirat           #+#    #+#              #
-#    Updated: 2018/06/26 22:52:40 by lbelda           ###   ########.fr        #
+#    Updated: 2018/06/27 00:51:11 by lbelda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,7 +96,8 @@ SRC_FILE_VISU_INIT=init_visu.c \
 SRC_VISU_INIT=$(addprefix $(SRC_DIR_VISU_INIT), $(SRC_FILE_VISU_INIT))
 
 SRC_DIR_VISU_RENDER=render/
-SRC_FILE_VISU_RENDER=render.c render_arena.c render_counters.c render_text.c \
+SRC_FILE_VISU_RENDER=render.c render_arena.c render_counters.c \
+					 update_text_info.c render_text.c \
 					 update_clock.c update_camera.c update_uniforms.c
 SRC_VISU_RENDER=$(addprefix $(SRC_DIR_VISU_RENDER), $(SRC_FILE_VISU_RENDER))
 

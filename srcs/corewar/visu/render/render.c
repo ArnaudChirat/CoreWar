@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 12:23:26 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/26 23:13:27 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/27 02:12:11 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void			render(t_visu *v, t_data *d)
 		update_clock(v, &v->scene.events);
 		update_camera(&v->matrices);
 		update_uniforms(*v);
+		update_text_info(&v->scene, d);
 		render_text(v->scene.texts, v->scene.texts_data,
 						v->scene.events, v->scene.pl_on);
 		update_arena(&v->scene.arena, d);
