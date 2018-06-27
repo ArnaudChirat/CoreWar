@@ -6,7 +6,7 @@
 /*   By: achirat <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 11:44:12 by achirat           #+#    #+#             */
-/*   Updated: 2018/06/27 07:45:53 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/27 08:56:45 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	ft_taunt(t_player *lst, int winner)
 
 	while (lst)
 	{
-		if (lst->player_nbr == winner)
+		if (!ft_strcmp(lst->name, g_live_tab[winner].name))
 			break ;
 		lst = lst->next;
 	}
@@ -65,7 +65,7 @@ static void	ft_winner(t_player *lst, int flag_v, t_visu *v)
 			ft_printf("Contestant %d, \"%s\", has won !\n", g_live_tab[i].id,
 					g_live_tab[i].name);
 			if (flag_v)
-				ft_taunt(lst, g_live_tab[i].player_nbr);
+				ft_taunt(lst, i);
 			break ;
 		}
 		i++;
