@@ -6,14 +6,14 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 18:23:59 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/27 09:29:06 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/27 16:33:29 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu.h"
 
-#define EST_SIZE_VTX (1800 * 5)
-#define EST_SIZE_IND (1800 * 5 * 3)
+#define EST_SIZE_VTX (1800 * 6)
+#define EST_SIZE_IND (1800 * 6 * 3)
 
 void		init_text_buffers_empty(t_text_field *text)
 {

@@ -6,21 +6,24 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/27 00:12:50 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/27 09:29:15 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/27 17:00:37 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu.h"
 
-#define EST_SIZE_VTX (1800 * 5)
-#define EST_SIZE_IND (1800 * 5 * 3)
+#define EST_SIZE_VTX (1800 * 6)
+#define EST_SIZE_IND (1800 * 6 * 3)
+#define MAX_INT_VALUE 99999
+#define MAX_STRING "99999"
 
-static void	update_info(int *nb_process, int *nb_lives, t_proc *procs)
+static void	update_info(unsigned int *nb_process, unsigned int *nb_lives,
+						t_proc *procs)
 {
 	int	i;
 
-	ft_bzero(nb_process, sizeof(int) * MAX_PLAYERS);
-	ft_bzero(nb_lives, sizeof(int) * MAX_PLAYERS);
+	ft_bzero(nb_process, sizeof(unsigned int) * MAX_PLAYERS);
+	ft_bzero(nb_lives, sizeof(unsigned int) * MAX_PLAYERS);
 	while (procs)
 	{
 		nb_process[procs->num - 1]++;
@@ -33,7 +36,7 @@ static void	update_info(int *nb_process, int *nb_lives, t_proc *procs)
 	}
 }
 
-static void	refresh_str_mesh(int *nb_process, int *nb_lives,
+static void	refresh_str_mesh(unsigned int *nb_process, unsigned int *nb_lives,
 									t_text_field *txt, t_mesh *alphabet)
 {
 	int		i;
@@ -44,7 +47,9 @@ static void	refresh_str_mesh(int *nb_process, int *nb_lives,
 	{
 		str = ft_itoa(nb_process[i]);
 		free_mesh(&txt[TXT_PL1_PN + i].mesh);
-		txt[TXT_PL1_PN + i].mesh = str_to_mesh(str, alphabet);
+		txt[TXT_PL1_PN + i].mesh =
+			str_to_mesh((nb_process[i] >= MAX_INT_VALUE ?
+										MAX_STRING : str), alphabet);
 		free_pro((void**)&str);
 	}
 	i = -1;
@@ -52,7 +57,9 @@ static void	refresh_str_mesh(int *nb_process, int *nb_lives,
 	{
 		str = ft_itoa(nb_lives[i]);
 		free_mesh(&txt[TXT_PL1_LN + i].mesh);
-		txt[TXT_PL1_LN + i].mesh = str_to_mesh(str, alphabet);
+		txt[TXT_PL1_LN + i].mesh =
+			str_to_mesh((nb_lives[i] >= MAX_INT_VALUE ?
+										MAX_STRING : str), alphabet);
 		free_pro((void**)&str);
 	}
 }

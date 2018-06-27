@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/01 18:56:47 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/27 07:50:13 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/27 16:59:59 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -225,8 +225,8 @@ typedef struct	s_scene
 	t_ublock		ublocks[UBO_MAX];
 	GLuint			all_programs[PROG_MAX];
 	int				pl_on[MAX_PLAYERS];
-	int				nb_process[MAX_PLAYERS];
-	int				nb_lives[MAX_PLAYERS];
+	unsigned int	nb_process[MAX_PLAYERS];
+	unsigned int	nb_lives[MAX_PLAYERS];
 }				t_scene;
 
 typedef struct	s_visu

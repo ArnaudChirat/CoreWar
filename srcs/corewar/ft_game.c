@@ -6,7 +6,7 @@
 /*   By: achirat <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 11:44:12 by achirat           #+#    #+#             */
-/*   Updated: 2018/06/27 12:30:38 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/27 17:06:41 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ static void	ft_taunt(t_player *lst, int winner)
 	tmp = ft_control_comment(lst->comment);
 	m_pro_null_bonus(cmd = ft_strjoin("say \'", tmp), tmp);
 	free_pro((void**)&tmp);
-	ft_putendl(cmd);
 	if (pthread_create(&taunt_thread, NULL, &thrd_taunt, (void*)cmd))
 	{
 		free_pro((void**)&cmd);
