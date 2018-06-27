@@ -2,7 +2,7 @@
 #2013
 
 .name		"helltrain"
-.comment	"choo-choo, motherf*****s !"
+.comment	"choo-choo, motherfuckers !"
 
 entry:
 	sti		r1, %:beegees_gen, %1
