@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/01 18:56:47 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/27 06:16:49 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/27 07:50:13 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -282,7 +282,7 @@ void			update_text_info(t_scene *scene, t_data *d);
 void			render_text(t_text_field *texts, t_text_data txt_data,
 									t_events e, int *pl_on);
 
-void			ft_free_visu(t_visu *v);
+void			ft_free_visu(t_visu *v, t_data d);
 void			free_scene(t_scene *scene);
 void			free_mesh(t_mesh *mesh);
 void			free_text_field(t_text_field *txt);

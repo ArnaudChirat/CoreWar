@@ -6,7 +6,7 @@
 /*   By: achirat <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 11:44:12 by achirat           #+#    #+#             */
-/*   Updated: 2018/06/27 05:50:04 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/27 07:45:53 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,6 @@ void		ft_game(t_data *data, t_visu *visu)
 	}
 	if (!visu->quit)
 		ft_winner(data->players_list, data->flag_v, visu);
-	while (!visu->quit)
+	while (!visu->quit && data->flag_v)
 		render(visu, data);
 }

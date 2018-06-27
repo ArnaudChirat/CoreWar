@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 11:38:32 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/26 17:42:56 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/27 07:50:05 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,16 @@ static void	free_sound(t_sound *sound)
 	}
 }
 
-void		ft_free_visu(t_visu *v)
+void		ft_free_visu(t_visu *v, t_data d)
 {
-	free_scene(&v->scene);
-	free_sound(&v->sound);
-	SDL_GL_DeleteContext(v->context);
-	SDL_DestroyWindow(v->win);
-	SDL_QuitSubSystem(SDL_INIT_VIDEO | SDL_INIT_GAMECONTROLLER);
-	SDL_Quit();
+	if (d.flag_v)
+	{
+		free_scene(&v->scene);
+		free_sound(&v->sound);
+		SDL_GL_DeleteContext(v->context);
+		SDL_DestroyWindow(v->win);
+		SDL_QuitSubSystem(SDL_INIT_VIDEO | SDL_INIT_GAMECONTROLLER);
+		SDL_Quit();
+	}
 	free_pro((void**)&v);
 }
