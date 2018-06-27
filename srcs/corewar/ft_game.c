@@ -6,7 +6,7 @@
 /*   By: achirat <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 11:44:12 by achirat           #+#    #+#             */
-/*   Updated: 2018/06/27 09:30:22 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/27 12:30:38 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static void	*thrd_taunt(void *d)
 static void	ft_taunt(t_player *lst, int winner)
 {
 	char		*cmd;
+	char		*tmp;
 	pthread_t	taunt_thread;
 
 	while (lst)
@@ -37,9 +38,15 @@ static void	ft_taunt(t_player *lst, int winner)
 			break ;
 		lst = lst->next;
 	}
-	cmd = ft_strjoin("say ", lst->comment);
+	tmp = ft_control_comment(lst->comment);
+	m_pro_null_bonus(cmd = ft_strjoin("say \'", tmp), tmp);
+	free_pro((void**)&tmp);
+	ft_putendl(cmd);
 	if (pthread_create(&taunt_thread, NULL, &thrd_taunt, (void*)cmd))
+	{
+		free_pro((void**)&cmd);
 		error_exit("");
+	}
 }
 
 static void	ft_setup_final(t_visu *v, int winner)

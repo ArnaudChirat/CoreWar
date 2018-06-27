@@ -6,7 +6,7 @@
 #    By: achirat <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/26 11:41:55 by achirat           #+#    #+#              #
-#    Updated: 2018/06/27 10:02:46 by lbelda           ###   ########.fr        #
+#    Updated: 2018/06/27 12:00:23 by lbelda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,7 @@ SRC_FILE_COREWAR=ft_init_process.c \
 				 main.c \
 				 ft_game.c \
 				 ft_refresh_lives.c \
+				 ft_game_utils.c \
 				 ft_process.c \
 				 ft_free.c \
 				 ft_fight.c \

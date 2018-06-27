@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 18:58:18 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/27 10:01:07 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/27 12:02:06 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "op.h"
 # include "vm_struc.h"
+# include "v_common.h"
 # include "errno.h"
 # include "libft.h"
 # include <time.h>
@@ -70,6 +71,7 @@ void			ft_print_matrix(void);
 void			ft_game(t_data *data, t_visu *visu);
 void			ft_refresh_lives(t_data *data);
 void			ft_fight(t_proc **begin);
+char			*ft_control_comment(char *str);
 /*
 ** Functions in FT_PROCESS>C
 */
