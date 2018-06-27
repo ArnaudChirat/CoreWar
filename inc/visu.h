@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/01 18:56:47 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/27 02:24:34 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/27 05:40:22 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,7 @@ typedef struct	s_v_arena
 	GLuint		ibo_mesh;
 	t_mesh		mesh;
 	int			nb_players;
+	int			winner;
 }				t_v_arena;
 
 enum			e_vbos_ct
@@ -273,7 +274,7 @@ void			update_camera(t_matrices *mat);
 void			update_uniforms(t_visu v);
 void			render_counters(t_counters c, t_events e);
 void			update_counters(t_counters *c, t_data *d);
-void			update_arena(t_v_arena *a, t_data *d);
+void			update_arena(t_v_arena *a, t_data *d, int *pl_on);
 void			render_arena(t_v_arena a);
 void			update_text_info(t_scene *scene, t_data *d);
 void			render_text(t_text_field *texts, t_text_data txt_data,

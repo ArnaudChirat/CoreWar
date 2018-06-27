@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 12:23:26 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/27 02:12:11 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/27 05:34:59 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void			render(t_visu *v, t_data *d)
 		update_text_info(&v->scene, d);
 		render_text(v->scene.texts, v->scene.texts_data,
 						v->scene.events, v->scene.pl_on);
-		update_arena(&v->scene.arena, d);
+		update_arena(&v->scene.arena, d, v->scene.pl_on);
 		render_arena(v->scene.arena);
 		update_counters(&v->scene.counters, d);
 		render_counters(v->scene.counters, v->scene.events);

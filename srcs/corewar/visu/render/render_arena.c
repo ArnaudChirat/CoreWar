@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 10:02:24 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/24 17:55:39 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/27 05:45:02 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	update_arena_z(t_glfloat3 *a, t_proc *list)
 	}
 }
 
-void		update_arena(t_v_arena *a, t_data *d)
+void		update_arena(t_v_arena *a, t_data *d, int *pl_on)
 {
 	int	i;
 
@@ -63,7 +63,11 @@ void		update_arena(t_v_arena *a, t_data *d)
 	update_arena_z(a->arena_coords, d->proc_list);
 	while (++i < MEM_SIZE)
 	{
-		if (g_arena[i].player)
+		if (a->winner != -1)
+			a->data_inst[a->winner + 1][a->nb_instances[a->winner + 1]++] =
+				a->arena_coords[i];
+		else if (g_arena[i].player &&
+					pl_on[(unsigned char)g_arena[i].player - 1])
 			a->data_inst[(int)g_arena[i].player]
 				[a->nb_instances[(int)g_arena[i].player]++] =
 				a->arena_coords[i];

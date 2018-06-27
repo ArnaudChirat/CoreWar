@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 12:00:33 by lbelda            #+#    #+#             */
-/*   Updated: 2018/06/24 17:48:30 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/27 05:40:44 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ t_v_arena	init_arena(t_data data)
 
 	i = -1;
 	ft_bzero(&a, sizeof(t_v_arena));
+	a.winner = -1;
 	init_arena_data(&a, data);
 	gen_buffers(&a, MAX_PLAYERS + 1);
 	init_shader_paths(&a);

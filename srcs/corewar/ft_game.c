@@ -6,7 +6,7 @@
 /*   By: achirat <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 11:44:12 by achirat           #+#    #+#             */
-/*   Updated: 2018/06/27 04:24:42 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/06/27 05:44:54 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static void	ft_setup_final(t_visu *v, int winner)
 	{
 		ft_bzero(v->scene.pl_on, sizeof(int) * MAX_PLAYERS);
 		v->scene.pl_on[winner] = 1;
+		v->scene.arena.winner = winner;
 	}
 	v->scene.events.phase = PH_FINAL;
 }
